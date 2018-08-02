@@ -2,7 +2,9 @@
 using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -185,5 +187,24 @@ namespace BotConsensus.Dialogs
 
             context.Done(this);
         }
+
+        public string GetResponseFromServer(string api)
+        {
+            WebRequest request = WebRequest.Create(api);
+            request.Method = "POST";
+
+            // If required by the server, set the credentials.
+
+            // Get the response.
+            HttpWebResponse response2 = (HttpWebResponse)request.GetResponse();
+            // Get the stream containing content returned by the server.
+            Stream dataStream = response2.GetResponseStream();
+            // Open the stream using a StreamReader for easy access.
+            StreamReader reader = new StreamReader(dataStream);
+            // Read the content.
+            string responseFromServer = reader.ReadToEnd();
+            return responseFromServer;
+        }
+
     }
 }
