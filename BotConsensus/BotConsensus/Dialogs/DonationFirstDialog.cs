@@ -23,6 +23,7 @@ namespace BotConsensus.Dialogs
         string donationType;
         string donationAmount;
         string serverUrl = "http://brd-conse-vm1/v7chatbot";
+        string donationUrl = "";
 
         public enum DonationType
         {
@@ -157,16 +158,14 @@ namespace BotConsensus.Dialogs
         {
             var message = await response;
             donationType = message.ToString();
-            List<string> amountList = new List<string>();
-            amountList.Add("£10");
-            amountList.Add("£100");
-            amountList.Add("£1000");
+            List<string> amountList = new List<string>() { "10", "50", "100", "1000" };
+
             PromptDialog.Choice(
              context: context,
              resume: ResumeGetDonationAmount,
               options: amountList,
              prompt: "How much amount would you like to donate?",
-             retry: "Selected plan not avilabel . Please try again.",
+             retry: "Selected plan not available. Please try again.",
              promptStyle: PromptStyle.Auto
              );
         }
@@ -176,14 +175,28 @@ namespace BotConsensus.Dialogs
             var response = await result;
             donationAmount = response.ToString();
 
-            string api = serverUrl + "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=10" + "&productId=" + donationType;
+            string api = serverUrl + "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=" + donationType + "&productId=" + donationType;
 
             var responseFromServer = await GetResponseFromServer(api);
 
             var serializer = new JavaScriptSerializer();
-            var url = serializer.Deserialize<string>(responseFromServer);
+            donationUrl = serializer.Deserialize<string>(responseFromServer);
 
-            await context.PostAsync("Thank you so much for your kindness. Donation added successfully. Please click following " + serverUrl + "" + url + " link to check the details. Cheers!!!!!");
+            List<string> cashOptions = new List<string>() { "Cash", "Cheque", "Credit card", "Debit card", "Net banking", "Wallets" };
+            PromptDialog.Choice(
+             context: context,
+             resume: CashType,
+              options: cashOptions,
+             prompt: "How would you like to donate?",
+             retry: "Selected plan not available . Please try again.",
+             promptStyle: PromptStyle.Auto
+             );
+        }
+
+        public async Task CashType(IDialogContext context, IAwaitable<String> response)
+        {
+
+            await context.PostAsync("Thank you so much for your kindness. Donation added successfully. Please click following " + serverUrl + "" + donationUrl + " link to check the details. Cheers!!!!!");
 
             context.Done(this);
         }
