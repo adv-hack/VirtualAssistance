@@ -11,6 +11,10 @@ namespace BotConsensus.Dialogs
     {
         public async Task StartAsync(IDialogContext context)
         {
+            var message = context.MakeMessage();
+            var attachment = WelcomeCard();
+            message.Attachments.Add(attachment);
+            await context.PostAsync(message);
             // Show the list of plan
             context.Wait(this.ShowOptions);
         }
@@ -33,7 +37,7 @@ namespace BotConsensus.Dialogs
         /// Design Title with Image and About US link
         /// </summary>
         /// <returns></returns>
-        private static Attachment GetHeroCard()
+        private static Attachment ThankYouCard()
         {
             var heroCard = new HeroCard
             {
@@ -47,6 +51,23 @@ namespace BotConsensus.Dialogs
             return heroCard.ToAttachment();
         }
 
+        /// <summary>
+        /// Design Title with Image and About US link
+        /// </summary>
+        /// <returns></returns>
+        private static Attachment WelcomeCard()
+        {
+            var heroCard = new HeroCard
+            {
+                Title = "HackOverflow 2018",
+                Subtitle = "VADODARA, 2 - 3 AUGUST 2018",
+                Text = "Welcome to HackOverflow 2018 ! Here we present Virtual Assistant for Consensus.",
+                Images = new List<CardImage> { new CardImage("https://www.oneadvanced.com/siteassets/images/backgrounds/jumbotron-example-bg.jpg") },
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "About US", value: "https://www.oneadvanced.com/") }
+            };
+
+            return heroCard.ToAttachment();
+        }
         public virtual async Task ChoiceReceivedAsync(IDialogContext context, IAwaitable<AdvanceOptions> activity)
         {
             AdvanceOptions response = await activity;
@@ -56,11 +77,12 @@ namespace BotConsensus.Dialogs
         public virtual async Task ChildDialogComplete(IDialogContext context, IAwaitable<object> response)
         {
             var message = context.MakeMessage();
-            var attachment = GetHeroCard();
+            var attachment = ThankYouCard();
             message.Attachments.Add(attachment);
             await context.PostAsync(message);
             //await context.PostAsync("Thanks !!!");
-            context.Done(this);
+            context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
+            //context.Done(this);
         }
 
         public enum AdvanceOptions
