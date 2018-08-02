@@ -55,7 +55,10 @@ namespace BotConsensus.Dialogs
         public virtual async Task ChoiceReceivedAsync(IDialogContext context, IAwaitable<AdvanceOptions> activity)
         {
             AdvanceOptions response = await activity;
-            context.Call<object>(new DonationFirstDialog(response.ToString()), ChildDialogComplete);
+            if (response == AdvanceOptions.Donation)
+                context.Call<object>(new DonationFirstDialog(response.ToString()), ChildDialogComplete);
+            else
+                context.Call<object>(new CourseFirstDialog(response.ToString()), ChildDialogComplete);
 
         }
         public virtual async Task ChildDialogComplete(IDialogContext context, IAwaitable<object> response)
