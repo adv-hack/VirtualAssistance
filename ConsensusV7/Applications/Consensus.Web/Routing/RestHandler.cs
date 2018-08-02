@@ -20,7 +20,7 @@ namespace Consensus.Web
         #region fields
 
         private string[] testKeys = { "serialization", "gotodepth", "listsatdepth", "liststodepth" }; // These keys are to control serialization, not to be passed as method params
-        
+
         #endregion
 
         #region properties
@@ -59,7 +59,16 @@ namespace Consensus.Web
             // Identify the logic required to respond to the request.
             switch (httpContext.Request.HttpMethod.ToUpper())
             {
-                case "GET": this.ProcessGetRequest(); break;
+                case "GET":
+                    if (HttpContext.Current.Request.Url.LocalPath.IndexOf("FetchDonationProduct") > -1 || HttpContext.Current.Request.Url.LocalPath.IndexOf("CreateDonationProduct") > -1 || HttpContext.Current.Request.Url.LocalPath.IndexOf("FetchCourseProduct") > -1)
+                    {
+                        this.ProcessPostRequest();
+                    }
+                    else
+                    {
+                        this.ProcessGetRequest();
+                    }
+                    break;
                 case "PUT": this.ProcessPutRequest(); break;
                 case "PATCH": this.ProcessPutRequest(); break;
                 case "DELETE": this.ProcessDeleteRequest(); break;
@@ -219,7 +228,7 @@ namespace Consensus.Web
         {
             if (String.IsNullOrEmpty(this.RestObject) || !String.IsNullOrEmpty(this.RestMember))
                 throw new NotSupportedException();
-            
+
             // Identify the method for fetching an existing instance of the requested object
             MethodInfo method = this.GetMethod("FetchById", "id");
             if (method == null)
@@ -339,7 +348,7 @@ namespace Consensus.Web
             // Apply the JSON data onto the object instance
             RestSerializer.Instance.Deserialize(table, objectInstance, true);
         }
-        
+
         private void ResolveCustomFields(Proxy objectInstance, List<UserInterface.ScreenCustomFieldValue> customFieldValues, Dictionary<String, Object> table)
         {
             Dictionary<String, Object> customFieldsTable = table["_customFields"] as Dictionary<String, Object>;
