@@ -508,9 +508,6 @@
     <Content Include="assets\plugins\datatables\KeyTable-2.2.1\js\dataTables.keyTable.min.js" />
     <Content Include="assets\plugins\datatables\moment\datetime.js" />
     <Content Include="assets\plugins\datatables\moment\moment.js" />
-    <Content Include="assets\plugins\datatables\pdfmake-0.1.27\build\pdfmake.js" />
-    <Content Include="assets\plugins\datatables\pdfmake-0.1.27\build\pdfmake.min.js" />
-    <Content Include="assets\plugins\datatables\pdfmake-0.1.27\build\vfs_fonts.js" />
     <Content Include="assets\plugins\datatables\Responsive-2.1.1\css\responsive.bootstrap.css" />
     <Content Include="assets\plugins\datatables\Responsive-2.1.1\css\responsive.bootstrap.min.css" />
     <Content Include="assets\plugins\datatables\Responsive-2.1.1\css\responsive.dataTables.css" />
@@ -961,7 +958,6 @@
     <Content Include="assets\plugins\datatables\datatables.min.js.map" />
     <Content Include="assets\plugins\datatables\JSZip-3.1.3\jszip.min.js.map" />
     <Content Include="assets\plugins\datatables\KeyTable-2.2.1\js\dataTables.keyTable.min.js.map" />
-    <Content Include="assets\plugins\datatables\pdfmake-0.1.27\build\pdfmake.min.js.map" />
     <Content Include="assets\plugins\datatables\Responsive-2.1.1\js\dataTables.responsive.min.js.map" />
     <Content Include="assets\plugins\datatables\Responsive-2.1.1\js\responsive.bootstrap.min.js.map" />
     <Content Include="assets\plugins\datatables\Responsive-2.1.1\js\responsive.foundation.min.js.map" />
@@ -6700,7 +6696,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>10001</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
