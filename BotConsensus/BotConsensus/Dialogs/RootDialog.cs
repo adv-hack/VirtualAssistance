@@ -51,6 +51,8 @@ namespace BotConsensus.Dialogs
             return heroCard.ToAttachment();
         }
 
+       
+
         /// <summary>
         /// Design Title with Image and About US link
         /// </summary>
@@ -74,7 +76,7 @@ namespace BotConsensus.Dialogs
             if (response == AdvanceOptions.Donation)
                 context.Call<object>(new DonationFirstDialog(response.ToString()), ChildDialogComplete);
             else
-                context.Call<object>(new CourseFirstDialog(response.ToString()), ChildDialogComplete);
+                context.Call<object>(new CourseFirstDialog(response.ToString()), CourseCompleteDialog);
 
         }
         public virtual async Task ChildDialogComplete(IDialogContext context, IAwaitable<object> response)
@@ -84,6 +86,13 @@ namespace BotConsensus.Dialogs
             message.Attachments.Add(attachment);
             await context.PostAsync(message);
             //await context.PostAsync("Thanks !!!");
+            context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
+            //context.Done(this);
+        }
+
+        public virtual async Task CourseCompleteDialog(IDialogContext context, IAwaitable<object> response)
+        {
+            await context.PostAsync("Thanks for your interest. Our team will be get back to you soon!!!");
             context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
             //context.Done(this);
         }

@@ -48,7 +48,7 @@ namespace BotConsensus.Dialogs
                context: context,
                resume: MessageReceivedAsync,
                options: (IEnumerable<BooleanChoice>)Enum.GetValues(typeof(BooleanChoice)),
-               prompt: "Can I Help you for Registration ? ",
+               prompt: "Can I help you for registration? ",
                retry: "Please try again.",
                promptStyle: PromptStyle.Auto
            );
@@ -92,20 +92,20 @@ namespace BotConsensus.Dialogs
                     PromptDialog.Text(
                         context: context,
                         resume: ResumeGetName,
-                        prompt: "Please share your First Name",
+                        prompt: "Please share your first name",
                         retry: "Sorry, I didn't understand that. Please try again."
                     );
                 }
                 else
                 {
-                    await context.PostAsync("Thanks for your valuable time !!!");
+                    await context.PostAsync("Thanks for your valuable time!!!");
 
                     context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
                 }
             }
             catch
             {
-                await context.PostAsync("Thanks for your valuable time !!!");
+                await context.PostAsync("Thanks for your valuable time!!!");
                 context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
             }
         }
@@ -118,7 +118,7 @@ namespace BotConsensus.Dialogs
             PromptDialog.Text(
                 context: context,
                 resume: ResumeGetLastName,
-                prompt: "Please share your Last Name",
+                prompt: "Please share your last name",
                 retry: "Sorry, I didn't understand that. Please try again."
             );
         }
@@ -131,7 +131,7 @@ namespace BotConsensus.Dialogs
             PromptDialog.Text(
                 context: context,
                 resume: ResumeGetEmail,
-                prompt: "Please share your Email Id",
+                prompt: "Please share your email id",
                 retry: "Sorry, I didn't understand that. Please try again."
             );
         }
@@ -144,7 +144,7 @@ namespace BotConsensus.Dialogs
             PromptDialog.Text(
                 context: context,
                 resume: ResumeGetPhone,
-                prompt: "Please share your Mobile Number",
+                prompt: "Please share your mobile number",
                 retry: "Sorry, I didn't understand that. Please try again."
             );
         }
