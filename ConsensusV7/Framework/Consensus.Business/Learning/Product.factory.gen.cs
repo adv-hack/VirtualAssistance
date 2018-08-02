@@ -189,6 +189,8 @@ namespace Consensus.Learning
         /// </returns>
         System.Collections.Generic.IEnumerable<Consensus.Learning.IProductModel> FetchAllByProductTrainingRulesId(System.String productTrainingRulesId);
 
-        IEnumerable<Consensus.Common.DonationProduct> FetchDonationProduct();        
+        IEnumerable<Consensus.Common.DonationProduct> FetchDonationProduct();
+
+        IEnumerable<Consensus.Common.CourseProduct> FetchCourseProduct();
     }
 }

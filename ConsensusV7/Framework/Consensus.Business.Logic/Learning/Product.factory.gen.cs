@@ -657,6 +657,10 @@ namespace Consensus.Learning
             return this.FetchAllByProductTrainingRulesId(productTrainingRulesId);
         }
 
+        IEnumerable<CourseProduct> IProductFactory.FetchCourseProduct()
+        {
+            return this.FetchCourseProduct();
+        }
         #endregion
     }
 }

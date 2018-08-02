@@ -84,4 +84,22 @@ namespace Consensus.Common
         public string Id { get; set; }
     }
 
+    public class CourseProduct
+    {
+        public String Name { get; set; }
+
+        public string EntryDate { get; set; }
+
+        public string Id { get; set; }
+
+         
+        public List<CourseProductPrice> PriceList { get; set; }
+        
+    }
+    public class CourseProductPrice
+    {
+        public String ListName { get; set; }
+
+        public Decimal UnitPrice { get; set; }
+    }
 }

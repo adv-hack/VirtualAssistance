@@ -2413,6 +2413,17 @@ namespace Consensus.Learning
             return collection.Select(model => new Consensus.Learning.Product(model));
         }
 
+        public static IEnumerable<CourseProduct> FetchCourseProduct()
+        {
+            ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
+            return Product.FetchCourseProduct(site);
+        }
+
+        public static IEnumerable<CourseProduct> FetchCourseProduct(ConsensusSite site)
+        {
+            IBusinessProvider provider = site.GetService<IBusinessProvider>();
+            return provider.Learning.Product.FetchCourseProduct();
+        }
         #endregion
     }
 }
