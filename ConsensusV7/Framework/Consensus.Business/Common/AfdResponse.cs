@@ -82,6 +82,14 @@ namespace Consensus.Common
         public Double? Price { get; set; }
 
         public string Id { get; set; }
+
+        public string PersonName { get; set; }
+
+        public string PersonSurname { get; set; }
+
+        public string Email { get; set; }
+
+        public string Phone { get; set; }
     }
 
     public class CourseProduct
@@ -102,4 +110,5 @@ namespace Consensus.Common
 
         public Decimal UnitPrice { get; set; }
     }
+
 }

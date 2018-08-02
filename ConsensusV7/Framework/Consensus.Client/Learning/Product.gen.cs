@@ -1905,7 +1905,7 @@ namespace Consensus.Learning
         public static System.String FetchAllByReference(System.String reference)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByReference(site,reference);
+            return Product.FetchAllByReference(site, reference);
         }
 
         /// <summary>
@@ -1997,7 +1997,7 @@ namespace Consensus.Learning
         public static Consensus.Learning.Product FetchById(System.String id)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchById(site,id);
+            return Product.FetchById(site, id);
         }
 
         /// <summary>
@@ -2040,7 +2040,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByProdDescripId(System.String prodDescripId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByProdDescripId(site,prodDescripId);
+            return Product.FetchAllByProdDescripId(site, prodDescripId);
         }
 
         /// <summary>
@@ -2071,7 +2071,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByProdContentId(System.String prodContentId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByProdContentId(site,prodContentId);
+            return Product.FetchAllByProdContentId(site, prodContentId);
         }
 
         /// <summary>
@@ -2102,7 +2102,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByProdPrereqId(System.String prodPrereqId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByProdPrereqId(site,prodPrereqId);
+            return Product.FetchAllByProdPrereqId(site, prodPrereqId);
         }
 
         /// <summary>
@@ -2133,7 +2133,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByProdObjectiveId(System.String prodObjectiveId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByProdObjectiveId(site,prodObjectiveId);
+            return Product.FetchAllByProdObjectiveId(site, prodObjectiveId);
         }
 
         /// <summary>
@@ -2164,7 +2164,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByProleIdId(System.String proleIdId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByProleIdId(site,proleIdId);
+            return Product.FetchAllByProleIdId(site, proleIdId);
         }
 
         /// <summary>
@@ -2195,7 +2195,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByProductManagerId(System.String productManagerId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByProductManagerId(site,productManagerId);
+            return Product.FetchAllByProductManagerId(site, productManagerId);
         }
 
         /// <summary>
@@ -2226,7 +2226,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByBookingTermsId(System.String bookingTermsId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByBookingTermsId(site,bookingTermsId);
+            return Product.FetchAllByBookingTermsId(site, bookingTermsId);
         }
 
         /// <summary>
@@ -2257,7 +2257,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByLocationId(System.String locationId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByLocationId(site,locationId);
+            return Product.FetchAllByLocationId(site, locationId);
         }
 
         /// <summary>
@@ -2288,7 +2288,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllBySellingCompanyId(System.String sellingCompanyId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllBySellingCompanyId(site,sellingCompanyId);
+            return Product.FetchAllBySellingCompanyId(site, sellingCompanyId);
         }
 
         /// <summary>
@@ -2319,7 +2319,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByAuthorPersonId(System.String authorPersonId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByAuthorPersonId(site,authorPersonId);
+            return Product.FetchAllByAuthorPersonId(site, authorPersonId);
         }
 
         /// <summary>
@@ -2350,7 +2350,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByVenueId(System.String venueId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByVenueId(site,venueId);
+            return Product.FetchAllByVenueId(site, venueId);
         }
 
         /// <summary>
@@ -2372,7 +2372,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByPaymentScheduleId(System.Nullable<System.Int32> paymentScheduleId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByPaymentScheduleId(site,paymentScheduleId);
+            return Product.FetchAllByPaymentScheduleId(site, paymentScheduleId);
         }
 
         public static IEnumerable<Consensus.Learning.Product> FetchAllByPaymentScheduleId(ConsensusSite site, System.Nullable<System.Int32> paymentScheduleId)
@@ -2394,7 +2394,7 @@ namespace Consensus.Learning
         public static IEnumerable<Consensus.Learning.Product> FetchAllByProductTrainingRulesId(System.String productTrainingRulesId)
         {
             ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
-            return Product.FetchAllByProductTrainingRulesId(site,productTrainingRulesId);
+            return Product.FetchAllByProductTrainingRulesId(site, productTrainingRulesId);
         }
 
         /// <summary>
@@ -2424,6 +2424,19 @@ namespace Consensus.Learning
             IBusinessProvider provider = site.GetService<IBusinessProvider>();
             return provider.Learning.Product.FetchCourseProduct();
         }
+
+        public static string CreateDonationProduct(string personName, string surname, string email, string phone, string price, string productId)
+        {
+            ConsensusSite site = ConsensusDomain.Configuration[ConsensusDomain.Configuration.DefaultSite];
+            return Product.CreateDonationProduct(site, personName, surname, email, phone, price, productId);
+        }
+
+        public static string CreateDonationProduct(ConsensusSite site, string personName, string surname, string email, string phone, string price, string productId)
+        {
+            IBusinessProvider provider = site.GetService<IBusinessProvider>();
+            return provider.Learning.Product.CreateDonationProduct(personName, surname, email, phone, price, productId);
+        }
+
         #endregion
     }
 }

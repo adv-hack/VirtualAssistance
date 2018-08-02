@@ -1,3 +1,4 @@
+using Consensus.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -192,5 +193,7 @@ namespace Consensus.Learning
         IEnumerable<Consensus.Common.DonationProduct> FetchDonationProduct();
 
         IEnumerable<Consensus.Common.CourseProduct> FetchCourseProduct();
+
+        string CreateDonationProduct(string personName, string surname, string email, string phone, string price, string productId);
     }
 }

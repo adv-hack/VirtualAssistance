@@ -443,6 +443,11 @@ namespace Consensus.Learning
             return this.FetchDonationProduct();
         }
 
+        string IProductFactory.CreateDonationProduct(string personName, string surname, string email, string phone, string price, string productId)
+        {
+            return this.CreateDonationProduct(personName, surname, email, phone, price, productId);
+        }
+
         /// <summary>
         ///     Creates a new <see cref="!:ProductModel" /> instance.
         /// </summary>
@@ -661,6 +666,7 @@ namespace Consensus.Learning
         {
             return this.FetchCourseProduct();
         }
+
         #endregion
     }
 }
