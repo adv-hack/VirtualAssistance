@@ -22,6 +22,7 @@ namespace BotConsensus.Dialogs
         string plandetails;
         string donationType;
         string donationAmount;
+        string serverUrl = "http://brd-conse-vm1/v7chatbot";
 
         public enum DonationType
         {
@@ -136,48 +137,30 @@ namespace BotConsensus.Dialogs
                 retry: "Sorry, I didn't understand that. Please try again."
             );
         }
-        public virtual async Task ResumeGetPhone(IDialogContext context, IAwaitable<string> mobile)
+        public async Task ResumeGetPhone(IDialogContext context, IAwaitable<string> mobile)
         {
             string response = await mobile;
             phone = response;
-            
-            string api = "http://brd-conse-vm1/v7chatbot/rest/learning/product/FetchDonationProduct";
-            var responseFromServer = GetResponseFromServer(api);
+
+            string api = serverUrl + "/rest/learning/product/FetchDonationProduct";
+            var responseFromServer = await GetResponseFromServer(api);
 
             var serializer = new JavaScriptSerializer();
             var donationProductList = serializer.Deserialize<List<DonationProduct>>(responseFromServer);
+            var donationList = donationProductList.Select(x => x.Name).ToList();
 
-            PromptDialog.Choice(
-               context: context,
-               resume: ChildDialogComplete,
-               options: (IEnumerable<DonationType>)Enum.GetValues(typeof(DonationType)),
-               prompt: "What type of donation you want to do?",
-               retry: "Selected plan not avilabel . Please try again.",
-               promptStyle: PromptStyle.Auto
-               );
+            PromptDialog.Choice(context, ChildDialogComplete, donationProductList.Select(x => x.Id), "What type of donation you want to do?", "Selected plan not available. Please try again.", 3, PromptStyle.Auto, donationProductList.Select(x => x.Name));
+
         }
 
-        public virtual async Task ResumeGetDonationName(IDialogContext context, IAwaitable<IMessageActivity> donationName)
-        {
-            var message = await donationName;
-            PromptDialog.Choice(
-                context: context,
-                resume: ChildDialogComplete,
-                options: (IEnumerable<DonationType>)Enum.GetValues(typeof(DonationType)),
-                prompt: "What type of donation you want to do?",
-                retry: "Selected plan not avilabel . Please try again.",
-                promptStyle: PromptStyle.Auto
-                );
-        }
-
-        public async Task ChildDialogComplete(IDialogContext context, IAwaitable<DonationType> response)
+        public async Task ChildDialogComplete(IDialogContext context, IAwaitable<String> response)
         {
             var message = await response;
             donationType = message.ToString();
             List<string> amountList = new List<string>();
-            amountList.Add("$10");
-            amountList.Add("$100");
-            amountList.Add("$1000");
+            amountList.Add("£10");
+            amountList.Add("£100");
+            amountList.Add("£1000");
             PromptDialog.Choice(
              context: context,
              resume: ResumeGetDonationAmount,
@@ -192,20 +175,28 @@ namespace BotConsensus.Dialogs
         {
             var response = await result;
             donationAmount = response.ToString();
-            await context.PostAsync(String.Format("Hello {0} ,Congratulation :) First Name = {0} Last Name = {1} Email = {2} Mobile Number {3} Donation Type = {4} Donation Amount = {5}. You will get Confirmation email and SMS", firstName, lastName, email, phone, donationType, donationAmount));
+
+            string api = serverUrl + "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=10" + "&productId=" + donationType;
+
+            var responseFromServer = await GetResponseFromServer(api);
+
+            var serializer = new JavaScriptSerializer();
+            var url = serializer.Deserialize<string>(responseFromServer);
+
+            await context.PostAsync("Thank you so much for your kindness. Donation added successfully. Please click following " + serverUrl + "" + url + " link to check the details. Cheers!!!!!");
 
             context.Done(this);
         }
 
-        public string GetResponseFromServer(string api)
+        public async Task<string> GetResponseFromServer(string api)
         {
             WebRequest request = WebRequest.Create(api);
-            request.Method = "POST";
+            request.Method = "GET";
 
             // If required by the server, set the credentials.
 
             // Get the response.
-            HttpWebResponse response2 = (HttpWebResponse)request.GetResponse();
+            var response2 = await request.GetResponseAsync();
             // Get the stream containing content returned by the server.
             Stream dataStream = response2.GetResponseStream();
             // Open the stream using a StreamReader for easy access.
@@ -215,5 +206,5 @@ namespace BotConsensus.Dialogs
             return responseFromServer;
         }
 
-    }    
+    }
 }
