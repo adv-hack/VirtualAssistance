@@ -102,6 +102,8 @@ namespace Consensus.Common
 
          
         public List<CourseProductPrice> PriceList { get; set; }
+
+        public double? CourseLength { get; set; }
         
     }
     public class CourseProductPrice

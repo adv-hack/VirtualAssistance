@@ -122,9 +122,10 @@ namespace Consensus.Learning
             var productList = this.Provider.DataProvider.Learning.Product.FetchAll().Where(x => x.SyProduct == 1);
 
             var courseProductList = new List<CourseProduct>();
-            var coursepriceList = new List<CourseProductPrice>();
+            
             foreach (ProductRecord record in productList)
             {
+                var coursepriceList = new List<CourseProductPrice>();
                 var priceList = this.Provider.Finance.Price.FetchAll().Where(x => x.ProductId == record.Id);
                 foreach (var price in priceList)
                 {
@@ -133,7 +134,7 @@ namespace Consensus.Learning
                     courseprice.UnitPrice = price.Amount;
                     coursepriceList.Add(courseprice);
                 }
-                courseProductList.Add(new CourseProduct { Name = record.Name, Id = record.Id, EntryDate = (record.EntryDate.HasValue) ? record.EntryDate.Value.ToShortDateString() : string.Empty, PriceList = coursepriceList });
+                courseProductList.Add(new CourseProduct { Name = record.Name, Id = record.Id, EntryDate = (record.EntryDate.HasValue) ? record.EntryDate.Value.ToShortDateString() : string.Empty, PriceList = coursepriceList,CourseLength = record.CourseLen });
             }
             return courseProductList;
         }
