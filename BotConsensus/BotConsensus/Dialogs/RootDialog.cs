@@ -17,34 +17,21 @@ namespace BotConsensus.Dialogs
             await context.PostAsync(message);
 
             // Show the list of plan
-            context.Wait(this.MessageReceivedAsync);
-
-            //context.Wait(MessageReceivedAsync);
-
-            //return Task.CompletedTask;
+            context.Wait(this.ShowOptions);
         }
 
-        private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<object> result)
+        public virtual async Task ShowOptions(IDialogContext context, IAwaitable<IMessageActivity> activity)
         {
-            var activity = await result as Activity;
+            var message = await activity;
 
             PromptDialog.Choice(
                context: context,
                resume: ChoiceReceivedAsync,
                options: (IEnumerable<AdvanceOptions>)Enum.GetValues(typeof(AdvanceOptions)),
                prompt: "Hi. Please Select Options",
-               retry: "Selected Option not avilabel . Please try again.",
+               retry: "Selected Option not available . Please try again.",
                promptStyle: PromptStyle.Auto
                );
-
-
-            // Calculate something for us to return
-            int length = (activity.Text ?? string.Empty).Length;
-
-            // Return our reply to the user
-            await context.PostAsync($"You sent {activity.Text} which was {length} characters");
-
-            context.Wait(MessageReceivedAsync);
         }
 
         /// <summary>
