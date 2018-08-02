@@ -10,6 +10,7 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Web.Script.Serialization;
 using BotConsensus.Model;
+using System.Text;
 
 namespace BotConsensus.Dialogs
 {
@@ -88,7 +89,7 @@ namespace BotConsensus.Dialogs
         {
             string complete = await response;
             courseType = complete;
-
+            StringBuilder PriceList = new StringBuilder();
             string api = serverUrl + "/rest/learning/product/FetchCourseProduct";
             var responseFromServer = await GetResponseFromServer(api);
 
@@ -98,7 +99,16 @@ namespace BotConsensus.Dialogs
             var startDate = courseProductList.FirstOrDefault(x => x.Name == courseType).EntryDate;
             var CourseLength = courseProductList.FirstOrDefault(x => x.Name == courseType).CourseLength;
 
-            await context.PostAsync("Here are the details of the course for you: Start Date:" + (!String.IsNullOrEmpty(startDate) ? startDate : "Not specified") + " Course Duration(days) :" + CourseLength);
+            var pricelist = courseProductList.FirstOrDefault(x => x.Name == courseType).PriceList;
+            PriceList.AppendLine("\nBelow are the different price packs for your course:");
+            foreach (CourseProductPrice price in pricelist)
+            {
+                PriceList.AppendLine("\nPack: " + price.ListName + "\nPrice($): " +  Math.Round(price.UnitPrice,2));
+            }
+
+
+            await context.PostAsync("Here are the details of the course for you: \nStart Date: " + (!String.IsNullOrEmpty(startDate) ? startDate : "Not specified") + " \nCourse Duration(days) :" + CourseLength + PriceList.ToString());
+
             context.Done(this);
         }
 
