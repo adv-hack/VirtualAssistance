@@ -84,19 +84,29 @@ namespace BotConsensus.Dialogs
 
         public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<BooleanChoice> activity)
         {
-            var response = await activity;
-            if (response.Equals(BooleanChoice.Yes))
+            try
             {
-                PromptDialog.Text(
-                    context: context,
-                    resume: ResumeGetName,
-                    prompt: "Please share your good name",
-                    retry: "Sorry, I didn't understand that. Please try again."
-                );
+                var response = await activity;
+                if (response.Equals(BooleanChoice.Yes))
+                {
+                    PromptDialog.Text(
+                        context: context,
+                        resume: ResumeGetName,
+                        prompt: "Please share your First Name",
+                        retry: "Sorry, I didn't understand that. Please try again."
+                    );
+                }
+                else
+                {
+                    await context.PostAsync("Thanks for your valuable time !!!");
+
+                    context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
+                }
             }
-            else
+            catch
             {
-                context.Done(this);
+                await context.PostAsync("Thanks for your valuable time !!!");
+                context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
             }
         }
 

@@ -12,10 +12,9 @@ namespace BotConsensus.Dialogs
         public async Task StartAsync(IDialogContext context)
         {
             var message = context.MakeMessage();
-            var attachment = GetHeroCard();
+            var attachment = WelcomeCard();
             message.Attachments.Add(attachment);
             await context.PostAsync(message);
-
             // Show the list of plan
             context.Wait(this.ShowOptions);
         }
@@ -28,7 +27,7 @@ namespace BotConsensus.Dialogs
                context: context,
                resume: ChoiceReceivedAsync,
                options: (IEnumerable<AdvanceOptions>)Enum.GetValues(typeof(AdvanceOptions)),
-               prompt: "Hi. Please Select Options",
+               prompt: "Hi, Please Select Option",
                retry: "Selected Option not available . Please try again.",
                promptStyle: PromptStyle.Auto
                );
@@ -38,7 +37,25 @@ namespace BotConsensus.Dialogs
         /// Design Title with Image and About US link
         /// </summary>
         /// <returns></returns>
-        private static Attachment GetHeroCard()
+        private static Attachment ThankYouCard()
+        {
+            var heroCard = new HeroCard
+            {
+                Title = "Thank you",
+                Subtitle = "",
+                Text = "Thank you for the donation",
+                Images = new List<CardImage> { new CardImage(System.Web.HttpContext.Current.Server.MapPath(@"~\\Image\\Donation Image.png")) },
+                //Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "About US", value: "https://www.oneadvanced.com/") }
+            };
+
+            return heroCard.ToAttachment();
+        }
+
+        /// <summary>
+        /// Design Title with Image and About US link
+        /// </summary>
+        /// <returns></returns>
+        private static Attachment WelcomeCard()
         {
             var heroCard = new HeroCard
             {
@@ -51,7 +68,6 @@ namespace BotConsensus.Dialogs
 
             return heroCard.ToAttachment();
         }
-
         public virtual async Task ChoiceReceivedAsync(IDialogContext context, IAwaitable<AdvanceOptions> activity)
         {
             AdvanceOptions response = await activity;
@@ -60,8 +76,13 @@ namespace BotConsensus.Dialogs
         }
         public virtual async Task ChildDialogComplete(IDialogContext context, IAwaitable<object> response)
         {
-            await context.PostAsync("Thanks !!!");
-            context.Done(this);
+            var message = context.MakeMessage();
+            var attachment = ThankYouCard();
+            message.Attachments.Add(attachment);
+            await context.PostAsync(message);
+            //await context.PostAsync("Thanks !!!");
+            context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
+            //context.Done(this);
         }
 
         public enum AdvanceOptions
