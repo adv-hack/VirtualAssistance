@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{37283289-FC08-46F6-8D62-EA41CEDA9114}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Consensus.Web</RootNamespace>
+    <AssemblyName>Consensus.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\Abstraction\BaseControl.cs" />
+    <Compile Include="Controls\Abstraction\BaseInputControl.cs" />
+    <Compile Include="Controls\Abstraction\BaseInputControlOfTControl.cs" />
+    <Compile Include="Controls\Abstraction\BaseInputControlOfTControlTValue.cs" />
+    <Compile Include="Controls\Abstraction\DropDownListNoValidate.cs" />
+    <Compile Include="Controls\Abstraction\ListBase.cs" />
+    <Compile Include="Controls\Containers\CustomFieldContainer.cs" />
+    <Compile Include="Controls\Containers\GroupBox.cs" />
+    <Compile Include="Controls\Containers\TabControl.cs" />
+    <Compile Include="Controls\Containers\TabControlType.cs" />
+    <Compile Include="Controls\Containers\TabPage.cs" />
+    <Compile Include="Controls\Containers\Wizard.cs" />
+    <Compile Include="Controls\Containers\WizardPage.cs" />
+    <Compile Include="Controls\Editors\AddOn.cs" />
+    <Compile Include="Controls\Editors\CheckField.cs" />
+    <Compile Include="Controls\Editors\CodeField.cs" />
+    <Compile Include="Controls\Editors\DateField.cs" />
+    <Compile Include="Controls\Editors\EnumField.cs" />
+    <Compile Include="Controls\Editors\HiddenField.cs" />
+    <Compile Include="Controls\Editors\FilePickerField.cs" />
+    <Compile Include="Controls\Editors\ListAttribute.cs" />
+    <Compile Include="Controls\Editors\ListField.cs" />
+    <Compile Include="Controls\Editors\PopupField.cs" />
+    <Compile Include="Controls\Editors\PopupFieldFilter.cs" />
+    <Compile Include="Controls\Editors\PopupFieldFilterTypes.cs" />
+    <Compile Include="Controls\Abstraction\TextBase.cs" />
+    <Compile Include="Controls\Editors\HtmlTextField.cs" />
+    <Compile Include="Controls\Editors\TextField.cs" />
+    <Compile Include="Controls\Editors\TimeField.cs" />
+    <Compile Include="Controls\Tables\DataTableButtonColumn.cs" />
+    <Compile Include="Controls\Tables\DataTableButtonColumnItem.cs" />
+    <Compile Include="Controls\Tables\DataTableCheckColumn.cs" />
+    <Compile Include="Controls\Tables\DataTableCustomColumn.cs" />
+    <Compile Include="Controls\Tables\DataTableDateColumn.cs" />
+    <Compile Include="Controls\Tables\DataTableDateTimeColumn.cs" />
+    <Compile Include="Controls\Tables\DataTableModes.cs" />
+    <Compile Include="Controls\Tables\DataTableIconColumn.cs" />
+    <Compile Include="Controls\Tables\DataTableLinkColumn.cs" />
+    <Compile Include="Controls\Tables\DataTableReorderColumn.cs" />
+    <Compile Include="Controls\Tables\DataTableTextColumn.cs" />
+    <Compile Include="Controls\Tables\DataTableToolCustom.cs" />
+    <Compile Include="Controls\Tables\DataTableToolExport.cs" />
+    <Compile Include="Controls\Tables\DataTableToolPrint.cs" />
+    <Compile Include="Controls\Validator.cs" />
+    <Compile Include="Customisation\CustomFieldInsertPointDiv.cs" />
+    <Compile Include="Customisation\ICanBeACustomField.cs" />
+    <Compile Include="Customisation\ICanBeHidden.cs" />
+    <Compile Include="Customisation\ICanBeSwitched.cs" />
+    <Compile Include="Customisation\ICustomFieldContainer.cs" />
+    <Compile Include="Customisation\ICustomisationCapability.cs" />
+    <Compile Include="Customisation\IHaveCodeItems.cs" />
+    <Compile Include="Customisation\IHaveColumns.cs" />
+    <Compile Include="Customisation\IHaveDefaultValue.cs" />
+    <Compile Include="Customisation\IHaveListItems.cs" />
+    <Compile Include="Customisation\IHaveMaxLength.cs" />
+    <Compile Include="Customisation\ICanBeValidated.cs" />
+    <Compile Include="Customisation\IHaveCustomIcon.cs" />
+    <Compile Include="Customisation\ICanBeMandatory.cs" />
+    <Compile Include="Customisation\ICanBeReadOnly.cs" />
+    <Compile Include="Customisation\IHaveCustomTitle.cs" />
+    <Compile Include="Customisation\IHaveNoChildren.cs" />
+    <Compile Include="IIsEditable.cs" />
+    <Compile Include="Controls\Tables\DataTable.cs" />
+    <Compile Include="Controls\Tables\DataTableTool.cs" />
+    <Compile Include="Controls\Tables\DataTableToolExportTypes.cs" />
+    <Compile Include="Controls\Tables\DataTableColumn.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routing\ElementHandler.cs" />
+    <Compile Include="Routing\FileHandler.cs" />
+    <Compile Include="Routing\SearchesSerializer.cs" />
+    <Compile Include="Routing\RestHandler.cs" />
+    <Compile Include="Routing\FileRouter.cs" />
+    <Compile Include="Routing\RestRouter.cs" />
+    <Compile Include="Routing\RestSerializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Consensus.Business\Consensus.Business.csproj">
+      <Project>{954c653f-e34e-414e-8b7d-ad68ca2d3b59}</Project>
+      <Name>Consensus.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Consensus.Client\Consensus.Client.csproj">
+      <Project>{4936f10e-59a4-4f58-9e64-f02c1f62a765}</Project>
+      <Name>Consensus.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Consensus\Consensus.csproj">
+      <Project>{ac2e74fa-9895-4b93-ac2b-1c5fd042a469}</Project>
+      <Name>Consensus</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4936F10E-59A4-4F58-9E64-F02C1F62A765}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Consensus</RootNamespace>
+    <AssemblyName>Consensus.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Common\Attachment.cs" />
+    <Compile Include="ProxyCollectionOfT.cs" />
+    <Compile Include="Searches\Chaining\IRestCallRunnable.cs" />
+    <Compile Include="Searches\RestCall.proxy.cs" />
+    <Compile Include="Searches\Search.proxy.cs" />
+    <Compile Include="UserInterface\SystemMenu.gen.cs">
+    </Compile>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Compile Include="Contact\Person.gen.cs">
+    </Compile>
+    <Compile Include="Contact\Role.gen.cs">
+    </Compile>
+    <Compile Include="Contact\Organisation.gen.cs">
+    </Compile>
+    <Compile Include="Contact\OrganisationAddress.gen.cs">
+    </Compile>
+    <Compile Include="Contact\Address.gen.cs">
+    </Compile>
+    <Compile Include="Learning\Product.gen.cs">
+    </Compile>
+    <Compile Include="Learning\BillOfMaterial.gen.cs">
+    </Compile>
+    <Compile Include="Learning\Template.gen.cs">
+    </Compile>
+    <Compile Include="Learning\ProductCourse.gen.cs">
+    </Compile>
+    <Compile Include="Learning\ProductMerchandise.gen.cs">
+    </Compile>
+    <Compile Include="Learning\TemplateResource.gen.cs">
+    </Compile>
+    <Compile Include="Learning\TemplateRoom.gen.cs">
+    </Compile>
+    <Compile Include="Learning\TemplateTrainer.gen.cs">
+    </Compile>
+    <Compile Include="Learning\Session.gen.cs">
+    </Compile>
+    <Compile Include="Sales\Opportunity.gen.cs">
+    </Compile>
+    <Compile Include="Sales\OpportunityXref.gen.cs">
+    </Compile>
+    <Compile Include="Document\Pack.gen.cs">
+    </Compile>
+    <Compile Include="Document\PackProduct.gen.cs">
+    </Compile>
+    <Compile Include="Common\Code.gen.cs">
+    </Compile>
+    <Compile Include="Common\CodeHeader.gen.cs">
+    </Compile>
+    <Compile Include="Common\Profile.gen.cs">
+    </Compile>
+    <Compile Include="Common\SellingCompany.gen.cs">
+    </Compile>
+    <Compile Include="Common\ProfileOrganisation.gen.cs">
+    </Compile>
+    <Compile Include="Common\ProfilePerson.gen.cs">
+    </Compile>
+    <Compile Include="Common\ProfileProduct.gen.cs">
+    </Compile>
+    <Compile Include="Activities\Activity.gen.cs">
+    </Compile>
+    <Compile Include="Contact\Country.gen.cs">
+    </Compile>
+    <Compile Include="Contact\CustomerPack.gen.cs">
+    </Compile>
+    <Compile Include="Contact\Associate.gen.cs">
+    </Compile>
+    <Compile Include="Contact\OrganisationDepartment.gen.cs">
+    </Compile>
+    <Compile Include="Membership\Membership.gen.cs">
+    </Compile>
+    <Compile Include="Membership\MemberPeriod.gen.cs">
+    </Compile>
+    <Compile Include="Contact\Location.gen.cs">
+    </Compile>
+    <Compile Include="Learning\Event.gen.cs">
+    </Compile>
+    <Compile Include="Document\LetterTemplate.gen.cs" />
+    <Compile Include="Document\LetterTemplateType.gen.cs" />
+    <Compile Include="Contact\Communications_Xref.gen.cs" />
+    <Compile Include="Contact\Communications.gen.cs" />
+    <Compile Include="Contact\CommunicationsRole.gen.cs" />
+    <Compile Include="Contact\Aka.gen.cs" />
+    <Compile Include="Contact\Giftaid.gen.cs" />
+    <Compile Include="Marketing\Campaign.gen.cs" />
+    <Compile Include="Logistics\Project.gen.cs" />
+    <Compile Include="Learning\RelatedProduct.gen.cs" />
+    <Compile Include="Sales\SalesChannel.gen.cs" />
+    <Compile Include="Learning\ProductEvent.gen.cs" />
+    <Compile Include="Marketing\Promotion.gen.cs" />
+    <Compile Include="Marketing\PromotionMaster.gen.cs" />
+    <Compile Include="Activities\ActivityXref.gen.cs" />
+    <Compile Include="Activities\ActLinkXref.gen.cs" />
+    <Compile Include="Search\SearchType.gen.cs" />
+    <Compile Include="Search\SearchColumn.gen.cs" />
+    <Compile Include="Search\SearchParameter.gen.cs" />
+    <Compile Include="Membership\MemberLocation.gen.cs" />
+    <Compile Include="Learning\Booking.gen.cs" />
+    <Compile Include="Learning\Element.gen.cs" />
+    <Compile Include="Learning\Learner.gen.cs" />
+    <Compile Include="Learning\SessionXref.gen.cs" />
+    <Compile Include="Security\License.gen.cs" />
+    <Compile Include="Security\LicenseLimit.gen.cs" />
+    <Compile Include="Security\LicenseModule.gen.cs" />
+    <Compile Include="UserInterface\SystemMenuXRef.gen.cs" />
+    <Compile Include="Common\Notes.gen.cs" />
+    <Compile Include="Marketing\SaqFilterField.gen.cs" />
+    <Compile Include="Marketing\SaqStep.gen.cs" />
+    <Compile Include="Marketing\SaqParameter.gen.cs" />
+    <Compile Include="Marketing\SaqQuery.gen.cs" />
+    <Compile Include="Marketing\SaqQueryStep.gen.cs" />
+    <Compile Include="Learning\CourseSelectGroups.gen.cs" />
+    <Compile Include="Security\UserAccount.gen.cs" />
+    <Compile Include="Security\UserCredential.gen.cs" />
+    <Compile Include="Security\UserGroup.gen.cs" />
+    <Compile Include="Security\UserGroupMember.gen.cs" />
+    <Compile Include="Security\UserPermission.gen.cs" />
+    <Compile Include="Security\UserSession.gen.cs" />
+    <Compile Include="Security\UserPrincipal.gen.cs" />
+    <Compile Include="Learning\EventProduct.gen.cs" />
+    <Compile Include="Other\WorkflowRecType.gen.cs" />
+    <Compile Include="Other\Workflow.gen.cs" />
+    <Compile Include="Common\SellingCompanyConfig.gen.cs" />
+    <Compile Include="Marketing\SaqQueue.gen.cs" />
+    <Compile Include="Marketing\MailingList.gen.cs" />
+    <Compile Include="Learning\ProductMembership.gen.cs" />
+    <Compile Include="Marketing\MailingListMember.gen.cs" />
+    <Compile Include="Finance\Account.gen.cs" />
+    <Compile Include="Finance\AccountXref.gen.cs" />
+    <Compile Include="Finance\Payment.gen.cs" />
+    <Compile Include="Finance\PriceList.gen.cs" />
+    <Compile Include="Finance\Price.gen.cs" />
+    <Compile Include="Finance\Invoice.gen.cs" />
+    <Compile Include="Finance\InvoiceLine.gen.cs" />
+    <Compile Include="Finance\CostCode.gen.cs" />
+    <Compile Include="Finance\BookingTerms.gen.cs" />
+    <Compile Include="Finance\Payscheduleheader.gen.cs" />
+    <Compile Include="Finance\Currency.gen.cs" />
+    <Compile Include="Finance\DirectDebit.gen.cs" />
+    <Compile Include="Finance\PaymentCheque.gen.cs" />
+    <Compile Include="Finance\PaymentCard.gen.cs" />
+    <Compile Include="Finance\PaymentBacs.gen.cs" />
+    <Compile Include="Portal\PortalUser.gen.cs" />
+    <Compile Include="Portal\PortalSetup.gen.cs" />
+    <Compile Include="Portal\PortalUserSite.gen.cs" />
+    <Compile Include="Portal\PortalRole.gen.cs" />
+    <Compile Include="Portal\PortalUserRole.gen.cs" />
+    <Compile Include="UserInterface\ScreenObject.gen.cs" />
+    <Compile Include="UserInterface\ScreenObjectDisplay.gen.cs" />
+    <Compile Include="UserInterface\ScreenObjectEntry.gen.cs" />
+    <Compile Include="Document\OutputQueue.gen.cs" />
+    <Compile Include="Activities\C4text.gen.cs" />
+    <Compile Include="Activities\Helpdesk.gen.cs" />
+    <Compile Include="UserInterface\QuickAccessLink.gen.cs" />
+    <Compile Include="UserInterface\HistoryLink.gen.cs" />
+    <Compile Include="Activities\Complaint.gen.cs" />
+    <Compile Include="Learning\ProdSelectGroup.gen.cs" />
+    <Compile Include="UserInterface\ScreenObjectColumn.gen.cs" />
+    <Compile Include="Finance\PayAllocation.gen.cs" />
+    <Compile Include="Common\ProfileCourses.gen.cs" />
+    <Compile Include="Document\ICalMessage.gen.cs" />
+    <Compile Include="Document\ICalMessageType.gen.cs" />
+    <Compile Include="Document\Packtype.gen.cs" />
+    <Compile Include="Document\SmsMessage.gen.cs" />
+    <Compile Include="Document\SmsType.gen.cs" />
+    <Compile Include="Document\PackXref.gen.cs" />
+    <Compile Include="Document\Literature.gen.cs" />
+    <Compile Include="Finance\PrepayAccount.gen.cs" />
+    <Compile Include="Common\GenericModel.gen.cs" />
+    <Compile Include="Other\BatchXref.gen.cs" />
+    <Compile Include="Other\Batch.gen.cs" />
+    <Compile Include="Membership\MemberBom.gen.cs" />
+    <Compile Include="Membership\Branch.gen.cs" />
+    <Compile Include="Membership\BranchXref.gen.cs" />
+    <Compile Include="Common\Attachment.gen.cs" />
+    <Compile Include="Common\AttachmentData.gen.cs" />
+    <Compile Include="Membership\Committee.gen.cs" />
+    <Compile Include="Membership\District.gen.cs" />
+    <Compile Include="Common\LearningZoneCategories.gen.cs" />
+    <Compile Include="Common\AttachLearningZoneCategories.gen.cs" />
+    <Compile Include="Finance\Giftaidclaim.gen.cs" />
+    <Compile Include="UserInterface\ScreenCustomField.gen.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldListitem.gen.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldType.gen.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldValue.gen.cs" />
+    <Compile Include="Membership\CommitteeXref.gen.cs" />
+    <Compile Include="Reporting\Report.gen.cs" />
+    <Compile Include="Other\Exportconfigurations.gen.cs" />
+    <Compile Include="Other\Dataimports.gen.cs" />
+    <Compile Include="Reporting\ReportPage.gen.cs" />
+    <Compile Include="Reporting\ReportParamPage.gen.cs" />
+    <Compile Include="Document\PrintRequest.gen.cs" />
+    <Compile Include="Contact\Trainer.gen.cs" />
+    <Compile Include="Document\Article.gen.cs" />
+    <Compile Include="Contact\TimeSpent.gen.cs" />
+    <Compile Include="Common\ViewLog.gen.cs" />
+    <Compile Include="Contact\TrainProdXref.gen.cs" />
+    <Compile Include="Document\Articlexref.gen.cs" />
+    <Compile Include="Common\ProfileTrainer.gen.cs" />
+    <Compile Include="Common\ProfileVolunteer.gen.cs" />
+    <Compile Include="Common\SysConfig.gen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxy.cs" />
+    <Compile Include="ProxyOfTModel.cs" />
+    <Compile Include="ProxyOfTModelTKey.cs" />
+    <Compile Include="Searches\Query.proxy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Consensus.Business\Consensus.Business.csproj">
+      <Project>{954c653f-e34e-414e-8b7d-ad68ca2d3b59}</Project>
+      <Name>Consensus.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Consensus\Consensus.csproj">
+      <Project>{ac2e74fa-9895-4b93-ac2b-1c5fd042a469}</Project>
+      <Name>Consensus</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

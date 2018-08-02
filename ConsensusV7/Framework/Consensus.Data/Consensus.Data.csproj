@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{730E234F-572C-4031-BD3B-28C3C08EEBD4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Consensus</RootNamespace>
+    <AssemblyName>Consensus.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Consensus.Data.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Consensus.Data.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Compile Include="Record.cs" />
+    <Compile Include="RecordOfTId.cs" />
+    <Compile Include="Record.gen.cs">
+      <DependentUpon>Record.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RecordOfTId.gen.cs">
+      <DependentUpon>RecordOfTId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IRepository.gen.cs" />
+    <Compile Include="IRepositoryOfTRecord.gen.cs" />
+    <Compile Include="IRepositoryOfTRecordTId.gen.cs" />
+    <Compile Include="IRepositoryCollection.gen.cs" />
+    <Compile Include="IDataProvider.gen.cs">
+      <DependentUpon>IDataProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\PersonRecord.gen.cs" />
+    <Compile Include="Contact\PersonRoleRecord.gen.cs" />
+    <Compile Include="Contact\OrganisationRecord.gen.cs" />
+    <Compile Include="Contact\AddressXrefRecord.gen.cs" />
+    <Compile Include="Contact\AddressRecord.gen.cs" />
+    <Compile Include="Contact\CountryRecord.gen.cs" />
+    <Compile Include="Contact\CustomerPackRecord.gen.cs" />
+    <Compile Include="Contact\AssociatesRecord.gen.cs" />
+    <Compile Include="Contact\DepartmentRecord.gen.cs" />
+    <Compile Include="Contact\LocationRecord.gen.cs" />
+    <Compile Include="Contact\CommunicationsXrefRecord.gen.cs" />
+    <Compile Include="Contact\CommunicationsRecord.gen.cs" />
+    <Compile Include="Contact\AkaRecord.gen.cs" />
+    <Compile Include="Contact\GiftaidRecord.gen.cs" />
+    <Compile Include="Learning\ProductRecord.gen.cs" />
+    <Compile Include="Learning\BillOfMaterialRecord.gen.cs" />
+    <Compile Include="Learning\TemplateXrefRecord.gen.cs" />
+    <Compile Include="Learning\CourseRecord.gen.cs" />
+    <Compile Include="Learning\ProductProdXrefRecord.gen.cs" />
+    <Compile Include="Learning\ProductEventRecord.gen.cs" />
+    <Compile Include="Sales\OpportunityRecord.gen.cs" />
+    <Compile Include="Sales\OpportunityXrefRecord.gen.cs" />
+    <Compile Include="Sales\SalesChannelRecord.gen.cs" />
+    <Compile Include="Document\PackRecord.gen.cs" />
+    <Compile Include="Document\ProductPackRecord.gen.cs" />
+    <Compile Include="Document\LettertmpltRecord.gen.cs" />
+    <Compile Include="Document\LettmplttypeRecord.gen.cs" />
+    <Compile Include="Finance\AccountRecord.gen.cs" />
+    <Compile Include="Finance\AccountXrefRecord.gen.cs" />
+    <Compile Include="Finance\PaymentRecord.gen.cs" />
+    <Compile Include="Finance\PriceListRecord.gen.cs" />
+    <Compile Include="Finance\PricesRecord.gen.cs" />
+    <Compile Include="Finance\InvheaderRecord.gen.cs" />
+    <Compile Include="Finance\InvlineRecord.gen.cs" />
+    <Compile Include="Finance\CostCodeRecord.gen.cs" />
+    <Compile Include="Finance\BookingTermsRecord.gen.cs" />
+    <Compile Include="Finance\PayscheduleheaderRecord.gen.cs" />
+    <Compile Include="Common\CodeRecord.gen.cs" />
+    <Compile Include="Common\CodeHeaderRecord.gen.cs" />
+    <Compile Include="Common\ProfileRecord.gen.cs" />
+    <Compile Include="Common\SysParamsRecord.gen.cs" />
+    <Compile Include="Activities\ActivityRecord.gen.cs" />
+    <Compile Include="Activities\ActivityXrefRecord.gen.cs" />
+    <Compile Include="UserInterface\SystemmenusRecord.gen.cs" />
+    <Compile Include="Membership\MembershipRecord.gen.cs" />
+    <Compile Include="Membership\MemberPeriodRecord.gen.cs" />
+    <Compile Include="Marketing\CampaignRecord.gen.cs" />
+    <Compile Include="Marketing\PromotionRecord.gen.cs" />
+    <Compile Include="Marketing\PromotionMasterRecord.gen.cs" />
+    <Compile Include="Logistics\ProjectRecord.gen.cs" />
+    <Compile Include="Contact\IPersonRepository.gen.cs" />
+    <Compile Include="Contact\IRoleRepository.gen.cs" />
+    <Compile Include="Contact\IOrganisationRepository.gen.cs" />
+    <Compile Include="Contact\IOrganisationAddressRepository.gen.cs" />
+    <Compile Include="Contact\IAddressRepository.gen.cs" />
+    <Compile Include="Contact\ICountryRepository.gen.cs" />
+    <Compile Include="Contact\ICustomerPackRepository.gen.cs" />
+    <Compile Include="Contact\IAssociateRepository.gen.cs" />
+    <Compile Include="Contact\IOrganisationDepartmentRepository.gen.cs" />
+    <Compile Include="Contact\ILocationRepository.gen.cs" />
+    <Compile Include="Contact\ICommunications_XrefRepository.gen.cs" />
+    <Compile Include="Contact\ICommunicationsRepository.gen.cs" />
+    <Compile Include="Contact\IAkaRepository.gen.cs" />
+    <Compile Include="Contact\IGiftaidRepository.gen.cs" />
+    <Compile Include="Learning\IProductRepository.gen.cs" />
+    <Compile Include="Learning\IBillOfMaterialRepository.gen.cs" />
+    <Compile Include="Learning\ITemplateRepository.gen.cs" />
+    <Compile Include="Learning\IEventRepository.gen.cs" />
+    <Compile Include="Learning\IRelatedProductRepository.gen.cs" />
+    <Compile Include="Learning\IProductEventRepository.gen.cs" />
+    <Compile Include="Sales\IOpportunityRepository.gen.cs" />
+    <Compile Include="Sales\IOpportunityXrefRepository.gen.cs" />
+    <Compile Include="Sales\ISalesChannelRepository.gen.cs" />
+    <Compile Include="Document\IPackRepository.gen.cs" />
+    <Compile Include="Document\IPackProductRepository.gen.cs" />
+    <Compile Include="Document\ILetterTemplateRepository.gen.cs" />
+    <Compile Include="Document\ILetterTemplateTypeRepository.gen.cs" />
+    <Compile Include="Finance\IAccountRepository.gen.cs" />
+    <Compile Include="Finance\IAccountXrefRepository.gen.cs" />
+    <Compile Include="Finance\IPaymentRepository.gen.cs" />
+    <Compile Include="Finance\IPriceListRepository.gen.cs" />
+    <Compile Include="Finance\IPriceRepository.gen.cs" />
+    <Compile Include="Finance\IInvoiceRepository.gen.cs" />
+    <Compile Include="Finance\IInvoiceLineRepository.gen.cs" />
+    <Compile Include="Finance\ICostCodeRepository.gen.cs" />
+    <Compile Include="Finance\IBookingTermsRepository.gen.cs" />
+    <Compile Include="Finance\IPayscheduleheaderRepository.gen.cs" />
+    <Compile Include="Common\ICodeRepository.gen.cs" />
+    <Compile Include="Common\ICodeHeaderRepository.gen.cs" />
+    <Compile Include="Common\IProfileRepository.gen.cs" />
+    <Compile Include="Common\ISellingCompanyRepository.gen.cs" />
+    <Compile Include="Activities\IActivityRepository.gen.cs" />
+    <Compile Include="Activities\IActivityXrefRepository.gen.cs" />
+    <Compile Include="UserInterface\ISystemMenuRepository.gen.cs" />
+    <Compile Include="Membership\IMembershipRepository.gen.cs" />
+    <Compile Include="Membership\IMemberPeriodRepository.gen.cs" />
+    <Compile Include="Marketing\ICampaignRepository.gen.cs" />
+    <Compile Include="Marketing\IPromotionRepository.gen.cs" />
+    <Compile Include="Marketing\IPromotionMasterRepository.gen.cs" />
+    <Compile Include="Logistics\IProjectRepository.gen.cs" />
+    <Compile Include="Contact\IContactRepositoryCollection.gen.cs" />
+    <Compile Include="Learning\ILearningRepositoryCollection.gen.cs" />
+    <Compile Include="Sales\ISalesRepositoryCollection.gen.cs" />
+    <Compile Include="Document\IDocumentRepositoryCollection.gen.cs" />
+    <Compile Include="Finance\IFinanceRepositoryCollection.gen.cs" />
+    <Compile Include="Common\ICommonRepositoryCollection.gen.cs" />
+    <Compile Include="Activities\IActivitiesRepositoryCollection.gen.cs" />
+    <Compile Include="UserInterface\IUserInterfaceRepositoryCollection.gen.cs" />
+    <Compile Include="Security\ISecurityRepositoryCollection.gen.cs" />
+    <Compile Include="Membership\IMembershipRepositoryCollection.gen.cs" />
+    <Compile Include="Marketing\IMarketingRepositoryCollection.gen.cs" />
+    <Compile Include="Logistics\ILogisticsRepositoryCollection.gen.cs" />
+    <Compile Include="Activities\ActLinkXrefRecord.gen.cs" />
+    <Compile Include="Activities\IActLinkXrefRepository.gen.cs" />
+    <Compile Include="Search\SystemSearchesRecord.gen.cs" />
+    <Compile Include="Search\SystemSearchesGridColumnsRecord.gen.cs" />
+    <Compile Include="Search\SystemSearchesParameterFieldsRecord.gen.cs" />
+    <Compile Include="Search\ISearchTypeRepository.gen.cs" />
+    <Compile Include="Search\ISearchColumnRepository.gen.cs" />
+    <Compile Include="Search\ISearchParameterRepository.gen.cs" />
+    <Compile Include="Search\ISearchRepositoryCollection.gen.cs" />
+    <Compile Include="Membership\MemberLocationRecord.gen.cs" />
+    <Compile Include="Membership\IMemberLocationRepository.gen.cs" />
+    <Compile Include="Learning\BookingRecord.gen.cs" />
+    <Compile Include="Learning\ElementRecord.gen.cs" />
+    <Compile Include="Learning\IBookingRepository.gen.cs" />
+    <Compile Include="Learning\IElementRepository.gen.cs" />
+    <Compile Include="Learning\DelegateRecord.gen.cs" />
+    <Compile Include="Learning\ILearnerRepository.gen.cs" />
+    <Compile Include="Learning\SessionXrefRecord.gen.cs" />
+    <Compile Include="Learning\ISessionXrefRepository.gen.cs" />
+    <Compile Include="Security\LicenseRecord.gen.cs" />
+    <Compile Include="Security\LicenseLimitRecord.gen.cs" />
+    <Compile Include="Security\LicenseModuleRecord.gen.cs" />
+    <Compile Include="Security\ILicenseRepository.gen.cs" />
+    <Compile Include="Security\ILicenseLimitRepository.gen.cs" />
+    <Compile Include="Security\ILicenseModuleRepository.gen.cs" />
+    <Compile Include="UserInterface\SystemmenusxrefRecord.gen.cs" />
+    <Compile Include="UserInterface\ISystemMenuXRefRepository.gen.cs" />
+    <Compile Include="Marketing\SaqFilterRecord.gen.cs" />
+    <Compile Include="Marketing\SaqStepRecord.gen.cs" />
+    <Compile Include="Marketing\SaqStepParamsRecord.gen.cs" />
+    <Compile Include="Marketing\SaqQueryRecord.gen.cs" />
+    <Compile Include="Marketing\SaqQueryStepsRecord.gen.cs" />
+    <Compile Include="Common\C4textRecord.gen.cs" />
+    <Compile Include="Common\INotesRepository.gen.cs" />
+    <Compile Include="Marketing\ISaqFilterFieldRepository.gen.cs" />
+    <Compile Include="Marketing\ISaqStepRepository.gen.cs" />
+    <Compile Include="Marketing\ISaqParameterRepository.gen.cs" />
+    <Compile Include="Marketing\ISaqQueryRepository.gen.cs" />
+    <Compile Include="Marketing\ISaqQueryStepRepository.gen.cs" />
+    <Compile Include="Learning\CourseselectgroupsRecord.gen.cs" />
+    <Compile Include="Learning\ICourseSelectGroupsRepository.gen.cs" />
+    <Compile Include="Security\UserAccountRecord.gen.cs" />
+    <Compile Include="Security\UserCredentialRecord.gen.cs" />
+    <Compile Include="Security\UserGroupRecord.gen.cs" />
+    <Compile Include="Security\UserGroupMemberRecord.gen.cs" />
+    <Compile Include="Security\UserPermissionRecord.gen.cs" />
+    <Compile Include="Security\UserSessionRecord.gen.cs" />
+    <Compile Include="Security\IUserAccountRepository.gen.cs" />
+    <Compile Include="Security\IUserCredentialRepository.gen.cs" />
+    <Compile Include="Security\IUserGroupRepository.gen.cs" />
+    <Compile Include="Security\IUserGroupMemberRepository.gen.cs" />
+    <Compile Include="Security\IUserPermissionRepository.gen.cs" />
+    <Compile Include="Security\IUserSessionRepository.gen.cs" />
+    <Compile Include="Security\UserPrincipalRecord.gen.cs" />
+    <Compile Include="Security\IUserPrincipalRepository.gen.cs" />
+    <Compile Include="Learning\EventProductRecord.gen.cs" />
+    <Compile Include="Learning\IEventProductRepository.gen.cs" />
+    <Compile Include="Other\WorkflowRecTypeRecord.gen.cs" />
+    <Compile Include="Other\WorkflowRecord.gen.cs" />
+    <Compile Include="Other\IWorkflowRecTypeRepository.gen.cs" />
+    <Compile Include="Other\IWorkflowRepository.gen.cs" />
+    <Compile Include="Other\IOtherRepositoryCollection.gen.cs" />
+    <Compile Include="Finance\C4currencyRecord.gen.cs" />
+    <Compile Include="Finance\ICurrencyRepository.gen.cs" />
+    <Compile Include="Common\SysConfigRecord.gen.cs" />
+    <Compile Include="Common\ISellingCompanyConfigRepository.gen.cs" />
+    <Compile Include="Marketing\SaqQueryQueueRecord.gen.cs" />
+    <Compile Include="Marketing\ISaqQueryQueueRepository.gen.cs" />
+    <Compile Include="Marketing\ListRecord.gen.cs" />
+    <Compile Include="Marketing\ISaqQueueRepository.gen.cs" />
+    <Compile Include="Marketing\IMailingListRepository.gen.cs" />
+    <Compile Include="Finance\DirectdebitRecord.gen.cs" />
+    <Compile Include="Finance\IDirectDebitRepository.gen.cs" />
+    <Compile Include="Marketing\ListMemberRecord.gen.cs" />
+    <Compile Include="Marketing\IMailingListMemberRepository.gen.cs" />
+    <Compile Include="Portal\PortalUserRecord.gen.cs" />
+    <Compile Include="Portal\PortalSetupRecord.gen.cs" />
+    <Compile Include="Portal\PuSiteRecord.gen.cs" />
+    <Compile Include="Portal\PortalRoleRecord.gen.cs" />
+    <Compile Include="Portal\PortaluserroleRecord.gen.cs" />
+    <Compile Include="Portal\IPortalUserRepository.gen.cs" />
+    <Compile Include="Portal\IPortalSetupRepository.gen.cs" />
+    <Compile Include="Portal\IPortalUserSiteRepository.gen.cs" />
+    <Compile Include="Portal\IPortalRoleRepository.gen.cs" />
+    <Compile Include="Portal\IPortalUserRoleRepository.gen.cs" />
+    <Compile Include="Portal\IPortalRepositoryCollection.gen.cs" />
+    <Compile Include="UserInterface\ScreenObjectRecord.gen.cs" />
+    <Compile Include="UserInterface\ScreenObjectDisplayRecord.gen.cs" />
+    <Compile Include="UserInterface\ScreenObjectEntryRecord.gen.cs" />
+    <Compile Include="UserInterface\IScreenObjectRepository.gen.cs" />
+    <Compile Include="UserInterface\IScreenObjectDisplayRepository.gen.cs" />
+    <Compile Include="UserInterface\IScreenObjectEntryRepository.gen.cs" />
+    <Compile Include="Document\PrintQueueRecord.gen.cs" />
+    <Compile Include="Document\IOutputQueueRepository.gen.cs" />
+    <Compile Include="Activities\C4textRecord.gen.cs" />
+    <Compile Include="Activities\HelpdeskRecord.gen.cs" />
+    <Compile Include="Activities\IC4textRepository.gen.cs" />
+    <Compile Include="Activities\IHelpdeskRepository.gen.cs" />
+    <Compile Include="UserInterface\QuickaccesslinkRecord.gen.cs" />
+    <Compile Include="UserInterface\HistorylinkRecord.gen.cs" />
+    <Compile Include="UserInterface\IQuickAccessLinkRepository.gen.cs" />
+    <Compile Include="UserInterface\IHistoryLinkRepository.gen.cs" />
+    <Compile Include="Activities\ComplaintRecord.gen.cs" />
+    <Compile Include="Activities\IComplaintRepository.gen.cs" />
+    <Compile Include="Learning\ProdselectgroupsRecord.gen.cs" />
+    <Compile Include="Learning\IProdSelectGroupRepository.gen.cs" />
+    <Compile Include="UserInterface\ScreenObjectColumnRecord.gen.cs" />
+    <Compile Include="UserInterface\IScreenObjectColumnRepository.gen.cs" />
+    <Compile Include="Finance\PayAllocationRecord.gen.cs" />
+    <Compile Include="Finance\IPayAllocationRepository.gen.cs" />
+    <Compile Include="Document\IcalmessageRecord.gen.cs" />
+    <Compile Include="Document\IcalmessagetypeRecord.gen.cs" />
+    <Compile Include="Document\IICalMessageRepository.gen.cs" />
+    <Compile Include="Document\IICalMessageTypeRepository.gen.cs" />
+    <Compile Include="Document\PacktypeRecord.gen.cs" />
+    <Compile Include="Document\IPacktypeRepository.gen.cs" />
+    <Compile Include="Document\SmsMessageRecord.gen.cs" />
+    <Compile Include="Document\SmsTypeRecord.gen.cs" />
+    <Compile Include="Document\ISmsMessageRepository.gen.cs" />
+    <Compile Include="Document\ISmsTypeRepository.gen.cs" />
+    <Compile Include="Document\PackXrefRecord.gen.cs" />
+    <Compile Include="Document\LiteratureRecord.gen.cs" />
+    <Compile Include="Document\IPackXrefRepository.gen.cs" />
+    <Compile Include="Document\ILiteratureRepository.gen.cs" />
+    <Compile Include="Finance\MasterClubRecord.gen.cs" />
+    <Compile Include="Finance\IPrepayAccountRepository.gen.cs" />
+    <Compile Include="Common\GenericmodeltableRecord.gen.cs" />
+    <Compile Include="Other\BatchXrefRecord.gen.cs" />
+    <Compile Include="Other\BatchRecord.gen.cs" />
+    <Compile Include="Common\IGenericModelRepository.gen.cs" />
+    <Compile Include="Other\IBatchXrefRepository.gen.cs" />
+    <Compile Include="Other\IBatchRepository.gen.cs" />
+    <Compile Include="Membership\MemberBomRecord.gen.cs" />
+    <Compile Include="Membership\IMemberBomRepository.gen.cs" />
+    <Compile Include="Membership\BranchRecord.gen.cs" />
+    <Compile Include="Membership\BranchXrefRecord.gen.cs" />
+    <Compile Include="Membership\IBranchRepository.gen.cs" />
+    <Compile Include="Membership\IBranchXrefRepository.gen.cs" />
+    <Compile Include="Common\AttachmentRecord.gen.cs" />
+    <Compile Include="Common\AttachmentDataRecord.gen.cs" />
+    <Compile Include="Common\IAttachmentRepository.gen.cs" />
+    <Compile Include="Common\IAttachmentDataRepository.gen.cs" />
+    <Compile Include="Membership\CommitteeRecord.gen.cs" />
+    <Compile Include="Membership\DistrictRecord.gen.cs" />
+    <Compile Include="Membership\ICommitteeRepository.gen.cs" />
+    <Compile Include="Membership\IDistrictRepository.gen.cs" />
+    <Compile Include="Common\LearningzonecategoriesRecord.gen.cs" />
+    <Compile Include="Common\AttachlearningzonecategoriesRecord.gen.cs" />
+    <Compile Include="Common\ILearningZoneCategoriesRepository.gen.cs" />
+    <Compile Include="Common\IAttachLearningZoneCategoriesRepository.gen.cs" />
+    <Compile Include="Finance\GiftaidclaimRecord.gen.cs" />
+    <Compile Include="Finance\IGiftaidclaimRepository.gen.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldRecord.gen.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldListitemRecord.gen.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldTypeRecord.gen.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldValueRecord.gen.cs" />
+    <Compile Include="UserInterface\IScreenCustomFieldRepository.gen.cs" />
+    <Compile Include="UserInterface\IScreenCustomFieldListitemRepository.gen.cs" />
+    <Compile Include="UserInterface\IScreenCustomFieldTypeRepository.gen.cs" />
+    <Compile Include="UserInterface\IScreenCustomFieldValueRepository.gen.cs" />
+    <Compile Include="Membership\CommitteeXrefRecord.gen.cs" />
+    <Compile Include="Membership\ICommitteeXrefRepository.gen.cs" />
+    <Compile Include="Reporting\ReportRecord.gen.cs" />
+    <Compile Include="Reporting\IReportRepository.gen.cs" />
+    <Compile Include="Reporting\IReportingRepositoryCollection.gen.cs" />
+    <Compile Include="Other\ExportconfigurationsRecord.gen.cs" />
+    <Compile Include="Other\DataimportsRecord.gen.cs" />
+    <Compile Include="Other\IExportconfigurationsRepository.gen.cs" />
+    <Compile Include="Other\IDataimportsRepository.gen.cs" />
+    <Compile Include="Reporting\ReportPageRecord.gen.cs" />
+    <Compile Include="Reporting\ReportParampageRecord.gen.cs" />
+    <Compile Include="Reporting\IReportPageRepository.gen.cs" />
+    <Compile Include="Reporting\IReportParamPageRepository.gen.cs" />
+    <Compile Include="Document\PrintReqRecord.gen.cs" />
+    <Compile Include="Document\IPrintRequestRepository.gen.cs" />
+    <Compile Include="Contact\TrainerRecord.gen.cs" />
+    <Compile Include="Contact\ITrainerRepository.gen.cs" />
+    <Compile Include="Document\ArticleRecord.gen.cs" />
+    <Compile Include="Document\IArticleRepository.gen.cs" />
+    <Compile Include="Contact\TimeSpentRecord.gen.cs" />
+    <Compile Include="Contact\ITimeSpentRepository.gen.cs" />
+    <Compile Include="Common\ViewLogRecord.gen.cs" />
+    <Compile Include="Common\IViewLogRepository.gen.cs" />
+    <Compile Include="Contact\TrainProdXrefRecord.gen.cs" />
+    <Compile Include="Contact\ITrainProdXrefRepository.gen.cs" />
+    <Compile Include="Document\ArticlexrefRecord.gen.cs" />
+    <Compile Include="Document\IArticlexrefRepository.gen.cs" />
+    <Compile Include="Common\IProfileTrainerRepository.gen.cs" />
+    <Compile Include="Common\IProfileVolunteerRepository.gen.cs" />
+    <Compile Include="Common\ISysConfigRepository.gen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Consensus\Consensus.csproj">
+      <Project>{ac55e00f-e736-4fd3-8426-c040ac1c4f53}</Project>
+      <Name>Consensus</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

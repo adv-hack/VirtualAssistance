@@ -1,0 +1,16 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/assets/templates/Popup.master" AutoEventWireup="true" CodeBehind="PopupSearch.master.cs" Inherits="Consensus.Web.BackOffice.assets.templates.PopupSearch" %>
+<asp:Content runat="server" ContentPlaceHolderID="Content">
+  <div class="container-fluid mb-4 consensus-popup-body">
+    <div class="groupbox">
+      <asp:ContentPlaceHolder runat="server" ID="SearchFields" />
+    </div>
+    <div class="groupbox" runat="server" id="SearchResultPanel" style="padding-top: 2rem; ">
+      <asp:ContentPlaceHolder runat="server" ID="SearchResult" />
+    </div>
+  </div>  
+</asp:Content>
+<asp:Content runat="server" ContentPlaceHolderID="PopupFooter">
+  <div class="float-right">
+    <asp:ContentPlaceHolder runat="server" ID="PopupButtons" />
+  </div>
+</asp:Content>

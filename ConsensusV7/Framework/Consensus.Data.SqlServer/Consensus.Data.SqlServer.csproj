@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8372026-3C9A-4CFF-B763-9BA8543B9CF1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Consensus</RootNamespace>
+    <AssemblyName>Consensus.Data.SqlServer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Consensus.Data.SqlServer.XML</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Consensus.Data.SqlServer.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+    <Compile Include="Activities\SqlServerActivityRepository.cs" />
+    <Compile Include="Activities\SqlServerActivityXrefRepository.cs" />
+    <Compile Include="Activities\SqlServerActLinkXrefRepository.cs" />
+    <Compile Include="Common\SqlServerAttachmentDataRepository.cs" />
+    <Compile Include="Common\SqlServerAttachmentRepository.cs" />
+    <Compile Include="Common\SqlServerNotesRepository.cs" />
+    <Compile Include="Document\SqlServerICalMessageRepository.cs" />
+    <Compile Include="Document\SqlServerICalMessageTypeRepository.cs" />
+    <Compile Include="Document\SqlServerLetterTemplateRepository.cs" />
+    <Compile Include="Document\SqlServerLetterTemplateTypeRepository.cs" />
+    <Compile Include="Learning\SqlServerLearnerRepository.cs" />
+    <Compile Include="Security\SqlServerUserAccountRepository.cs" />
+    <Compile Include="Security\SqlServerUserAccountRepository.gen.cs">
+      <DependentUpon>SqlServerUserAccountRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SqlServerUserCredentialRepository.cs" />
+    <Compile Include="Security\SqlServerUserCredentialRepository.gen.cs">
+      <DependentUpon>SqlServerUserCredentialRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SqlServerUserGroupMemberRepository.cs" />
+    <Compile Include="Security\SqlServerUserGroupMemberRepository.gen.cs">
+      <DependentUpon>SqlServerUserGroupMemberRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SqlServerUserGroupRepository.cs" />
+    <Compile Include="Security\SqlServerUserGroupRepository.gen.cs">
+      <DependentUpon>SqlServerUserGroupRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SqlServerUserPermissionRepository.cs" />
+    <Compile Include="Security\SqlServerUserPermissionRepository.gen.cs">
+      <DependentUpon>SqlServerUserPermissionRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SqlServerUserPrincipalRepository.cs" />
+    <Compile Include="Security\SqlServerUserPrincipalRepository.gen.cs">
+      <DependentUpon>SqlServerUserPrincipalRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SqlServerUserSessionRepository.cs" />
+    <Compile Include="Security\SqlServerUserSessionRepository.gen.cs">
+      <DependentUpon>SqlServerUserSessionRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerOperation.gen.cs" />
+    <Compile Include="SqlServerRepository.cs" />
+    <Compile Include="SqlServerRepository.gen.cs">
+      <DependentUpon>SqlServerRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerRepositoryOfTRecord.cs" />
+    <Compile Include="SqlServerRepositoryOfTRecord.gen.cs">
+      <DependentUpon>SqlServerRepositoryOfTRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerRepositoryOfTRecordTId.cs" />
+    <Compile Include="SqlServerRepositoryOfTRecordTId.gen.cs">
+      <DependentUpon>SqlServerRepositoryOfTRecordTId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerRepositoryCollection.cs" />
+    <Compile Include="SqlServerRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerProvider.cs" />
+    <Compile Include="SqlServerProvider.gen.cs">
+      <DependentUpon>SqlServerProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerContactRepositoryCollection.cs" />
+    <Compile Include="Learning\SqlServerLearningRepositoryCollection.cs" />
+    <Compile Include="Sales\SqlServerSalesRepositoryCollection.cs" />
+    <Compile Include="Document\SqlServerDocumentRepositoryCollection.cs" />
+    <Compile Include="Finance\SqlServerFinanceRepositoryCollection.cs" />
+    <Compile Include="Common\SqlServerCommonRepositoryCollection.cs" />
+    <Compile Include="Contact\SqlServerContactRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerContactRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerLearningRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerLearningRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SqlServerSalesRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerSalesRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerDocumentRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerDocumentRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerFinanceRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerFinanceRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerCommonRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerCommonRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerPersonRepository.cs" />
+    <Compile Include="Contact\SqlServerRoleRepository.cs" />
+    <Compile Include="Contact\SqlServerOrganisationRepository.cs" />
+    <Compile Include="Contact\SqlServerOrganisationAddressRepository.cs" />
+    <Compile Include="Contact\SqlServerAddressRepository.cs" />
+    <Compile Include="Learning\SqlServerProductRepository.cs" />
+    <Compile Include="Sales\SqlServerOpportunityRepository.cs" />
+    <Compile Include="Sales\SqlServerOpportunityXrefRepository.cs" />
+    <Compile Include="Document\SqlServerPackRepository.cs" />
+    <Compile Include="Document\SqlServerPackProductRepository.cs" />
+    <Compile Include="Finance\SqlServerAccountRepository.cs" />
+    <Compile Include="Finance\SqlServerAccountXrefRepository.cs" />
+    <Compile Include="Finance\SqlServerPaymentRepository.cs" />
+    <Compile Include="Finance\SqlServerPriceListRepository.cs" />
+    <Compile Include="Finance\SqlServerPriceRepository.cs" />
+    <Compile Include="Common\SqlServerCodeRepository.cs" />
+    <Compile Include="Common\SqlServerCodeHeaderRepository.cs" />
+    <Compile Include="Contact\SqlServerPersonRepository.gen.cs">
+      <DependentUpon>SqlServerPersonRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerRoleRepository.gen.cs">
+      <DependentUpon>SqlServerRoleRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerOrganisationRepository.gen.cs">
+      <DependentUpon>SqlServerOrganisationRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerOrganisationAddressRepository.gen.cs">
+      <DependentUpon>SqlServerOrganisationAddressRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerAddressRepository.gen.cs">
+      <DependentUpon>SqlServerAddressRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerProductRepository.gen.cs">
+      <DependentUpon>SqlServerProductRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SqlServerOpportunityRepository.gen.cs">
+      <DependentUpon>SqlServerOpportunityRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SqlServerOpportunityXrefRepository.gen.cs">
+      <DependentUpon>SqlServerOpportunityXrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerPackRepository.gen.cs">
+      <DependentUpon>SqlServerPackRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerPackProductRepository.gen.cs">
+      <DependentUpon>SqlServerPackProductRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerAccountRepository.gen.cs">
+      <DependentUpon>SqlServerAccountRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerAccountXrefRepository.gen.cs">
+      <DependentUpon>SqlServerAccountXrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerPaymentRepository.gen.cs">
+      <DependentUpon>SqlServerPaymentRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerPriceListRepository.gen.cs">
+      <DependentUpon>SqlServerPriceListRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerPriceRepository.gen.cs">
+      <DependentUpon>SqlServerPriceRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerCodeRepository.gen.cs">
+      <DependentUpon>SqlServerCodeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerCodeHeaderRepository.gen.cs">
+      <DependentUpon>SqlServerCodeHeaderRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerBillOfMaterialRepository.cs" />
+    <Compile Include="Learning\SqlServerTemplateRepository.cs" />
+    <Compile Include="Common\SqlServerProfileRepository.cs" />
+    <Compile Include="Common\SqlServerSellingCompanyRepository.cs" />
+    <Compile Include="Learning\SqlServerBillOfMaterialRepository.gen.cs">
+      <DependentUpon>SqlServerBillOfMaterialRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerTemplateRepository.gen.cs">
+      <DependentUpon>SqlServerTemplateRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerProfileRepository.gen.cs">
+      <DependentUpon>SqlServerProfileRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerSellingCompanyRepository.gen.cs">
+      <DependentUpon>SqlServerSellingCompanyRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\SqlServerActivitiesRepositoryCollection.cs" />
+    <Compile Include="Activities\SqlServerActivitiesRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerActivitiesRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\SqlServerActivityRepository.gen.cs">
+      <DependentUpon>SqlServerActivityRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerCountryRepository.cs" />
+    <Compile Include="Contact\SqlServerCountryRepository.gen.cs">
+      <DependentUpon>SqlServerCountryRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerCustomerPackRepository.cs" />
+    <Compile Include="Contact\SqlServerCustomerPackRepository.gen.cs">
+      <DependentUpon>SqlServerCustomerPackRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerUserInterfaceRepositoryCollection.cs" />
+    <Compile Include="UserInterface\SqlServerUserInterfaceRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerUserInterfaceRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerSystemMenuRepository.cs" />
+    <Compile Include="UserInterface\SqlServerSystemMenuRepository.gen.cs">
+      <DependentUpon>SqlServerSystemMenuRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerAssociateRepository.cs" />
+    <Compile Include="Contact\SqlServerAssociateRepository.gen.cs">
+      <DependentUpon>SqlServerAssociateRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerOrganisationDepartmentRepository.cs" />
+    <Compile Include="Contact\SqlServerOrganisationDepartmentRepository.gen.cs">
+      <DependentUpon>SqlServerOrganisationDepartmentRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SqlServerSecurityRepositoryCollection.cs" />
+    <Compile Include="Security\SqlServerSecurityRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerSecurityRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerInvoiceRepository.cs" />
+    <Compile Include="Finance\SqlServerInvoiceRepository.gen.cs">
+      <DependentUpon>SqlServerInvoiceRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\SqlServerMembershipRepositoryCollection.cs" />
+    <Compile Include="Membership\SqlServerMembershipRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerMembershipRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\SqlServerMembershipRepository.cs" />
+    <Compile Include="Membership\SqlServerMemberPeriodRepository.cs" />
+    <Compile Include="Membership\SqlServerMembershipRepository.gen.cs">
+      <DependentUpon>SqlServerMembershipRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\SqlServerMemberPeriodRepository.gen.cs">
+      <DependentUpon>SqlServerMemberPeriodRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerLocationRepository.cs" />
+    <Compile Include="Learning\SqlServerEventRepository.cs" />
+    <Compile Include="Contact\SqlServerLocationRepository.gen.cs">
+      <DependentUpon>SqlServerLocationRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerEventRepository.gen.cs">
+      <DependentUpon>SqlServerEventRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerLetterTemplateRepository.gen.cs">
+      <DependentUpon>SqlServerLetterTemplateRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerLetterTemplateTypeRepository.gen.cs">
+      <DependentUpon>SqlServerLetterTemplateTypeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerInvoiceLineRepository.cs" />
+    <Compile Include="Finance\SqlServerInvoiceLineRepository.gen.cs">
+      <DependentUpon>SqlServerInvoiceLineRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerCommunications_XrefRepository.cs" />
+    <Compile Include="Contact\SqlServerCommunicationsRepository.cs" />
+    <Compile Include="Contact\SqlServerCommunications_XrefRepository.gen.cs">
+      <DependentUpon>SqlServerCommunications_XrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerCommunicationsRepository.gen.cs">
+      <DependentUpon>SqlServerCommunicationsRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerCostCodeRepository.cs" />
+    <Compile Include="Finance\SqlServerCostCodeRepository.gen.cs">
+      <DependentUpon>SqlServerCostCodeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerAkaRepository.cs" />
+    <Compile Include="Contact\SqlServerAkaRepository.gen.cs">
+      <DependentUpon>SqlServerAkaRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerGiftaidRepository.cs" />
+    <Compile Include="Contact\SqlServerGiftaidRepository.gen.cs">
+      <DependentUpon>SqlServerGiftaidRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerBookingTermsRepository.cs" />
+    <Compile Include="Finance\SqlServerPayscheduleheaderRepository.cs" />
+    <Compile Include="Finance\SqlServerBookingTermsRepository.gen.cs">
+      <DependentUpon>SqlServerBookingTermsRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerPayscheduleheaderRepository.gen.cs">
+      <DependentUpon>SqlServerPayscheduleheaderRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerMarketingRepositoryCollection.cs" />
+    <Compile Include="Marketing\SqlServerMarketingRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerMarketingRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerCampaignRepository.cs" />
+    <Compile Include="Marketing\SqlServerCampaignRepository.gen.cs">
+      <DependentUpon>SqlServerCampaignRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logistics\SqlServerLogisticsRepositoryCollection.cs" />
+    <Compile Include="Logistics\SqlServerLogisticsRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerLogisticsRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logistics\SqlServerProjectRepository.cs" />
+    <Compile Include="Logistics\SqlServerProjectRepository.gen.cs">
+      <DependentUpon>SqlServerProjectRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerRelatedProductRepository.cs" />
+    <Compile Include="Sales\SqlServerSalesChannelRepository.cs" />
+    <Compile Include="Learning\SqlServerRelatedProductRepository.gen.cs">
+      <DependentUpon>SqlServerRelatedProductRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SqlServerSalesChannelRepository.gen.cs">
+      <DependentUpon>SqlServerSalesChannelRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerProductEventRepository.cs" />
+    <Compile Include="Learning\SqlServerProductEventRepository.gen.cs">
+      <DependentUpon>SqlServerProductEventRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerPromotionRepository.cs" />
+    <Compile Include="Marketing\SqlServerPromotionMasterRepository.cs" />
+    <Compile Include="Marketing\SqlServerPromotionRepository.gen.cs">
+      <DependentUpon>SqlServerPromotionRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerPromotionMasterRepository.gen.cs">
+      <DependentUpon>SqlServerPromotionMasterRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\SqlServerActivityXrefRepository.gen.cs">
+      <DependentUpon>SqlServerActivityXrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\SqlServerActLinkXrefRepository.gen.cs">
+      <DependentUpon>SqlServerActLinkXrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SqlServerSearchRepositoryCollection.cs" />
+    <Compile Include="Search\SqlServerSearchRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerSearchRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SqlServerSearchTypeRepository.cs" />
+    <Compile Include="Search\SqlServerSearchColumnRepository.cs" />
+    <Compile Include="Search\SqlServerSearchParameterRepository.cs" />
+    <Compile Include="Search\SqlServerSearchTypeRepository.gen.cs">
+      <DependentUpon>SqlServerSearchTypeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SqlServerSearchColumnRepository.gen.cs">
+      <DependentUpon>SqlServerSearchColumnRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SqlServerSearchParameterRepository.gen.cs">
+      <DependentUpon>SqlServerSearchParameterRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\SqlServerMemberLocationRepository.cs" />
+    <Compile Include="Membership\SqlServerMemberLocationRepository.gen.cs">
+      <DependentUpon>SqlServerMemberLocationRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerBookingRepository.cs" />
+    <Compile Include="Learning\SqlServerElementRepository.cs" />
+    <Compile Include="Learning\SqlServerBookingRepository.gen.cs">
+      <DependentUpon>SqlServerBookingRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerElementRepository.gen.cs">
+      <DependentUpon>SqlServerElementRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerLearnerRepository.gen.cs">
+      <DependentUpon>SqlServerLearnerRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerSessionXrefRepository.cs" />
+    <Compile Include="Learning\SqlServerSessionXrefRepository.gen.cs">
+      <DependentUpon>SqlServerSessionXrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SqlServerLicenseRepository.cs" />
+    <Compile Include="Security\SqlServerLicenseLimitRepository.cs" />
+    <Compile Include="Security\SqlServerLicenseModuleRepository.cs" />
+    <Compile Include="Security\SqlServerLicenseRepository.gen.cs">
+      <DependentUpon>SqlServerLicenseRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SqlServerLicenseLimitRepository.gen.cs">
+      <DependentUpon>SqlServerLicenseLimitRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SqlServerLicenseModuleRepository.gen.cs">
+      <DependentUpon>SqlServerLicenseModuleRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerSystemMenuXRefRepository.cs" />
+    <Compile Include="UserInterface\SqlServerSystemMenuXRefRepository.gen.cs">
+      <DependentUpon>SqlServerSystemMenuXRefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerNotesRepository.gen.cs">
+      <DependentUpon>SqlServerNotesRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerSaqFilterFieldRepository.cs" />
+    <Compile Include="Marketing\SqlServerSaqStepRepository.cs" />
+    <Compile Include="Marketing\SqlServerSaqParameterRepository.cs" />
+    <Compile Include="Marketing\SqlServerSaqQueryRepository.cs" />
+    <Compile Include="Marketing\SqlServerSaqQueryStepRepository.cs" />
+    <Compile Include="Marketing\SqlServerSaqFilterFieldRepository.gen.cs">
+      <DependentUpon>SqlServerSaqFilterFieldRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerSaqStepRepository.gen.cs">
+      <DependentUpon>SqlServerSaqStepRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerSaqParameterRepository.gen.cs">
+      <DependentUpon>SqlServerSaqParameterRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerSaqQueryRepository.gen.cs">
+      <DependentUpon>SqlServerSaqQueryRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerSaqQueryStepRepository.gen.cs">
+      <DependentUpon>SqlServerSaqQueryStepRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerCourseSelectGroupsRepository.cs" />
+    <Compile Include="Learning\SqlServerCourseSelectGroupsRepository.gen.cs">
+      <DependentUpon>SqlServerCourseSelectGroupsRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerEventProductRepository.cs" />
+    <Compile Include="Learning\SqlServerEventProductRepository.gen.cs">
+      <DependentUpon>SqlServerEventProductRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\SqlServerOtherRepositoryCollection.cs" />
+    <Compile Include="Other\SqlServerOtherRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerOtherRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\SqlServerWorkflowRecTypeRepository.cs" />
+    <Compile Include="Other\SqlServerWorkflowRepository.cs" />
+    <Compile Include="Other\SqlServerWorkflowRecTypeRepository.gen.cs">
+      <DependentUpon>SqlServerWorkflowRecTypeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\SqlServerWorkflowRepository.gen.cs">
+      <DependentUpon>SqlServerWorkflowRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerCurrencyRepository.cs" />
+    <Compile Include="Finance\SqlServerCurrencyRepository.gen.cs">
+      <DependentUpon>SqlServerCurrencyRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerSellingCompanyConfigRepository.cs" />
+    <Compile Include="Common\SqlServerSellingCompanyConfigRepository.gen.cs">
+      <DependentUpon>SqlServerSellingCompanyConfigRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerSaqQueueRepository.cs" />
+    <Compile Include="Marketing\SqlServerMailingListRepository.cs" />
+    <Compile Include="Marketing\SqlServerSaqQueueRepository.gen.cs">
+      <DependentUpon>SqlServerSaqQueueRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerMailingListRepository.gen.cs">
+      <DependentUpon>SqlServerMailingListRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerDirectDebitRepository.cs" />
+    <Compile Include="Finance\SqlServerDirectDebitRepository.gen.cs">
+      <DependentUpon>SqlServerDirectDebitRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SqlServerMailingListMemberRepository.cs" />
+    <Compile Include="Marketing\SqlServerMailingListMemberRepository.gen.cs">
+      <DependentUpon>SqlServerMailingListMemberRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\SqlServerPortalRepositoryCollection.cs" />
+    <Compile Include="Portal\SqlServerPortalRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerPortalRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\SqlServerPortalUserRepository.cs" />
+    <Compile Include="Portal\SqlServerPortalSetupRepository.cs" />
+    <Compile Include="Portal\SqlServerPortalUserSiteRepository.cs" />
+    <Compile Include="Portal\SqlServerPortalRoleRepository.cs" />
+    <Compile Include="Portal\SqlServerPortalUserRoleRepository.cs" />
+    <Compile Include="Portal\SqlServerPortalUserRepository.gen.cs">
+      <DependentUpon>SqlServerPortalUserRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\SqlServerPortalSetupRepository.gen.cs">
+      <DependentUpon>SqlServerPortalSetupRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\SqlServerPortalUserSiteRepository.gen.cs">
+      <DependentUpon>SqlServerPortalUserSiteRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\SqlServerPortalRoleRepository.gen.cs">
+      <DependentUpon>SqlServerPortalRoleRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\SqlServerPortalUserRoleRepository.gen.cs">
+      <DependentUpon>SqlServerPortalUserRoleRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerScreenObjectRepository.cs" />
+    <Compile Include="UserInterface\SqlServerScreenObjectDisplayRepository.cs" />
+    <Compile Include="UserInterface\SqlServerScreenObjectEntryRepository.cs" />
+    <Compile Include="UserInterface\SqlServerScreenObjectRepository.gen.cs">
+      <DependentUpon>SqlServerScreenObjectRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerScreenObjectDisplayRepository.gen.cs">
+      <DependentUpon>SqlServerScreenObjectDisplayRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerScreenObjectEntryRepository.gen.cs">
+      <DependentUpon>SqlServerScreenObjectEntryRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerOutputQueueRepository.cs" />
+    <Compile Include="Document\SqlServerOutputQueueRepository.gen.cs">
+      <DependentUpon>SqlServerOutputQueueRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\SqlServerC4textRepository.cs" />
+    <Compile Include="Activities\SqlServerHelpdeskRepository.cs" />
+    <Compile Include="Activities\SqlServerC4textRepository.gen.cs">
+      <DependentUpon>SqlServerC4textRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\SqlServerHelpdeskRepository.gen.cs">
+      <DependentUpon>SqlServerHelpdeskRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerQuickAccessLinkRepository.cs" />
+    <Compile Include="UserInterface\SqlServerHistoryLinkRepository.cs" />
+    <Compile Include="UserInterface\SqlServerQuickAccessLinkRepository.gen.cs">
+      <DependentUpon>SqlServerQuickAccessLinkRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerHistoryLinkRepository.gen.cs">
+      <DependentUpon>SqlServerHistoryLinkRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\SqlServerComplaintRepository.cs" />
+    <Compile Include="Activities\SqlServerComplaintRepository.gen.cs">
+      <DependentUpon>SqlServerComplaintRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SqlServerProdSelectGroupRepository.cs" />
+    <Compile Include="Learning\SqlServerProdSelectGroupRepository.gen.cs">
+      <DependentUpon>SqlServerProdSelectGroupRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerScreenObjectColumnRepository.cs" />
+    <Compile Include="UserInterface\SqlServerScreenObjectColumnRepository.gen.cs">
+      <DependentUpon>SqlServerScreenObjectColumnRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerPayAllocationRepository.cs" />
+    <Compile Include="Finance\SqlServerPayAllocationRepository.gen.cs">
+      <DependentUpon>SqlServerPayAllocationRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerICalMessageRepository.gen.cs">
+      <DependentUpon>SqlServerICalMessageRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerICalMessageTypeRepository.gen.cs">
+      <DependentUpon>SqlServerICalMessageTypeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerPacktypeRepository.cs" />
+    <Compile Include="Document\SqlServerPacktypeRepository.gen.cs">
+      <DependentUpon>SqlServerPacktypeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerSmsMessageRepository.cs" />
+    <Compile Include="Document\SqlServerSmsTypeRepository.cs" />
+    <Compile Include="Document\SqlServerSmsMessageRepository.gen.cs">
+      <DependentUpon>SqlServerSmsMessageRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerSmsTypeRepository.gen.cs">
+      <DependentUpon>SqlServerSmsTypeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerPackXrefRepository.cs" />
+    <Compile Include="Document\SqlServerLiteratureRepository.cs" />
+    <Compile Include="Document\SqlServerPackXrefRepository.gen.cs">
+      <DependentUpon>SqlServerPackXrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerLiteratureRepository.gen.cs">
+      <DependentUpon>SqlServerLiteratureRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerPrepayAccountRepository.cs" />
+    <Compile Include="Finance\SqlServerPrepayAccountRepository.gen.cs">
+      <DependentUpon>SqlServerPrepayAccountRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerGenericModelRepository.cs" />
+    <Compile Include="Other\SqlServerBatchXrefRepository.cs" />
+    <Compile Include="Other\SqlServerBatchRepository.cs" />
+    <Compile Include="Common\SqlServerGenericModelRepository.gen.cs">
+      <DependentUpon>SqlServerGenericModelRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\SqlServerBatchXrefRepository.gen.cs">
+      <DependentUpon>SqlServerBatchXrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\SqlServerBatchRepository.gen.cs">
+      <DependentUpon>SqlServerBatchRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\SqlServerMemberBomRepository.cs" />
+    <Compile Include="Membership\SqlServerMemberBomRepository.gen.cs">
+      <DependentUpon>SqlServerMemberBomRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\SqlServerBranchRepository.cs" />
+    <Compile Include="Membership\SqlServerBranchXrefRepository.cs" />
+    <Compile Include="Membership\SqlServerBranchRepository.gen.cs">
+      <DependentUpon>SqlServerBranchRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\SqlServerBranchXrefRepository.gen.cs">
+      <DependentUpon>SqlServerBranchXrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerAttachmentRepository.gen.cs">
+      <DependentUpon>SqlServerAttachmentRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerAttachmentDataRepository.gen.cs">
+      <DependentUpon>SqlServerAttachmentDataRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\SqlServerCommitteeRepository.cs" />
+    <Compile Include="Membership\SqlServerDistrictRepository.cs" />
+    <Compile Include="Membership\SqlServerCommitteeRepository.gen.cs">
+      <DependentUpon>SqlServerCommitteeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\SqlServerDistrictRepository.gen.cs">
+      <DependentUpon>SqlServerDistrictRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerLearningZoneCategoriesRepository.cs" />
+    <Compile Include="Common\SqlServerAttachLearningZoneCategoriesRepository.cs" />
+    <Compile Include="Common\SqlServerLearningZoneCategoriesRepository.gen.cs">
+      <DependentUpon>SqlServerLearningZoneCategoriesRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerAttachLearningZoneCategoriesRepository.gen.cs">
+      <DependentUpon>SqlServerAttachLearningZoneCategoriesRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\SqlServerGiftaidclaimRepository.cs" />
+    <Compile Include="Finance\SqlServerGiftaidclaimRepository.gen.cs">
+      <DependentUpon>SqlServerGiftaidclaimRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerScreenCustomFieldRepository.cs" />
+    <Compile Include="UserInterface\SqlServerScreenCustomFieldListitemRepository.cs" />
+    <Compile Include="UserInterface\SqlServerScreenCustomFieldTypeRepository.cs" />
+    <Compile Include="UserInterface\SqlServerScreenCustomFieldValueRepository.cs" />
+    <Compile Include="UserInterface\SqlServerScreenCustomFieldRepository.gen.cs">
+      <DependentUpon>SqlServerScreenCustomFieldRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerScreenCustomFieldListitemRepository.gen.cs">
+      <DependentUpon>SqlServerScreenCustomFieldListitemRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerScreenCustomFieldTypeRepository.gen.cs">
+      <DependentUpon>SqlServerScreenCustomFieldTypeRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SqlServerScreenCustomFieldValueRepository.gen.cs">
+      <DependentUpon>SqlServerScreenCustomFieldValueRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\SqlServerCommitteeXrefRepository.cs" />
+    <Compile Include="Membership\SqlServerCommitteeXrefRepository.gen.cs">
+      <DependentUpon>SqlServerCommitteeXrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\SqlServerReportingRepositoryCollection.gen.cs">
+      <DependentUpon>SqlServerReportingRepositoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\SqlServerReportRepository.gen.cs">
+      <DependentUpon>SqlServerReportRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\SqlServerExportconfigurationsRepository.gen.cs">
+      <DependentUpon>SqlServerExportconfigurationsRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\SqlServerDataimportsRepository.gen.cs">
+      <DependentUpon>SqlServerDataimportsRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\SqlServerReportPageRepository.cs" />
+    <Compile Include="Reporting\SqlServerReportParamPageRepository.cs" />
+    <Compile Include="Reporting\SqlServerReportPageRepository.gen.cs">
+      <DependentUpon>SqlServerReportPageRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\SqlServerReportParamPageRepository.gen.cs">
+      <DependentUpon>SqlServerReportParamPageRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerPrintRequestRepository.cs" />
+    <Compile Include="Document\SqlServerPrintRequestRepository.gen.cs">
+      <DependentUpon>SqlServerPrintRequestRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerTrainerRepository.cs" />
+    <Compile Include="Contact\SqlServerTrainerRepository.gen.cs">
+      <DependentUpon>SqlServerTrainerRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerArticleRepository.cs" />
+    <Compile Include="Document\SqlServerArticleRepository.gen.cs">
+      <DependentUpon>SqlServerArticleRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerTimeSpentRepository.cs" />
+    <Compile Include="Contact\SqlServerTimeSpentRepository.gen.cs">
+      <DependentUpon>SqlServerTimeSpentRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerViewLogRepository.cs" />
+    <Compile Include="Common\SqlServerViewLogRepository.gen.cs">
+      <DependentUpon>SqlServerViewLogRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\SqlServerTrainProdXrefRepository.cs" />
+    <Compile Include="Contact\SqlServerTrainProdXrefRepository.gen.cs">
+      <DependentUpon>SqlServerTrainProdXrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SqlServerArticlexrefRepository.cs" />
+    <Compile Include="Document\SqlServerArticlexrefRepository.gen.cs">
+      <DependentUpon>SqlServerArticlexrefRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerProfileTrainerRepository.cs" />
+    <Compile Include="Common\SqlServerProfileTrainerRepository.gen.cs">
+      <DependentUpon>SqlServerProfileTrainerRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerProfileVolunteerRepository.cs" />
+    <Compile Include="Common\SqlServerProfileVolunteerRepository.gen.cs">
+      <DependentUpon>SqlServerProfileVolunteerRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SqlServerSysConfigRepository.cs" />
+    <Compile Include="Common\SqlServerSysConfigRepository.gen.cs">
+      <DependentUpon>SqlServerSysConfigRepository.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Consensus.Data\Consensus.Data.csproj">
+      <Project>{b7253836-bbde-44dc-b9c8-0a6ccc4655d6}</Project>
+      <Name>Consensus.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Consensus\Consensus.csproj">
+      <Project>{ac55e00f-e736-4fd3-8426-c040ac1c4f53}</Project>
+      <Name>Consensus</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

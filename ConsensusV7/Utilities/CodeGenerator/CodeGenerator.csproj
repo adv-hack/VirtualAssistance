@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C8364CF7-6505-48BE-BD89-F67186646835}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeGenerator</RootNamespace>
+    <AssemblyName>CodeGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\documentation\codegenerator.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Generate|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Generate\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeModel\CSharpAbstraction.cs" />
+    <Compile Include="CodeModel\ProjectBuildAction.cs" />
+    <Compile Include="CodeModel\CSharpKeyword.cs" />
+    <Compile Include="CodeModel\CSharpModifier.cs" />
+    <Compile Include="CodeModel\Member.cs" />
+    <Compile Include="CodeModel\MemberAccessor.cs" />
+    <Compile Include="CodeModel\MemberConstructor.cs" />
+    <Compile Include="CodeModel\MemberEnumeration.cs" />
+    <Compile Include="CodeModel\MemberField.cs" />
+    <Compile Include="CodeModel\MemberFieldType.cs" />
+    <Compile Include="CodeModel\MemberGeneric.cs" />
+    <Compile Include="CodeModel\MemberImplementor.cs" />
+    <Compile Include="CodeModel\MemberMethod.cs" />
+    <Compile Include="CodeModel\MemberNamed.cs" />
+    <Compile Include="CodeModel\MemberParameter.cs" />
+    <Compile Include="CodeModel\MemberProperty.cs" />
+    <Compile Include="CodeModel\Project.cs" />
+    <Compile Include="CodeModel\ProjectCSharp.cs" />
+    <Compile Include="CodeModel\ProjectItem.cs" />
+    <Compile Include="CodeModel\ProjectSolution.cs" />
+    <Compile Include="CodeModel\Type.cs" />
+    <Compile Include="CodeModel\TypeClass.cs" />
+    <Compile Include="CodeModel\TypeEnumerator.cs" />
+    <Compile Include="CodeModel\ProjectGeneration.cs" />
+    <Compile Include="CodeModel\TypeInterface.cs" />
+    <Compile Include="CodeModel\TypeStruct.cs" />
+    <Compile Include="Conversion.cs" />
+    <Compile Include="DataModel\Database.cs" />
+    <Compile Include="DataModel\DataDomain.cs" />
+    <Compile Include="DataModel\DataEntity.cs" />
+    <Compile Include="DataModel\DataEntityField.cs" />
+    <Compile Include="Extension.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlModel\ProcedureParameter.cs" />
+    <Compile Include="SqlModel\Procedure.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataModel\Scripts\GetDomain.sql" />
+    <EmbeddedResource Include="DataModel\Scripts\GetEntity.sql" />
+    <EmbeddedResource Include="DataModel\Scripts\GetEntityField.sql" />
+    <EmbeddedResource Include="DataModel\Scripts\SaveDomain.sql" />
+    <EmbeddedResource Include="DataModel\Scripts\SaveEntity.sql" />
+    <EmbeddedResource Include="DataModel\Scripts\SaveEntityField.sql" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

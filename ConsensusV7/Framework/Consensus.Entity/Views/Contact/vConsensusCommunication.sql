@@ -1,0 +1,24 @@
+﻿IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'dbo.vConsensusCommunication'))
+BEGIN
+	exec ('create view [dbo].[vConsensusCommunication] as select 1 TEMP')
+END
+GO
+
+ALTER VIEW [dbo].vConsensusCommunication
+
+AS
+
+select COMMXREF_ID,COMMXREF_TABLE_NAME,COMMXREF_RECORD_ID,COMMXREF_COMM_ID,COMM_ID,COMM_DEVICE_CODE,COMM_DIALLING_CODE,COMM_STD_CODE,COMM_EXTENSION,
+COMM_EX_DIRECTORY,COMM_VALID_FROM,COMM_ACTIVE,COMM_DEFAULT,COMM_PREFERRED,COMM_DEVICE_VALUE,COMM_DEVICE_FULL_VALUE,CODE_VALUE2,
+case CODE_VALUE2  when 'Email' then 'mailto:' + COMM_DEVICE_FULL_VALUE
+when 'Web' then 'http://' + COMM_DEVICE_FULL_VALUE
+when 'Phone' then 'tel:' + COMM_DEVICE_FULL_VALUE
+when 'Mobile' then 'tel:' + COMM_DEVICE_FULL_VALUE
+when 'Tel' then 'tel:' + COMM_DEVICE_FULL_VALUE
+else COMM_DEVICE_FULL_VALUE
+end COMM_ACTION
+from communications_Xref
+join dbo.Communications ON COMM_ID = COMMXREF_COMM_ID
+left join code ON CODE_VALUE1 = COMM_DEVICE_CODE and CODE_TYPE='COMMU'
+
+GO

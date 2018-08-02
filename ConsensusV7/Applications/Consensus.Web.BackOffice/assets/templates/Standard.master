@@ -1,0 +1,204 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/assets/templates/Global.Master" AutoEventWireup="true" CodeBehind="Standard.master.cs" Inherits="Consensus.Web.BackOffice.assets.templates.Standard" %>
+<asp:Content ContentPlaceHolderID="Content" runat="server">
+  <body class="standard" id="body">
+    <div class="navbar navbar-inverse navbar-toggleable bg-inverse yamm hidden-print navbar-fixed-top">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".header-collapse" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="<%= VirtualPathUtility.ToAbsolute("~/home") %>">
+        <img alt="Advanced" class="d-inline-block align-top" src="<%= VirtualPathUtility.ToAbsolute("~/assets/images/advanced-icon.png") %>" />
+        <span>Advanced</span>
+      </a>    
+      <%-- Main Menu --%>
+      <div class="collapse navbar-collapse header-collapse">
+        <ul class="navbar-nav">
+          <asp:Repeater runat="server" ID="MainMenuRepeater" OnItemDataBound="MainMenuRepeater_ItemDataBound">
+            <ItemTemplate>
+              <li class="dropdown mr-3">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%# Eval("Text") %></a>
+                <ul class="dropdown-menu mt-1 p-2">
+                  <asp:Repeater runat="server" ID="MainMenuRepeater" OnItemDataBound="MainMenuRepeater_ItemDataBound">
+                    <ItemTemplate>
+                      <li class="d-block float-left px-4 pb-2">
+                        <div>
+                          <div class="nav-link text-primary font-weight-bold py-2 px-0"><%# Eval("Text") %></div>
+                          <ul class="list-unstyled">
+                            <asp:Repeater runat="server" ID="MainMenuRepeater">
+                              <ItemTemplate>
+                                <li>
+                                  <a class="d-block py-1 nav-menu-item" style="text-decoration: none!important" href="<%# VirtualPathUtility.ToAbsolute("~/" + Eval("Link") as String) %>"><%# Eval("Text") %></a>
+                                </li>
+                              </ItemTemplate>
+                            </asp:Repeater>
+                          </ul>
+                        </div>
+                      </li>
+                    </ItemTemplate>
+                  </asp:Repeater>
+                </ul>
+              </li>
+            </ItemTemplate>
+          </asp:Repeater>
+        </ul>  
+        <%-- User Menu --%>
+        <%--<ul class="navbar-nav mr-auto float-right ml-3">
+          <li class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server" id="UserDropdown">
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#" onclick="window.location.href = consensus.resolveUrl('~/security/userAccount');">My Account</a>
+              </li>
+              <li>
+                <a href="#" onclick="consensus.authentication.logout();">Log Off</a>
+              </li>
+            </ul>
+          </li>
+        </ul>--%>
+        <%-- Global Search --%>
+        <form class="form-inline my-2 float-right">
+            
+          <input runat="server" class="form-control mr-sm-2" id="perSurname" type="text" placeholder="Search" onkeyup="enterPressed();" />
+          <button runat="server" class="btn-search-master btn btn-default my-2 my-sm-0" id="searchPerson" type="button" onclick="redirectToPerson()" >  
+            <span aria-hidden="true" class="icons8-search"></span>
+            <%--<span>Search</span>--%>
+          </button>
+            <%--<span>Search</span>--%>
+          
+        </form>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <%-- Side Bar --%>
+        <nav class="col-md-2 sidebar bg-faded hidden-sm-down hidden-print" style="padding-top:10px;" runat="server" id="SidePanel">
+          <asp:ContentPlaceHolder runat="server" ID="SideBar" />
+            <div class="favouritesList" id="UserAccount">
+                <h3 class="loginuser-master"><asp:HyperLink  runat="server" ID="UserDropDownLink" NavigateUrl="~/security/userAccount"></asp:HyperLink>
+                </h3>
+
+                <%--<span class="float-right d-block icons8-logout_rounded logoff-master" title="Log Off" onclick="consensus.authentication.logout();" /><br />--%>
+                <%--<span class="float-right d-block logoff-master" aria-hidden="true" ><svg class="icon icon-white"><use href="#logout_rounded"></use></svg></span>--%>
+                <span title="Log Off" onclick="consensus.authentication.logout();">
+                  <span class="float-right d-block logoff-master" aria-hidden="true" ><svg class="icon icon-orange"><use xlink:href="#logout_rounded" href="#logout_rounded"></use></svg></span>
+                </span><br />
+            </div>
+          <div runat="server" class="favouritesList" id="OptionHeader">
+            <h3>Actions</h3>
+          </div>
+          <div class="favouritesList" id="accordianOption">
+              <ul class="nav nav-pills flex-column">
+                <asp:Repeater runat="server" ID="SideMenuRepeater" OnItemDataBound="SideMenuRepeater_ItemDataBound">
+                  <ItemTemplate />
+                </asp:Repeater>
+              </ul>
+          </div>
+            
+          <div class="favouritesList" id="QuickLinkHeader">
+            <h3>Quick access<%--<img style="height:18px; width:18px;" src="<%= VirtualPathUtility.ToAbsolute("~/assets/icons/icons8/icons8-add.svg") %>" title="Add page to quick links list" padding-left:30px onclick="consensus.web.quickAccessLinks.create();" /><br /></h3>--%>
+              <span class="svgAdd" title="Add page to quick links list" onclick="consensus.web.quickAccessLinks.create();">
+                  <span aria-hidden="true" ><svg  class="icon icon-white"><use xlink:href="#add" href="#add"></use></svg></span>
+                </span><br /></h3>
+          </div>
+          <div class="favouritesList" id="accordianQuickLink">
+              <ul class="nav nav-pills flex-column">
+                 <asp:Repeater runat="server" ID="QuickLinkRepeater" OnItemDataBound="QuickLinkRepeater_ItemDataBound">
+                     <ItemTemplate />
+                    </asp:Repeater>
+
+              </ul>
+          </div>
+            <div class="favouritesList" id="UserHistoryHeader">
+            <h3>History</h3>
+          </div>
+          <div class="favouritesList" id="accordianUserHistory">
+              <ul class="nav nav-pills flex-column">
+                <asp:Repeater runat="server" ID="UserHistoryRepeater" OnItemDataBound="UserHistoryRepeater_ItemDataBound">
+                  <ItemTemplate />
+                </asp:Repeater>
+              </ul>
+          </div>
+        </nav>
+        <form class="col-md-10 pl-3 pr-3 pb-3 pt-0" runat="server" id="DetailPageContent">
+            <asp:HiddenField runat="server" ID="loggedUser" />
+          <header runat="server" class="hidden-print" id="PageHeading">
+            <%-- Page Header --%>
+            <hgroup>
+              <div class="float-right">
+                <div class="mr-4 float-left">
+                  <asp:LinkButton runat="server" ID="CustomiseButton" CssClass="btn btn-default" OnClientClick="consensus.web.customisation.popup(); return false;">        
+                    <span class="text">Customise</span>
+                  </asp:LinkButton>
+                </div>
+                <asp:ContentPlaceHolder runat="server" ID="PageButtons" />
+              </div>
+              <h1>
+                <span runat="server" id="PageIcon" class="consensus-header-icon"></span>
+                <asp:Label runat="server" ID="PageHeader" CssClass="consensus-header-text" />
+              </h1>
+            </hgroup>
+            <%-- Page Navigator --%>
+            <nav class="clearfix">
+              <asp:Repeater runat="server" ID="PageMenuRepeater" OnItemDataBound="PageMenuRepeater_ItemDataBound">
+                <ItemTemplate />
+              </asp:Repeater>
+            </nav>
+          </header>
+          <script>
+            $('form > header').clone().insertAfter('form > header').find('[id]').attr('id', null);
+          </script>
+          <%-- Main Content --%>
+          <main id="main">
+            <asp:ValidationSummary runat="server" CssClass="alert alert-danger" DisplayMode="List" EnableClientScript="true" ShowSummary="true" />
+            <asp:ContentPlaceHolder runat="server" ID="Content" />
+            <con:CustomFieldContainer runat="server" ID="PageCustomFieldContainer" Title="(Page root)" />
+          </main>
+            <%--<asp:ContentPlaceHolder runat="server" ID="Content" /> --%>
+        </form>
+      </div>
+    </div>
+           
+  </body>
+  <script>
+      var pageURL = "<%= this.Request.Url.PathAndQuery.Substring(VirtualPathUtility.ToAbsolute("~").Length) %>";
+     
+      if (pageURL.match("^/")) {
+          pageURL = pageURL;
+      } else {
+          pageURL = "/" + pageURL;
+      }
+      
+      consensus.web.quickAccessLinks.url = pageURL;
+      consensus.web.quickAccessLinks.description = "<%= this.PageHeader.Text %>";
+      consensus.web.quickAccessLinks.icon = '<%= this.PageIcon.Attributes["class"] %>';
+      consensus.web.quickAccessLinks.userId = '<%= (this.Page as Consensus.Web.BackOffice.BasePage).CurrentSession.UserId %>';
+
+      
+      function redirectToPerson() {
+          var perSurname = $('[id$=_perSurname]').val();
+          var val = $('#<%= this.perSurname.ClientID %>').val()
+            var path = consensus.resolveUrl('~/Search/Person?Surname=') + perSurname;
+            window.location.replace(path);
+      }
+      function enterPressed()
+      {
+          if (event.keyCode == 13) redirectToPerson();
+      }
+   
+  </script>
+    <%--<svg xmlns="http://www.w3.org/2000/svg" class="svg-hidden">
+    <symbol id="save" viewBox="0 0 32 32">
+        <path d="M 5 5 L 5 27 L 27 27 L 27 9.59375 L 26.71875 9.28125 L 22.71875 5.28125 L 22.40625 5 Z M 7 7 L 10 7 L 10 13 L 22 13 L 22 7.4375 L 25 10.4375 L 25 25 L 23 25 L 23 16 L 9 16 L 9 25 L 7 25 Z M 12 7 L 16 7 L 16 9 L 18 9 L 18 7 L 20 7 L 20 11 L 12 11 Z M 11 18 L 21 18 L 21 25 L 11 25 Z " />
+    </symbol>
+    <symbol id="pencil_tip" viewBox="0 0 32 32">
+        <path d="M 20 4.03125 L 6.34375 17.6875 L 6.28125 17.96875 L 4.25 26.5625 L 3.875 28.125 L 5.4375 27.75 L 14.03125 25.71875 L 14.3125 25.65625 L 27.96875 12 L 26.5625 10.59375 L 14.5625 22.5625 C 14.132813 21.714844 13.292969 20.789063 11.90625 20.09375 C 11.289063 18.722656 10.351563 17.816406 9.46875 17.40625 L 21.40625 5.4375 Z M 8.09375 19.0625 C 8.230469 19.097656 8.394531 19.148438 8.5625 19.21875 C 9.171875 19.480469 9.867188 19.960938 10.28125 21.15625 L 10.40625 21.5625 L 10.8125 21.75 C 12.125 22.328125 12.613281 23.015625 12.84375 23.5625 C 12.898438 23.6875 12.941406 23.808594 12.96875 23.90625 L 9 24.84375 L 7.15625 23 Z " />
+    </symbol>
+    <symbol id="delete_sign" viewBox="0 0 32 32">
+        <path d="M 7.21875 5.78125 L 5.78125 7.21875 L 14.5625 16 L 5.78125 24.78125 L 7.21875 26.21875 L 16 17.4375 L 24.78125 26.21875 L 26.21875 24.78125 L 17.4375 16 L 26.21875 7.21875 L 24.78125 5.78125 L 16 14.5625 Z " />
+    </symbol> 
+    <symbol id="logout_rounded" viewBox="0 0 32 32">
+    <path d="M 16 4 C 9.382813 4 4 9.382813 4 16 C 4 22.617188 9.382813 28 16 28 C 20.050781 28 23.640625 25.988281 25.8125 22.90625 L 24.1875 21.75 C 22.378906 24.320313 19.390625 26 16 26 C 10.464844 26 6 21.535156 6 16 C 6 10.464844 10.464844 6 16 6 C 19.390625 6 22.375 7.679688 24.1875 10.25 L 25.8125 9.09375 C 23.640625 6.011719 20.050781 4 16 4 Z M 23.34375 11.28125 L 21.90625 12.71875 L 24.1875 15 L 12 15 L 12 17 L 24.1875 17 L 21.90625 19.28125 L 23.34375 20.71875 L 27.34375 16.71875 L 28.03125 16 L 27.34375 15.28125 Z " />
+    </symbol>
+</svg>--%>
+    
+</asp:Content>

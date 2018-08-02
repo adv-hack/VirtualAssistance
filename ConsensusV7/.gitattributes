@@ -1,0 +1,8 @@
+DiscountCore.dll merge=ours
+IC4WebNET.dll merge=ours
+CourseBookerNG.Client.dll merge=ours
+AssemblyInfo.cs merge=ours
+CSA.msi merge=ours
+ClientInstaller.msi merge=ours
+Version.asp merge=ours
+ConsensusV7.domain -merge

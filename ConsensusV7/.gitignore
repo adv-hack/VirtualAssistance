@@ -1,0 +1,45 @@
+Web/C4Web 6.2/web.config
+Web/C4Web/web.config
+
+# git ignore file
+_UpgradeReport_Files/
+obj/
+bin/
+/UpgradeLog.htm
+/UpgradeLog.XML
+
+# User-specific files
+*.suo
+*.dbmdl
+*.user
+*.sln.docstates
+
+# Build results
+
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Bb]in/
+[Oo]bj/
+[Pp]ackages/
+.*
+!/.gitignore
+!/.gitattributes
+
+# NuGet Packages Directory
+## TODO: If you have NuGet Package Restore enabled, uncomment the next line
+#packages/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+/Documentation/consensus.business.logic.xml
+/Documentation/consensus.business.xml
+/Documentation/consensus.data.sqlserver.xml
+/Documentation/consensus.data.xml
+/Documentation/consensus.business.logic.xml
+/Documentation/consensus.business.xml
+/Documentation/consensus.data.sqlserver.xml
+/Documentation/consensus.data.xml

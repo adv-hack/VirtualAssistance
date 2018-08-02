@@ -1,0 +1,48 @@
+﻿IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'dbo.vConsensusDocumentTemplates'))
+BEGIN
+	exec ('create view [dbo].[vConsensusDocumentTemplates] as SELECT 1 TEMP')
+END
+GO
+ ALTER VIEW [dbo].[vConsensusDocumentTemplates]
+AS
+	SELECT PACKXREF_PACK_ID,
+		LIT_ID, 
+		LIT_NAME, 
+		LIT_TEMPLATE, 
+		PACKXREF_ID, 
+		LT_TYPE, 
+		LIT_TYPE,
+		CASE PACKXREF_SEQ 
+			WHEN 0 THEN 1 ELSE 0 
+		END AS IS_COVER_PAGE, 
+		LTT_TYPE,
+		LTT_NAME,
+		'Word Template' TYPE,
+		PACKXREF_SMS_ID,
+		 PACKXREF_ICM_ID,
+		 uri = 'document/packxref/'+convert(varchar, PACKXREF_ID)
+	FROM PACK_XREF 
+	JOIN Literature on LIT_ID = PACKXREF_LIT_ID 
+	LEFT JOIN LetterTmplt on LT_ID=LIT_LT_ID 
+	LEFT JOIN LetTmpltType on LTT_ID=LT_TYPE 
+	--WHERE PACKXREF_PACK_ID = @PACK_ID 
+	UNION all
+	SELECT PACKXREF_PACK_ID, PACKXREF_LIT_ID LIT_ID, SMS_NAME, SMS_NAME, PACKXREF_ID, SMT_NAME, 100,
+	0 IS_COVER_PAGE, 100,
+	SMT_NAME,'SMS' TYPE,PACKXREF_SMS_ID, PACKXREF_ICM_ID,
+	uri = 'document/packxref/'+convert(varchar, PACKXREF_ID) 
+	FROM PACK_XREF 
+	JOIN SMS_Message on SMS_ID = PACKXREF_SMS_ID 
+	JOIN SMS_Type ON SMT_ID = SMS_SMT_ID 
+	--WHERE PACKXREF_PACK_ID = @PACK_ID
+	UNION all 
+	SELECT PACKXREF_PACK_ID, PACKXREF_LIT_ID LIT_ID, ICM_NAME, ICM_NAME, PACKXREF_ID, ICMT_NAME, 100,
+	0 IS_COVER_PAGE, 100,
+	ICMT_NAME,'iCalendar' TYPE,PACKXREF_SMS_ID,PACKXREF_ICM_ID,
+	uri = 'document/packxref/'+convert(varchar, PACKXREF_ID) 
+	FROM PACK_XREF 
+	JOIN iCalMessage on iCalMessage.ICM_ID = PACKXREF_ICM_ID 
+	JOIN iCalMessageType ON ICMT_ID = ICM_ICMT_ID 
+	--WHERE PACKXREF_PACK_ID = @PACK_ID
+GO
+

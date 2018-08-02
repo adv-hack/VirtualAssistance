@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/assets/templates/Main.Master" AutoEventWireup="true" CodeBehind="StandardDetail.master.cs" Inherits="Consensus.Web.BackOffice.assets.templates.StandardDetail" %>
+<asp:Content runat="server" ContentPlaceHolderID="PageButtons">
+  <div class="consensus-visible-read float-left">
+    <div class="btn-group"><asp:ContentPlaceHolder runat="server" ID="ReadModeToolbar" /></div>
+    <asp:LinkButton runat="server" ID="PrintButton" CssClass="btn btn-default" OnClientClick="window.print(); return false;">        
+      <span aria-hidden="true" ><svg class="icon icon-black"><use href="#printer_door_open"></use></svg></span>
+      <span class="text">Print</span>
+    </asp:LinkButton>
+    <asp:LinkButton runat="server" ID="EditButton" CssClass="btn btn-primary" OnClientClick="if(consensus.data.getState()) consensus.data.getState().edit(); return false;" disabled="disabled">        
+      <span aria-hidden="true" ><svg class="icon icon-white"><use href="#pencil_tip"></use></svg></span>
+      <span class="text">Edit</span>
+    </asp:LinkButton>
+  </div>
+  <div class="consensus-visible-edit float-left">
+    <div class="btn-group"><asp:ContentPlaceHolder runat="server" ID="EditModeToolbar" /></div>
+    <button runat="server" ID="UndoButton" class="btn btn-warning" onclick="consensus.data.getState().undo(); return false;">
+      <span aria-hidden="true" ><svg class="icon icon-white"><use href="#delete_sign"></use></svg></span>
+      <span class="text">Undo</span>
+    </button>
+    <button runat="server" ID="SaveButton" class="btn btn-success" onclick="consensus.data.getState().save(); return false;">
+      <span aria-hidden="true" ><svg class="icon icon-white"><use href="#save"></use></svg></span>
+      <span class="text">Save</span>
+    </button>
+  </div>
+</asp:Content>
+
+<asp:Content runat="server" ContentPlaceHolderID="Content">
+<section>
+  <asp:ContentPlaceHolder runat="server" ID="TopContent" />
+</section>
+<section class="hidden-print">
+  <asp:ContentPlaceHolder runat="server" ID="BottomContent" />
+</section>
+<section>
+  <asp:ContentPlaceHolder runat="server" ID="Footer" />
+</section>
+</asp:Content>

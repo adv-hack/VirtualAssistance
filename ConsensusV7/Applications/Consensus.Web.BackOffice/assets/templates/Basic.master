@@ -1,0 +1,21 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/assets/templates/Global.Master" AutoEventWireup="true" CodeBehind="Basic.master.cs" Inherits="Consensus.Web.BackOffice.assets.templates.Basic" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+  <body>
+    <form class="advanced-login">
+      <div class="background" style=""></div>
+      <header>
+        <div class="logo">
+          <a runat="server" href="~/">
+            <img runat="server" src="~/assets/plugins/advanced/advanced-horizontal-cmyk.png" />
+          </a>
+        </div>
+      </header>
+      <div class="content">
+        <asp:ContentPlaceHolder runat="server" ID="Content" />
+      </div>
+      <div class="footer">
+        <%= Consensus.ConsensusDomain.Configuration[Consensus.ConsensusDomain.Configuration.DefaultSite].DisplayName %> version <%= Consensus.ConsensusDomain.ProductVersion %>
+      </div>
+    </form>
+  </body>
+</asp:Content>

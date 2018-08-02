@@ -1,0 +1,14 @@
+﻿{
+  "name": "Advanced OpenLMS",
+  "short_name": "OpenLMS",
+  "start_url": "auth/loginpage.aspx",
+  "display": "minimal-ui",  
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#e57200", 
+  "icons": [{
+    "src": "assets/icons/advanced-icon.ico",
+    "sizes": "512x512",
+    "type": "image/x-ico"
+  }]
+}

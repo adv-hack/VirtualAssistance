@@ -1,0 +1,1447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ProjectGuid>{0A232915-A1B3-46D9-B3E5-3B46DEFA1E4F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Consensus</RootNamespace>
+    <AssemblyName>Consensus.Business.Logic</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\documentation\consensus.business.logic.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\documentation\consensus.business.logic.xml</DocumentationFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition="Exists('$(MSBuildToolsPath)\Microsoft.CSharp.targets')" />
+  <ItemGroup>
+    <Compile Include="Activities\Activity.factory.cs" />
+    <Compile Include="Activities\Activity.model.cs" />
+    <Compile Include="Activities\ActivityRoleGrp.factory.cs" />
+    <Compile Include="Activities\ActivityRoleGrp.model.cs" />
+    <Compile Include="Activities\ActivityXref.factory.cs" />
+    <Compile Include="Activities\ActivityXref.model.cs" />
+    <Compile Include="Activities\ActLinkXref.factory.cs" />
+    <Compile Include="Activities\ActLinkXref.model.cs" />
+    <Compile Include="Common\Attachment.factory.cs" />
+    <Compile Include="Common\Attachment.model.cs" />
+    <Compile Include="Common\AttachmentData.factory.cs" />
+    <Compile Include="Common\AttachmentData.model.cs" />
+    <Compile Include="Common\Notes.factory.cs" />
+    <Compile Include="Common\Notes.model.cs" />
+    <Compile Include="Document\LetterTemplate.factory.cs" />
+    <Compile Include="Document\LetterTemplate.model.cs" />
+    <Compile Include="Document\LetterTemplateType.factory.cs" />
+    <Compile Include="Document\LetterTemplateType.model.cs" />
+    <Compile Include="Other\Dataimports.factory.cs" />
+    <Compile Include="Other\Dataimports.model.cs" />
+    <Compile Include="Searches\LocalRestCallFactory.cs" />
+    <Compile Include="Searches\LocalRestCallSerialization.cs" />
+    <Compile Include="Searches\LocalSearchFactory.cs" />
+    <Compile Include="Searches\LocalRestCallParameter.cs" />
+    <Compile Include="Searches\LocalRestCallModel.cs" />
+    <Compile Include="Security\LicenseModuleRestrictionAttribute.cs" />
+    <Compile Include="LocalCollectionOfTTBase.cs" />
+    <Compile Include="Searches\LocalQueryCondition.cs" />
+    <Compile Include="Searches\LocalQueryFactory.cs" />
+    <Compile Include="Searches\LocalQueryJoin.cs" />
+    <Compile Include="Searches\LocalQueryModel.cs" />
+    <Compile Include="Searches\LocalQueryOrder.cs" />
+    <Compile Include="Searches\LocalQuerySelect.cs" />
+    <Compile Include="Searches\LocalQuerySource.cs" />
+    <Compile Include="Searches\LocalSearchesFactoryCollection.cs" />
+    <Compile Include="Searches\LocalSearchModel.cs" />
+    <Compile Include="Searches\LocalSearchParameter.cs" />
+    <ProjectReference Include="..\Consensus.Business\Consensus.Business.csproj">
+      <Project>{954c653f-e34e-414e-8b7d-ad68ca2d3b59}</Project>
+      <Name>Consensus.Business</Name>
+    </ProjectReference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <ProjectReference Include="../Consensus/Consensus.csproj">
+      <Project>{AC2E74FA-9895-4B93-AC2B-1C5FD042A469}</Project>
+      <Name>Consensus</Name>
+    </ProjectReference>
+    <ProjectReference Include="../Consensus.Data/Consensus.Data.csproj">
+      <Project>{730E234F-572C-4031-BD3B-28C3C08EEBD4}</Project>
+      <Name>Consensus.Data</Name>
+    </ProjectReference>
+    <Compile Include="LocalModel.gen.cs">
+      <DependentUpon>LocalModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalModel.cs" />
+    <Compile Include="LocalFactory.cs" />
+    <Compile Include="LocalFactory.gen.cs">
+      <DependentUpon>LocalFactory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalFactoryOfTModel.cs" />
+    <Compile Include="LocalFactoryOfTModel.gen.cs">
+      <DependentUpon>LocalFactoryOfTModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalFactoryOfTModelTRecord.cs" />
+    <Compile Include="LocalFactoryOfTModelTRecord.gen.cs">
+      <DependentUpon>LocalFactoryOfTModelTRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalFactoryOfTModelTRecordTId.cs" />
+    <Compile Include="LocalFactoryOfTModelTRecordTId.gen.cs">
+      <DependentUpon>LocalFactoryOfTModelTRecordTId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalFactoryCollection.cs" />
+    <Compile Include="LocalFactoryCollection.gen.cs">
+      <DependentUpon>LocalFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalProvider.cs" />
+    <Compile Include="LocalProvider.gen.cs">
+      <DependentUpon>LocalProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalModelOfTRecord.gen.cs">
+      <DependentUpon>LocalModelOfTRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalModelOfTRecord.cs" />
+    <Compile Include="LocalModelOfTRecordTId.gen.cs">
+      <DependentUpon>LocalModelOfTRecordTId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalModelOfTRecordTId.cs" />
+    <Compile Include="Common\Code.factory.cs" />
+    <Compile Include="Common\Code.factory.gen.cs">
+      <DependentUpon>Code.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\LocalContactFactoryCollection.cs" />
+    <Compile Include="Learning\LocalLearningFactoryCollection.cs" />
+    <Compile Include="Sales\LocalSalesFactoryCollection.cs" />
+    <Compile Include="Document\LocalDocumentFactoryCollection.cs" />
+    <Compile Include="Finance\LocalFinanceFactoryCollection.cs" />
+    <Compile Include="Common\LocalCommonFactoryCollection.cs" />
+    <Compile Include="Contact\LocalContactFactoryCollection.gen.cs">
+      <DependentUpon>LocalContactFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\LocalLearningFactoryCollection.gen.cs">
+      <DependentUpon>LocalLearningFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\LocalSalesFactoryCollection.gen.cs">
+      <DependentUpon>LocalSalesFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\LocalDocumentFactoryCollection.gen.cs">
+      <DependentUpon>LocalDocumentFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\LocalFinanceFactoryCollection.gen.cs">
+      <DependentUpon>LocalFinanceFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\LocalCommonFactoryCollection.gen.cs">
+      <DependentUpon>LocalCommonFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Person.factory.cs" />
+    <Compile Include="Contact\Role.factory.cs" />
+    <Compile Include="Contact\Organisation.factory.cs" />
+    <Compile Include="Contact\OrganisationAddress.factory.cs" />
+    <Compile Include="Contact\Address.factory.cs" />
+    <Compile Include="Learning\Product.factory.cs" />
+    <Compile Include="Learning\BillOfMaterial.factory.cs" />
+    <Compile Include="Learning\Template.factory.cs" />
+    <Compile Include="Learning\ProductCourse.factory.cs" />
+    <Compile Include="Learning\ProductMerchandise.factory.cs" />
+    <Compile Include="Learning\TemplateResource.factory.cs" />
+    <Compile Include="Learning\TemplateRoom.factory.cs" />
+    <Compile Include="Learning\TemplateTrainer.factory.cs" />
+    <Compile Include="Learning\Session.factory.cs" />
+    <Compile Include="Sales\Opportunity.factory.cs" />
+    <Compile Include="Sales\OpportunityXref.factory.cs" />
+    <Compile Include="Document\Pack.factory.cs" />
+    <Compile Include="Document\PackProduct.factory.cs" />
+    <Compile Include="Finance\Account.factory.cs" />
+    <Compile Include="Finance\AccountXref.factory.cs" />
+    <Compile Include="Finance\Payment.factory.cs" />
+    <Compile Include="Finance\PriceList.factory.cs" />
+    <Compile Include="Finance\Price.factory.cs" />
+    <Compile Include="Common\CodeHeader.factory.cs" />
+    <Compile Include="Common\Profile.factory.cs" />
+    <Compile Include="Common\SellingCompany.factory.cs" />
+    <Compile Include="Common\ProfileOrganisation.factory.cs" />
+    <Compile Include="Common\ProfilePerson.factory.cs" />
+    <Compile Include="Common\ProfileProduct.factory.cs" />
+    <Compile Include="Contact\Person.factory.gen.cs">
+      <DependentUpon>Person.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Role.factory.gen.cs">
+      <DependentUpon>Role.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Organisation.factory.gen.cs">
+      <DependentUpon>Organisation.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\OrganisationAddress.factory.gen.cs">
+      <DependentUpon>OrganisationAddress.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Address.factory.gen.cs">
+      <DependentUpon>Address.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Product.factory.gen.cs">
+      <DependentUpon>Product.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\BillOfMaterial.factory.gen.cs">
+      <DependentUpon>BillOfMaterial.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Template.factory.gen.cs">
+      <DependentUpon>Template.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\ProductCourse.factory.gen.cs">
+      <DependentUpon>ProductCourse.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\ProductMerchandise.factory.gen.cs">
+      <DependentUpon>ProductMerchandise.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\TemplateResource.factory.gen.cs">
+      <DependentUpon>TemplateResource.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\TemplateRoom.factory.gen.cs">
+      <DependentUpon>TemplateRoom.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\TemplateTrainer.factory.gen.cs">
+      <DependentUpon>TemplateTrainer.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Session.factory.gen.cs">
+      <DependentUpon>Session.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Opportunity.factory.gen.cs">
+      <DependentUpon>Opportunity.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\OpportunityXref.factory.gen.cs">
+      <DependentUpon>OpportunityXref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Pack.factory.gen.cs">
+      <DependentUpon>Pack.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\PackProduct.factory.gen.cs">
+      <DependentUpon>PackProduct.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Account.factory.gen.cs">
+      <DependentUpon>Account.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\AccountXref.factory.gen.cs">
+      <DependentUpon>AccountXref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Payment.factory.gen.cs">
+      <DependentUpon>Payment.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PriceList.factory.gen.cs">
+      <DependentUpon>PriceList.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Price.factory.gen.cs">
+      <DependentUpon>Price.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CodeHeader.factory.gen.cs">
+      <DependentUpon>CodeHeader.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Profile.factory.gen.cs">
+      <DependentUpon>Profile.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SellingCompany.factory.gen.cs">
+      <DependentUpon>SellingCompany.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfileOrganisation.factory.gen.cs">
+      <DependentUpon>ProfileOrganisation.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfilePerson.factory.gen.cs">
+      <DependentUpon>ProfilePerson.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfileProduct.factory.gen.cs">
+      <DependentUpon>ProfileProduct.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Person.model.cs" />
+    <Compile Include="Contact\Role.model.cs" />
+    <Compile Include="Contact\Organisation.model.cs" />
+    <Compile Include="Contact\OrganisationAddress.model.cs" />
+    <Compile Include="Contact\Address.model.cs" />
+    <Compile Include="Learning\Product.model.cs" />
+    <Compile Include="Learning\BillOfMaterial.model.cs" />
+    <Compile Include="Learning\Template.model.cs" />
+    <Compile Include="Learning\ProductCourse.model.cs" />
+    <Compile Include="Learning\ProductMerchandise.model.cs" />
+    <Compile Include="Learning\TemplateResource.model.cs" />
+    <Compile Include="Learning\TemplateRoom.model.cs" />
+    <Compile Include="Learning\TemplateTrainer.model.cs" />
+    <Compile Include="Learning\Session.model.cs" />
+    <Compile Include="Sales\Opportunity.model.cs" />
+    <Compile Include="Sales\OpportunityXref.model.cs" />
+    <Compile Include="Document\Pack.model.cs" />
+    <Compile Include="Document\PackProduct.model.cs" />
+    <Compile Include="Finance\Account.model.cs" />
+    <Compile Include="Finance\AccountXref.model.cs" />
+    <Compile Include="Finance\Payment.model.cs" />
+    <Compile Include="Finance\PriceList.model.cs" />
+    <Compile Include="Finance\Price.model.cs" />
+    <Compile Include="Common\Code.model.cs" />
+    <Compile Include="Common\CodeHeader.model.cs" />
+    <Compile Include="Common\Profile.model.cs" />
+    <Compile Include="Common\SellingCompany.model.cs" />
+    <Compile Include="Common\ProfileOrganisation.model.cs" />
+    <Compile Include="Common\ProfilePerson.model.cs" />
+    <Compile Include="Common\ProfileProduct.model.cs" />
+    <Compile Include="Contact\Person.model.gen.cs">
+      <DependentUpon>Person.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Role.model.gen.cs">
+      <DependentUpon>Role.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Organisation.model.gen.cs">
+      <DependentUpon>Organisation.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\OrganisationAddress.model.gen.cs">
+      <DependentUpon>OrganisationAddress.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Address.model.gen.cs">
+      <DependentUpon>Address.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Product.model.gen.cs">
+      <DependentUpon>Product.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\BillOfMaterial.model.gen.cs">
+      <DependentUpon>BillOfMaterial.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Template.model.gen.cs">
+      <DependentUpon>Template.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\ProductCourse.model.gen.cs">
+      <DependentUpon>ProductCourse.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\ProductMerchandise.model.gen.cs">
+      <DependentUpon>ProductMerchandise.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\TemplateResource.model.gen.cs">
+      <DependentUpon>TemplateResource.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\TemplateRoom.model.gen.cs">
+      <DependentUpon>TemplateRoom.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\TemplateTrainer.model.gen.cs">
+      <DependentUpon>TemplateTrainer.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Session.model.gen.cs">
+      <DependentUpon>Session.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\Opportunity.model.gen.cs">
+      <DependentUpon>Opportunity.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\OpportunityXref.model.gen.cs">
+      <DependentUpon>OpportunityXref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Pack.model.gen.cs">
+      <DependentUpon>Pack.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\PackProduct.model.gen.cs">
+      <DependentUpon>PackProduct.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Account.model.gen.cs">
+      <DependentUpon>Account.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\AccountXref.model.gen.cs">
+      <DependentUpon>AccountXref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Payment.model.gen.cs">
+      <DependentUpon>Payment.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PriceList.model.gen.cs">
+      <DependentUpon>PriceList.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Price.model.gen.cs">
+      <DependentUpon>Price.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Code.model.gen.cs">
+      <DependentUpon>Code.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CodeHeader.model.gen.cs">
+      <DependentUpon>CodeHeader.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Profile.model.gen.cs">
+      <DependentUpon>Profile.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SellingCompany.model.gen.cs">
+      <DependentUpon>SellingCompany.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfileOrganisation.model.gen.cs">
+      <DependentUpon>ProfileOrganisation.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfilePerson.model.gen.cs">
+      <DependentUpon>ProfilePerson.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfileProduct.model.gen.cs">
+      <DependentUpon>ProfileProduct.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\LocalActivitiesFactoryCollection.cs" />
+    <Compile Include="Activities\LocalActivitiesFactoryCollection.gen.cs">
+      <DependentUpon>LocalActivitiesFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\Activity.factory.gen.cs">
+      <DependentUpon>Activity.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\Activity.model.gen.cs">
+      <DependentUpon>Activity.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Country.factory.cs" />
+    <Compile Include="Contact\Country.factory.gen.cs">
+      <DependentUpon>Country.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Country.model.cs" />
+    <Compile Include="Contact\Country.model.gen.cs">
+      <DependentUpon>Country.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\CustomerPack.factory.cs" />
+    <Compile Include="Contact\CustomerPack.factory.gen.cs">
+      <DependentUpon>CustomerPack.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\CustomerPack.model.cs" />
+    <Compile Include="Contact\CustomerPack.model.gen.cs">
+      <DependentUpon>CustomerPack.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\LicenseKey.cs" />
+    <Compile Include="Security\UserPermissionAttribute.cs" />
+    <Compile Include="UserInterface\LocalUserInterfaceFactoryCollection.cs" />
+    <Compile Include="UserInterface\LocalUserInterfaceFactoryCollection.gen.cs">
+      <DependentUpon>LocalUserInterfaceFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SystemMenu.factory.cs" />
+    <Compile Include="UserInterface\SystemMenu.factory.gen.cs">
+      <DependentUpon>SystemMenu.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SystemMenu.model.cs" />
+    <Compile Include="UserInterface\SystemMenu.model.gen.cs">
+      <DependentUpon>SystemMenu.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Associate.factory.cs" />
+    <Compile Include="Contact\Associate.factory.gen.cs">
+      <DependentUpon>Associate.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Associate.model.cs" />
+    <Compile Include="Contact\Associate.model.gen.cs">
+      <DependentUpon>Associate.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\OrganisationDepartment.factory.cs" />
+    <Compile Include="Contact\OrganisationDepartment.factory.gen.cs">
+      <DependentUpon>OrganisationDepartment.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\OrganisationDepartment.model.cs" />
+    <Compile Include="Contact\OrganisationDepartment.model.gen.cs">
+      <DependentUpon>OrganisationDepartment.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\LocalSecurityFactoryCollection.cs" />
+    <Compile Include="Security\LocalSecurityFactoryCollection.gen.cs">
+      <DependentUpon>LocalSecurityFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Invoice.factory.cs" />
+    <Compile Include="Finance\PaymentCheque.factory.cs" />
+    <Compile Include="Finance\PaymentCard.factory.cs" />
+    <Compile Include="Finance\PaymentBacs.factory.cs" />
+    <Compile Include="Finance\Invoice.factory.gen.cs">
+      <DependentUpon>Invoice.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PaymentCheque.factory.gen.cs">
+      <DependentUpon>PaymentCheque.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PaymentCard.factory.gen.cs">
+      <DependentUpon>PaymentCard.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PaymentBacs.factory.gen.cs">
+      <DependentUpon>PaymentBacs.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Invoice.model.cs" />
+    <Compile Include="Finance\PaymentCheque.model.cs" />
+    <Compile Include="Finance\PaymentCard.model.cs" />
+    <Compile Include="Finance\PaymentBacs.model.cs" />
+    <Compile Include="Finance\Invoice.model.gen.cs">
+      <DependentUpon>Invoice.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PaymentCheque.model.gen.cs">
+      <DependentUpon>PaymentCheque.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PaymentCard.model.gen.cs">
+      <DependentUpon>PaymentCard.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PaymentBacs.model.gen.cs">
+      <DependentUpon>PaymentBacs.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\LocalMembershipFactoryCollection.cs" />
+    <Compile Include="Membership\LocalMembershipFactoryCollection.gen.cs">
+      <DependentUpon>LocalMembershipFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\Membership.factory.cs" />
+    <Compile Include="Membership\MemberPeriod.factory.cs" />
+    <Compile Include="Membership\Membership.factory.gen.cs">
+      <DependentUpon>Membership.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\MemberPeriod.factory.gen.cs">
+      <DependentUpon>MemberPeriod.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\Membership.model.cs" />
+    <Compile Include="Membership\MemberPeriod.model.cs" />
+    <Compile Include="Membership\Membership.model.gen.cs">
+      <DependentUpon>Membership.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\MemberPeriod.model.gen.cs">
+      <DependentUpon>MemberPeriod.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Location.factory.cs" />
+    <Compile Include="Learning\Event.factory.cs" />
+    <Compile Include="Contact\Location.factory.gen.cs">
+      <DependentUpon>Location.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Event.factory.gen.cs">
+      <DependentUpon>Event.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Location.model.cs" />
+    <Compile Include="Learning\Event.model.cs" />
+    <Compile Include="Contact\Location.model.gen.cs">
+      <DependentUpon>Location.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Event.model.gen.cs">
+      <DependentUpon>Event.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\LetterTemplate.factory.gen.cs">
+      <DependentUpon>LetterTemplate.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\LetterTemplateType.factory.gen.cs">
+      <DependentUpon>LetterTemplateType.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\LetterTemplate.model.gen.cs">
+      <DependentUpon>LetterTemplate.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\LetterTemplateType.model.gen.cs">
+      <DependentUpon>LetterTemplateType.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\InvoiceLine.factory.cs" />
+    <Compile Include="Finance\InvoiceLine.factory.gen.cs">
+      <DependentUpon>InvoiceLine.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\InvoiceLine.model.cs" />
+    <Compile Include="Finance\InvoiceLine.model.gen.cs">
+      <DependentUpon>InvoiceLine.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Communications_Xref.factory.cs" />
+    <Compile Include="Contact\Communications.factory.cs" />
+    <Compile Include="Contact\Communications_Xref.factory.gen.cs">
+      <DependentUpon>Communications_Xref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Communications.factory.gen.cs">
+      <DependentUpon>Communications.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Communications_Xref.model.cs" />
+    <Compile Include="Contact\Communications.model.cs" />
+    <Compile Include="Contact\Communications_Xref.model.gen.cs">
+      <DependentUpon>Communications_Xref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Communications.model.gen.cs">
+      <DependentUpon>Communications.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\CommunicationsRole.factory.cs" />
+    <Compile Include="Contact\CommunicationsRole.factory.gen.cs">
+      <DependentUpon>CommunicationsRole.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\CommunicationsRole.model.cs" />
+    <Compile Include="Contact\CommunicationsRole.model.gen.cs">
+      <DependentUpon>CommunicationsRole.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\CostCode.factory.cs" />
+    <Compile Include="Finance\CostCode.factory.gen.cs">
+      <DependentUpon>CostCode.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\CostCode.model.cs" />
+    <Compile Include="Finance\CostCode.model.gen.cs">
+      <DependentUpon>CostCode.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Aka.factory.cs" />
+    <Compile Include="Contact\Aka.factory.gen.cs">
+      <DependentUpon>Aka.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Aka.model.cs" />
+    <Compile Include="Contact\Aka.model.gen.cs">
+      <DependentUpon>Aka.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Giftaid.factory.cs" />
+    <Compile Include="Contact\Giftaid.factory.gen.cs">
+      <DependentUpon>Giftaid.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Giftaid.model.cs" />
+    <Compile Include="Contact\Giftaid.model.gen.cs">
+      <DependentUpon>Giftaid.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\BookingTerms.factory.cs" />
+    <Compile Include="Finance\Payscheduleheader.factory.cs" />
+    <Compile Include="Finance\BookingTerms.factory.gen.cs">
+      <DependentUpon>BookingTerms.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Payscheduleheader.factory.gen.cs">
+      <DependentUpon>Payscheduleheader.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\BookingTerms.model.cs" />
+    <Compile Include="Finance\Payscheduleheader.model.cs" />
+    <Compile Include="Finance\BookingTerms.model.gen.cs">
+      <DependentUpon>BookingTerms.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Payscheduleheader.model.gen.cs">
+      <DependentUpon>Payscheduleheader.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\LocalMarketingFactoryCollection.cs" />
+    <Compile Include="Marketing\LocalMarketingFactoryCollection.gen.cs">
+      <DependentUpon>LocalMarketingFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\Campaign.factory.cs" />
+    <Compile Include="Marketing\Campaign.factory.gen.cs">
+      <DependentUpon>Campaign.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\Campaign.model.cs" />
+    <Compile Include="Marketing\Campaign.model.gen.cs">
+      <DependentUpon>Campaign.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logistics\LocalLogisticsFactoryCollection.cs" />
+    <Compile Include="Logistics\LocalLogisticsFactoryCollection.gen.cs">
+      <DependentUpon>LocalLogisticsFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logistics\Project.factory.cs" />
+    <Compile Include="Logistics\Project.factory.gen.cs">
+      <DependentUpon>Project.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logistics\Project.model.cs" />
+    <Compile Include="Logistics\Project.model.gen.cs">
+      <DependentUpon>Project.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\RelatedProduct.factory.cs" />
+    <Compile Include="Sales\SalesChannel.factory.cs" />
+    <Compile Include="Learning\RelatedProduct.factory.gen.cs">
+      <DependentUpon>RelatedProduct.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SalesChannel.factory.gen.cs">
+      <DependentUpon>SalesChannel.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\RelatedProduct.model.cs" />
+    <Compile Include="Sales\SalesChannel.model.cs" />
+    <Compile Include="Learning\RelatedProduct.model.gen.cs">
+      <DependentUpon>RelatedProduct.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sales\SalesChannel.model.gen.cs">
+      <DependentUpon>SalesChannel.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\ProductEvent.factory.cs" />
+    <Compile Include="Learning\ProductEvent.factory.gen.cs">
+      <DependentUpon>ProductEvent.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\ProductEvent.model.cs" />
+    <Compile Include="Learning\ProductEvent.model.gen.cs">
+      <DependentUpon>ProductEvent.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\Promotion.factory.cs" />
+    <Compile Include="Marketing\PromotionMaster.factory.cs" />
+    <Compile Include="Marketing\Promotion.factory.gen.cs">
+      <DependentUpon>Promotion.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\PromotionMaster.factory.gen.cs">
+      <DependentUpon>PromotionMaster.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\Promotion.model.cs" />
+    <Compile Include="Marketing\PromotionMaster.model.cs" />
+    <Compile Include="Marketing\Promotion.model.gen.cs">
+      <DependentUpon>Promotion.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\PromotionMaster.model.gen.cs">
+      <DependentUpon>PromotionMaster.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\ActivityXref.factory.gen.cs">
+      <DependentUpon>ActivityXref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\ActivityXref.model.gen.cs">
+      <DependentUpon>ActivityXref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\ActLinkXref.factory.gen.cs">
+      <DependentUpon>ActLinkXref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\ActLinkXref.model.gen.cs">
+      <DependentUpon>ActLinkXref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\LocalSearchFactoryCollection.cs" />
+    <Compile Include="Search\LocalSearchFactoryCollection.gen.cs">
+      <DependentUpon>LocalSearchFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SearchType.factory.cs" />
+    <Compile Include="Search\SearchColumn.factory.cs" />
+    <Compile Include="Search\SearchParameter.factory.cs" />
+    <Compile Include="Search\SearchType.factory.gen.cs">
+      <DependentUpon>SearchType.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SearchColumn.factory.gen.cs">
+      <DependentUpon>SearchColumn.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SearchParameter.factory.gen.cs">
+      <DependentUpon>SearchParameter.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SearchType.model.cs" />
+    <Compile Include="Search\SearchColumn.model.cs" />
+    <Compile Include="Search\SearchParameter.model.cs" />
+    <Compile Include="Search\SearchType.model.gen.cs">
+      <DependentUpon>SearchType.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SearchColumn.model.gen.cs">
+      <DependentUpon>SearchColumn.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SearchParameter.model.gen.cs">
+      <DependentUpon>SearchParameter.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\MemberLocation.factory.cs" />
+    <Compile Include="Membership\MemberLocation.factory.gen.cs">
+      <DependentUpon>MemberLocation.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\MemberLocation.model.cs" />
+    <Compile Include="Membership\MemberLocation.model.gen.cs">
+      <DependentUpon>MemberLocation.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Booking.factory.cs" />
+    <Compile Include="Learning\Element.factory.cs" />
+    <Compile Include="Learning\Booking.factory.gen.cs">
+      <DependentUpon>Booking.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Element.factory.gen.cs">
+      <DependentUpon>Element.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Booking.model.cs" />
+    <Compile Include="Learning\Element.model.cs" />
+    <Compile Include="Learning\Booking.model.gen.cs">
+      <DependentUpon>Booking.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Element.model.gen.cs">
+      <DependentUpon>Element.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Learner.factory.cs" />
+    <Compile Include="Learning\Learner.factory.gen.cs">
+      <DependentUpon>Learner.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\Learner.model.cs" />
+    <Compile Include="Learning\Learner.model.gen.cs">
+      <DependentUpon>Learner.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SessionXref.factory.cs" />
+    <Compile Include="Learning\SessionXref.factory.gen.cs">
+      <DependentUpon>SessionXref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\SessionXref.model.cs" />
+    <Compile Include="Learning\SessionXref.model.gen.cs">
+      <DependentUpon>SessionXref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\License.factory.cs" />
+    <Compile Include="Security\LicenseLimit.factory.cs" />
+    <Compile Include="Security\LicenseModule.factory.cs" />
+    <Compile Include="Security\License.factory.gen.cs">
+      <DependentUpon>License.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\LicenseLimit.factory.gen.cs">
+      <DependentUpon>LicenseLimit.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\LicenseModule.factory.gen.cs">
+      <DependentUpon>LicenseModule.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\License.model.cs" />
+    <Compile Include="Security\LicenseLimit.model.cs" />
+    <Compile Include="Security\LicenseModule.model.cs" />
+    <Compile Include="Security\License.model.gen.cs">
+      <DependentUpon>License.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\LicenseLimit.model.gen.cs">
+      <DependentUpon>LicenseLimit.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\LicenseModule.model.gen.cs">
+      <DependentUpon>LicenseModule.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SystemMenuXRef.factory.cs" />
+    <Compile Include="UserInterface\SystemMenuXRef.factory.gen.cs">
+      <DependentUpon>SystemMenuXRef.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\SystemMenuXRef.model.cs" />
+    <Compile Include="UserInterface\SystemMenuXRef.model.gen.cs">
+      <DependentUpon>SystemMenuXRef.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Notes.factory.gen.cs">
+      <DependentUpon>Notes.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Notes.model.gen.cs">
+      <DependentUpon>Notes.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqFilterField.factory.cs" />
+    <Compile Include="Marketing\SaqParameter.factory.cs" />
+    <Compile Include="Marketing\SaqQuery.factory.cs" />
+    <Compile Include="Marketing\SaqQueryStep.factory.cs" />
+    <Compile Include="Marketing\SaqFilterField.factory.gen.cs">
+      <DependentUpon>SaqFilterField.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqParameter.factory.gen.cs">
+      <DependentUpon>SaqParameter.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqQuery.factory.gen.cs">
+      <DependentUpon>SaqQuery.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqQueryStep.factory.gen.cs">
+      <DependentUpon>SaqQueryStep.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqFilterField.model.cs" />
+    <Compile Include="Marketing\SaqParameter.model.cs" />
+    <Compile Include="Marketing\SaqQuery.model.cs" />
+    <Compile Include="Marketing\SaqQueryStep.model.cs" />
+    <Compile Include="Marketing\SaqFilterField.model.gen.cs">
+      <DependentUpon>SaqFilterField.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqParameter.model.gen.cs">
+      <DependentUpon>SaqParameter.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqQuery.model.gen.cs">
+      <DependentUpon>SaqQuery.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqQueryStep.model.gen.cs">
+      <DependentUpon>SaqQueryStep.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqStep.factory.cs" />
+    <Compile Include="Marketing\SaqStep.factory.gen.cs">
+      <DependentUpon>SaqStep.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqStep.model.cs" />
+    <Compile Include="Marketing\SaqStep.model.gen.cs">
+      <DependentUpon>SaqStep.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserAccount.factory.cs" />
+    <Compile Include="Security\UserCredential.factory.cs" />
+    <Compile Include="Security\UserGroup.factory.cs" />
+    <Compile Include="Security\UserGroupMember.factory.cs" />
+    <Compile Include="Security\UserPermission.factory.cs" />
+    <Compile Include="Security\UserSession.factory.cs" />
+    <Compile Include="Security\UserAccount.factory.gen.cs">
+      <DependentUpon>UserAccount.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserCredential.factory.gen.cs">
+      <DependentUpon>UserCredential.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserGroup.factory.gen.cs">
+      <DependentUpon>UserGroup.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserGroupMember.factory.gen.cs">
+      <DependentUpon>UserGroupMember.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserPermission.factory.gen.cs">
+      <DependentUpon>UserPermission.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserSession.factory.gen.cs">
+      <DependentUpon>UserSession.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserAccount.model.cs" />
+    <Compile Include="Security\UserCredential.model.cs" />
+    <Compile Include="Security\UserGroup.model.cs" />
+    <Compile Include="Security\UserGroupMember.model.cs" />
+    <Compile Include="Security\UserPermission.model.cs" />
+    <Compile Include="Security\UserSession.model.cs" />
+    <Compile Include="Security\UserAccount.model.gen.cs">
+      <DependentUpon>UserAccount.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserCredential.model.gen.cs">
+      <DependentUpon>UserCredential.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserGroup.model.gen.cs">
+      <DependentUpon>UserGroup.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserGroupMember.model.gen.cs">
+      <DependentUpon>UserGroupMember.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserPermission.model.gen.cs">
+      <DependentUpon>UserPermission.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserSession.model.gen.cs">
+      <DependentUpon>UserSession.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserPrincipal.factory.cs" />
+    <Compile Include="Security\UserPrincipal.factory.gen.cs">
+      <DependentUpon>UserPrincipal.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Security\UserPrincipal.model.cs" />
+    <Compile Include="Security\UserPrincipal.model.gen.cs">
+      <DependentUpon>UserPrincipal.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\CourseSelectGroups.factory.cs" />
+    <Compile Include="Learning\CourseSelectGroups.factory.gen.cs">
+      <DependentUpon>CourseSelectGroups.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\CourseSelectGroups.model.cs" />
+    <Compile Include="Learning\CourseSelectGroups.model.gen.cs">
+      <DependentUpon>CourseSelectGroups.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\EventProduct.factory.cs" />
+    <Compile Include="Learning\EventProduct.factory.gen.cs">
+      <DependentUpon>EventProduct.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\EventProduct.model.cs" />
+    <Compile Include="Learning\EventProduct.model.gen.cs">
+      <DependentUpon>EventProduct.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\LocalOtherFactoryCollection.cs" />
+    <Compile Include="Other\LocalOtherFactoryCollection.gen.cs">
+      <DependentUpon>LocalOtherFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\WorkflowRecType.factory.cs" />
+    <Compile Include="Other\Workflow.factory.cs" />
+    <Compile Include="Other\WorkflowRecType.factory.gen.cs">
+      <DependentUpon>WorkflowRecType.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\Workflow.factory.gen.cs">
+      <DependentUpon>Workflow.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\WorkflowRecType.model.cs" />
+    <Compile Include="Other\Workflow.model.cs" />
+    <Compile Include="Other\WorkflowRecType.model.gen.cs">
+      <DependentUpon>WorkflowRecType.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\Workflow.model.gen.cs">
+      <DependentUpon>Workflow.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Currency.factory.cs" />
+    <Compile Include="Finance\Currency.factory.gen.cs">
+      <DependentUpon>Currency.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Currency.model.cs" />
+    <Compile Include="Finance\Currency.model.gen.cs">
+      <DependentUpon>Currency.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SellingCompanyConfig.factory.cs" />
+    <Compile Include="Common\SellingCompanyConfig.factory.gen.cs">
+      <DependentUpon>SellingCompanyConfig.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SellingCompanyConfig.model.cs" />
+    <Compile Include="Common\SellingCompanyConfig.model.gen.cs">
+      <DependentUpon>SellingCompanyConfig.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqQueue.factory.cs" />
+    <Compile Include="Marketing\MailingList.factory.cs" />
+    <Compile Include="Marketing\SaqQueue.factory.gen.cs">
+      <DependentUpon>SaqQueue.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\MailingList.factory.gen.cs">
+      <DependentUpon>MailingList.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\SaqQueue.model.cs" />
+    <Compile Include="Marketing\MailingList.model.cs" />
+    <Compile Include="Marketing\SaqQueue.model.gen.cs">
+      <DependentUpon>SaqQueue.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\MailingList.model.gen.cs">
+      <DependentUpon>MailingList.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\ProductMembership.factory.cs" />
+    <Compile Include="Learning\ProductMembership.factory.gen.cs">
+      <DependentUpon>ProductMembership.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\ProductMembership.model.cs" />
+    <Compile Include="Learning\ProductMembership.model.gen.cs">
+      <DependentUpon>ProductMembership.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\DirectDebit.factory.cs" />
+    <Compile Include="Finance\DirectDebit.factory.gen.cs">
+      <DependentUpon>DirectDebit.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\DirectDebit.model.cs" />
+    <Compile Include="Finance\DirectDebit.model.gen.cs">
+      <DependentUpon>DirectDebit.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\MailingListMember.factory.cs" />
+    <Compile Include="Marketing\MailingListMember.factory.gen.cs">
+      <DependentUpon>MailingListMember.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marketing\MailingListMember.model.cs" />
+    <Compile Include="Marketing\MailingListMember.model.gen.cs">
+      <DependentUpon>MailingListMember.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\LocalPortalFactoryCollection.cs" />
+    <Compile Include="Portal\LocalPortalFactoryCollection.gen.cs">
+      <DependentUpon>LocalPortalFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalUser.factory.cs" />
+    <Compile Include="Portal\PortalSetup.factory.cs" />
+    <Compile Include="Portal\PortalUserSite.factory.cs" />
+    <Compile Include="Portal\PortalRole.factory.cs" />
+    <Compile Include="Portal\PortalUserRole.factory.cs" />
+    <Compile Include="Portal\PortalUser.factory.gen.cs">
+      <DependentUpon>PortalUser.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalSetup.factory.gen.cs">
+      <DependentUpon>PortalSetup.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalUserSite.factory.gen.cs">
+      <DependentUpon>PortalUserSite.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalRole.factory.gen.cs">
+      <DependentUpon>PortalRole.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalUserRole.factory.gen.cs">
+      <DependentUpon>PortalUserRole.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalUser.model.cs" />
+    <Compile Include="Portal\PortalSetup.model.cs" />
+    <Compile Include="Portal\PortalUserSite.model.cs" />
+    <Compile Include="Portal\PortalRole.model.cs" />
+    <Compile Include="Portal\PortalUserRole.model.cs" />
+    <Compile Include="Portal\PortalUser.model.gen.cs">
+      <DependentUpon>PortalUser.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalSetup.model.gen.cs">
+      <DependentUpon>PortalSetup.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalUserSite.model.gen.cs">
+      <DependentUpon>PortalUserSite.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalRole.model.gen.cs">
+      <DependentUpon>PortalRole.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PortalUserRole.model.gen.cs">
+      <DependentUpon>PortalUserRole.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenObject.factory.cs" />
+    <Compile Include="UserInterface\ScreenObjectDisplay.factory.cs" />
+    <Compile Include="UserInterface\ScreenObjectEntry.factory.cs" />
+    <Compile Include="UserInterface\ScreenObject.factory.gen.cs">
+      <DependentUpon>ScreenObject.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenObjectDisplay.factory.gen.cs">
+      <DependentUpon>ScreenObjectDisplay.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenObjectEntry.factory.gen.cs">
+      <DependentUpon>ScreenObjectEntry.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenObject.model.cs" />
+    <Compile Include="UserInterface\ScreenObjectDisplay.model.cs" />
+    <Compile Include="UserInterface\ScreenObjectEntry.model.cs" />
+    <Compile Include="UserInterface\ScreenObject.model.gen.cs">
+      <DependentUpon>ScreenObject.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenObjectDisplay.model.gen.cs">
+      <DependentUpon>ScreenObjectDisplay.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenObjectEntry.model.gen.cs">
+      <DependentUpon>ScreenObjectEntry.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\OutputQueue.factory.cs" />
+    <Compile Include="Document\OutputQueue.factory.gen.cs">
+      <DependentUpon>OutputQueue.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\OutputQueue.model.cs" />
+    <Compile Include="Document\OutputQueue.model.gen.cs">
+      <DependentUpon>OutputQueue.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\C4text.factory.cs" />
+    <Compile Include="Activities\Helpdesk.factory.cs" />
+    <Compile Include="Activities\C4text.factory.gen.cs">
+      <DependentUpon>C4text.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\Helpdesk.factory.gen.cs">
+      <DependentUpon>Helpdesk.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\C4text.model.cs" />
+    <Compile Include="Activities\Helpdesk.model.cs" />
+    <Compile Include="Activities\C4text.model.gen.cs">
+      <DependentUpon>C4text.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\Helpdesk.model.gen.cs">
+      <DependentUpon>Helpdesk.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\QuickAccessLink.factory.cs" />
+    <Compile Include="UserInterface\HistoryLink.factory.cs" />
+    <Compile Include="UserInterface\QuickAccessLink.factory.gen.cs">
+      <DependentUpon>QuickAccessLink.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\HistoryLink.factory.gen.cs">
+      <DependentUpon>HistoryLink.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\QuickAccessLink.model.cs" />
+    <Compile Include="UserInterface\HistoryLink.model.cs" />
+    <Compile Include="UserInterface\QuickAccessLink.model.gen.cs">
+      <DependentUpon>QuickAccessLink.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\HistoryLink.model.gen.cs">
+      <DependentUpon>HistoryLink.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\Complaint.factory.cs" />
+    <Compile Include="Activities\Complaint.factory.gen.cs">
+      <DependentUpon>Complaint.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\Complaint.model.cs" />
+    <Compile Include="Activities\Complaint.model.gen.cs">
+      <DependentUpon>Complaint.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\ProdSelectGroup.factory.cs" />
+    <Compile Include="Learning\ProdSelectGroup.factory.gen.cs">
+      <DependentUpon>ProdSelectGroup.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Learning\ProdSelectGroup.model.cs" />
+    <Compile Include="Learning\ProdSelectGroup.model.gen.cs">
+      <DependentUpon>ProdSelectGroup.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenObjectColumn.factory.cs" />
+    <Compile Include="UserInterface\ScreenObjectColumn.factory.gen.cs">
+      <DependentUpon>ScreenObjectColumn.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenObjectColumn.model.cs" />
+    <Compile Include="UserInterface\ScreenObjectColumn.model.gen.cs">
+      <DependentUpon>ScreenObjectColumn.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PayAllocation.factory.cs" />
+    <Compile Include="Finance\PayAllocation.factory.gen.cs">
+      <DependentUpon>PayAllocation.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PayAllocation.model.cs" />
+    <Compile Include="Finance\PayAllocation.model.gen.cs">
+      <DependentUpon>PayAllocation.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfileCourses.factory.cs" />
+    <Compile Include="Common\ProfileCourses.factory.gen.cs">
+      <DependentUpon>ProfileCourses.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfileCourses.model.cs" />
+    <Compile Include="Common\ProfileCourses.model.gen.cs">
+      <DependentUpon>ProfileCourses.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\ICalMessage.factory.cs" />
+    <Compile Include="Document\ICalMessageType.factory.cs" />
+    <Compile Include="Document\ICalMessage.factory.gen.cs">
+      <DependentUpon>ICalMessage.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\ICalMessageType.factory.gen.cs">
+      <DependentUpon>ICalMessageType.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\ICalMessage.model.cs" />
+    <Compile Include="Document\ICalMessageType.model.cs" />
+    <Compile Include="Document\ICalMessage.model.gen.cs">
+      <DependentUpon>ICalMessage.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\ICalMessageType.model.gen.cs">
+      <DependentUpon>ICalMessageType.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Packtype.factory.cs" />
+    <Compile Include="Document\Packtype.factory.gen.cs">
+      <DependentUpon>Packtype.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Packtype.model.cs" />
+    <Compile Include="Document\Packtype.model.gen.cs">
+      <DependentUpon>Packtype.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SmsMessage.factory.cs" />
+    <Compile Include="Document\SmsType.factory.cs" />
+    <Compile Include="Document\SmsMessage.factory.gen.cs">
+      <DependentUpon>SmsMessage.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SmsType.factory.gen.cs">
+      <DependentUpon>SmsType.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SmsMessage.model.cs" />
+    <Compile Include="Document\SmsType.model.cs" />
+    <Compile Include="Document\SmsMessage.model.gen.cs">
+      <DependentUpon>SmsMessage.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\SmsType.model.gen.cs">
+      <DependentUpon>SmsType.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\PackXref.factory.cs" />
+    <Compile Include="Document\Literature.factory.cs" />
+    <Compile Include="Document\PackXref.factory.gen.cs">
+      <DependentUpon>PackXref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Literature.factory.gen.cs">
+      <DependentUpon>Literature.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\PackXref.model.cs" />
+    <Compile Include="Document\Literature.model.cs" />
+    <Compile Include="Document\PackXref.model.gen.cs">
+      <DependentUpon>PackXref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Literature.model.gen.cs">
+      <DependentUpon>Literature.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PrepayAccount.factory.cs" />
+    <Compile Include="Finance\PrepayAccount.factory.gen.cs">
+      <DependentUpon>PrepayAccount.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\PrepayAccount.model.cs" />
+    <Compile Include="Finance\PrepayAccount.model.gen.cs">
+      <DependentUpon>PrepayAccount.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GenericModel.factory.cs" />
+    <Compile Include="Other\BatchXref.factory.cs" />
+    <Compile Include="Other\Batch.factory.cs" />
+    <Compile Include="Common\GenericModel.factory.gen.cs">
+      <DependentUpon>GenericModel.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\BatchXref.factory.gen.cs">
+      <DependentUpon>BatchXref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\Batch.factory.gen.cs">
+      <DependentUpon>Batch.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GenericModel.model.cs" />
+    <Compile Include="Other\BatchXref.model.cs" />
+    <Compile Include="Other\Batch.model.cs" />
+    <Compile Include="Common\GenericModel.model.gen.cs">
+      <DependentUpon>GenericModel.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\BatchXref.model.gen.cs">
+      <DependentUpon>BatchXref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\Batch.model.gen.cs">
+      <DependentUpon>Batch.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\MemberBom.factory.cs" />
+    <Compile Include="Membership\MemberBom.factory.gen.cs">
+      <DependentUpon>MemberBom.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\MemberBom.model.cs" />
+    <Compile Include="Membership\MemberBom.model.gen.cs">
+      <DependentUpon>MemberBom.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\Branch.factory.cs" />
+    <Compile Include="Membership\BranchXref.factory.cs" />
+    <Compile Include="Membership\Branch.factory.gen.cs">
+      <DependentUpon>Branch.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\BranchXref.factory.gen.cs">
+      <DependentUpon>BranchXref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\Branch.model.cs" />
+    <Compile Include="Membership\BranchXref.model.cs" />
+    <Compile Include="Membership\Branch.model.gen.cs">
+      <DependentUpon>Branch.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\BranchXref.model.gen.cs">
+      <DependentUpon>BranchXref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Attachment.factory.gen.cs">
+      <DependentUpon>Attachment.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AttachmentData.factory.gen.cs">
+      <DependentUpon>AttachmentData.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Attachment.model.gen.cs">
+      <DependentUpon>Attachment.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AttachmentData.model.gen.cs">
+      <DependentUpon>AttachmentData.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\Committee.factory.cs" />
+    <Compile Include="Membership\District.factory.cs" />
+    <Compile Include="Membership\Committee.factory.gen.cs">
+      <DependentUpon>Committee.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\District.factory.gen.cs">
+      <DependentUpon>District.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\Committee.model.cs" />
+    <Compile Include="Membership\District.model.cs" />
+    <Compile Include="Membership\Committee.model.gen.cs">
+      <DependentUpon>Committee.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\District.model.gen.cs">
+      <DependentUpon>District.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\LearningZoneCategories.factory.cs" />
+    <Compile Include="Common\AttachLearningZoneCategories.factory.cs" />
+    <Compile Include="Common\LearningZoneCategories.factory.gen.cs">
+      <DependentUpon>LearningZoneCategories.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AttachLearningZoneCategories.factory.gen.cs">
+      <DependentUpon>AttachLearningZoneCategories.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\LearningZoneCategories.model.cs" />
+    <Compile Include="Common\AttachLearningZoneCategories.model.cs" />
+    <Compile Include="Common\LearningZoneCategories.model.gen.cs">
+      <DependentUpon>LearningZoneCategories.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AttachLearningZoneCategories.model.gen.cs">
+      <DependentUpon>AttachLearningZoneCategories.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Giftaidclaim.factory.cs" />
+    <Compile Include="Finance\Giftaidclaim.factory.gen.cs">
+      <DependentUpon>Giftaidclaim.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\Giftaidclaim.model.cs" />
+    <Compile Include="Finance\Giftaidclaim.model.gen.cs">
+      <DependentUpon>Giftaidclaim.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenCustomField.factory.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldListitem.factory.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldType.factory.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldValue.factory.cs" />
+    <Compile Include="UserInterface\ScreenCustomField.factory.gen.cs">
+      <DependentUpon>ScreenCustomField.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenCustomFieldListitem.factory.gen.cs">
+      <DependentUpon>ScreenCustomFieldListitem.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenCustomFieldType.factory.gen.cs">
+      <DependentUpon>ScreenCustomFieldType.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenCustomFieldValue.factory.gen.cs">
+      <DependentUpon>ScreenCustomFieldValue.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenCustomField.model.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldListitem.model.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldType.model.cs" />
+    <Compile Include="UserInterface\ScreenCustomFieldValue.model.cs" />
+    <Compile Include="UserInterface\ScreenCustomField.model.gen.cs">
+      <DependentUpon>ScreenCustomField.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenCustomFieldListitem.model.gen.cs">
+      <DependentUpon>ScreenCustomFieldListitem.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenCustomFieldType.model.gen.cs">
+      <DependentUpon>ScreenCustomFieldType.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ScreenCustomFieldValue.model.gen.cs">
+      <DependentUpon>ScreenCustomFieldValue.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\CommitteeXref.factory.cs" />
+    <Compile Include="Membership\CommitteeXref.factory.gen.cs">
+      <DependentUpon>CommitteeXref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\CommitteeXref.model.cs" />
+    <Compile Include="Membership\CommitteeXref.model.gen.cs">
+      <DependentUpon>CommitteeXref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\LocalReportingFactoryCollection.cs" />
+    <Compile Include="Reporting\LocalReportingFactoryCollection.gen.cs">
+      <DependentUpon>LocalReportingFactoryCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\Report.factory.cs" />
+    <Compile Include="Reporting\Report.factory.gen.cs">
+      <DependentUpon>Report.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\Report.model.cs" />
+    <Compile Include="Reporting\Report.model.gen.cs">
+      <DependentUpon>Report.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\Exportconfigurations.factory.gen.cs">
+      <DependentUpon>Exportconfigurations.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\Dataimports.factory.gen.cs">
+      <DependentUpon>Dataimports.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\Exportconfigurations.model.gen.cs">
+      <DependentUpon>Exportconfigurations.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other\Dataimports.model.gen.cs">
+      <DependentUpon>Dataimports.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportPage.factory.cs" />
+    <Compile Include="Reporting\ReportParamPage.factory.cs" />
+    <Compile Include="Reporting\ReportPage.factory.gen.cs">
+      <DependentUpon>ReportPage.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportParamPage.factory.gen.cs">
+      <DependentUpon>ReportParamPage.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportPage.model.cs" />
+    <Compile Include="Reporting\ReportParamPage.model.cs" />
+    <Compile Include="Reporting\ReportPage.model.gen.cs">
+      <DependentUpon>ReportPage.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportParamPage.model.gen.cs">
+      <DependentUpon>ReportParamPage.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\PrintRequest.factory.cs" />
+    <Compile Include="Document\PrintRequest.factory.gen.cs">
+      <DependentUpon>PrintRequest.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\PrintRequest.model.cs" />
+    <Compile Include="Document\PrintRequest.model.gen.cs">
+      <DependentUpon>PrintRequest.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Trainer.factory.cs" />
+    <Compile Include="Contact\Trainer.factory.gen.cs">
+      <DependentUpon>Trainer.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\Trainer.model.cs" />
+    <Compile Include="Contact\Trainer.model.gen.cs">
+      <DependentUpon>Trainer.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Article.factory.cs" />
+    <Compile Include="Document\Article.factory.gen.cs">
+      <DependentUpon>Article.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Article.model.cs" />
+    <Compile Include="Document\Article.model.gen.cs">
+      <DependentUpon>Article.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\TimeSpent.factory.cs" />
+    <Compile Include="Contact\TimeSpent.factory.gen.cs">
+      <DependentUpon>TimeSpent.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\TimeSpent.model.cs" />
+    <Compile Include="Contact\TimeSpent.model.gen.cs">
+      <DependentUpon>TimeSpent.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewLog.factory.cs" />
+    <Compile Include="Common\ViewLog.factory.gen.cs">
+      <DependentUpon>ViewLog.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewLog.model.cs" />
+    <Compile Include="Common\ViewLog.model.gen.cs">
+      <DependentUpon>ViewLog.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\TrainProdXref.factory.cs" />
+    <Compile Include="Contact\TrainProdXref.factory.gen.cs">
+      <DependentUpon>TrainProdXref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contact\TrainProdXref.model.cs" />
+    <Compile Include="Contact\TrainProdXref.model.gen.cs">
+      <DependentUpon>TrainProdXref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Articlexref.factory.cs" />
+    <Compile Include="Document\Articlexref.factory.gen.cs">
+      <DependentUpon>Articlexref.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document\Articlexref.model.cs" />
+    <Compile Include="Document\Articlexref.model.gen.cs">
+      <DependentUpon>Articlexref.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfileTrainer.factory.cs" />
+    <Compile Include="Common\ProfileTrainer.factory.gen.cs">
+      <DependentUpon>ProfileTrainer.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfileTrainer.model.cs" />
+    <Compile Include="Common\ProfileTrainer.model.gen.cs">
+      <DependentUpon>ProfileTrainer.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfileVolunteer.factory.cs" />
+    <Compile Include="Common\ProfileVolunteer.factory.gen.cs">
+      <DependentUpon>ProfileVolunteer.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProfileVolunteer.model.cs" />
+    <Compile Include="Common\ProfileVolunteer.model.gen.cs">
+      <DependentUpon>ProfileVolunteer.model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SysConfig.factory.cs" />
+    <Compile Include="Common\SysConfig.factory.gen.cs">
+      <DependentUpon>SysConfig.factory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SysConfig.model.cs" />
+    <Compile Include="Common\SysConfig.model.gen.cs">
+      <DependentUpon>SysConfig.model.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

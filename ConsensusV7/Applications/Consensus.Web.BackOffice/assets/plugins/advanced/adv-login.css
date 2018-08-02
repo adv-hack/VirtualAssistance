@@ -1,0 +1,131 @@
+﻿.advanced-login {
+  /* Extra small devices (phones, less than 768px) */
+  /* No media query since this is the default in Bootstrap */
+  /* Small devices (tablets, 768px and up) */
+  /* Medium devices (desktops, 992px and up) */
+  /* Large devices (large desktops, 1200px and up) */ }
+  .advanced-login a {
+    font-size: 12px; }
+  .advanced-login h1 {
+    font-size: 40px;
+    font-weight: normal; }
+  .advanced-login h3 {
+    color: #da291c;
+    font-weight: normal; }
+  .advanced-login .btn-white {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 2px;
+    height: 34px;
+    padding: 0 15px;
+    color: black;
+    position: relative; }
+  .advanced-login .btn-white:hover {
+    background-color: #ebebeb; }
+  .advanced-login .login-btn {
+    box-shadow: gray 1px 1px 1px;
+    cursor: pointer; }
+  .advanced-login .login-btn:active {
+    box-shadow: none; }
+  .advanced-login .btn-blue {
+    background-color: #1d428a;
+    border: 1px solid black;
+    color: white;
+    float: right;
+    border-radius: 2px;
+    height: 34px;
+    padding: 0 15px;
+    width: 100px;
+    line-height: 32px;
+    font-size: 14px; }
+  .advanced-login .btn-blue:hover {
+    background-color: #132957; }
+  .advanced-login .login-icon {
+    width: 24px;
+    height: 24px;
+    float: left;
+    background-image: url("login_icon.png");
+    background-repeat: no-repeat;
+    position: relative;
+    margin-top: 4px; }
+  .advanced-login .logo {
+    float: left; }
+  .advanced-login .header-buttons {
+    float: right; }
+  .advanced-login .background {
+    background: url("bgd.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0.2;
+    top: 0;
+    left: 0; }
+  .advanced-login .field {
+    width: 100%;
+    margin-bottom: 25px;
+    height: 20px; }
+  .advanced-login .password {
+    margin-bottom: 45px; }
+  .advanced-login .content {
+    padding-top: 100px;
+    position: relative;
+    color: black; }
+  .advanced-login .productInfo {
+    text-align: center;
+    position: relative;
+    padding-bottom: 40px; }
+  .advanced-login .login-form {
+    position: relative;
+    width: auto;
+    padding: 0 25px;
+    margin: 0 auto; }
+  .advanced-login .login > a {
+    float: left; }
+  .advanced-login .footer {
+    background-color: #333;
+    color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    line-height: 30px;
+    padding-left: 10px; }
+  @media (min-width: 568px) {
+    .advanced-login .content {
+      width: 100%; 
+    } 
+    .advanced-login .login-form {
+      padding: 0;
+      width: 350px;
+    }
+  }
+  @media (min-width: 992px) {
+    .advanced-login .content {
+      top: 20%;
+      left: 0;
+      position: absolute; }
+    .advanced-login .productInfo {
+      width: 55%;
+      float: left;
+      vertical-align: middle;
+      text-align: right;
+      padding-right: 40px; }
+    .advanced-login .login-form {
+      float: left;
+      padding-left: 40px;
+      border-left: 1px solid gray; } }
+  @media (min-width: 1200px) {
+    .advanced-login .productInfo {
+      width: 55%;
+      float: left;
+      vertical-align: middle;
+      text-align: right;
+      padding-right: 40px; }
+    .advanced-login .login-form {
+      float: left;
+      padding-left: 40px;
+      border-left: 1px solid gray; } }

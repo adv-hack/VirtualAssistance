@@ -1,0 +1,56 @@
+if not exists (select object_id from sys.objects where type = 'P' and name = 'spConsensusFinanceDirectdebitModify')
+  exec ('create procedure dbo.spConsensusFinanceDirectdebitModify as select 1 as temp')
+go
+alter procedure dbo.spConsensusFinanceDirectdebitModify(@PA_DD_ID varchar(11) = null output, @PA_DD_TABLE_NUM float = null output, @PA_DD_REC_ID varchar(11) = null output, @PA_DD_TYPE integer = null output, @PA_DD_OIN varchar(6) = null output, @PA_DD_REC_DATE datetime = null output, @PA_DD_REC_METHOD integer = null output, @PA_DD_TO_BANK_DATE datetime = null output, @PA_DD_EFFECTIVE_DATE datetime = null output, @PA_DD_END_DATE datetime = null output, @PA_DD_STATUS integer = null output, @PA_DD_FREQUENCY integer = null output, @PA_DD_DAY_OF_MONTH integer = null output, @PA_DD_VARIABLE integer = null output, @PA_DD_MAX_VALUE decimal(19, 4) = null output, @PA_DD_CURRENCY_TYPE varchar(3) = null output, @PA_DD_BANK_NAME varchar(50) = null output, @PA_DD_BANK_ADD_1 varchar(50) = null output, @PA_DD_BANK_ADD_2 varchar(50) = null output, @PA_DD_BANK_ADD_3 varchar(50) = null output, @PA_DD_BANK_ADD_4 varchar(50) = null output, @PA_DD_BANK_POSTCODE varchar(12) = null output, @PA_DD_CORE_REF varchar(18) = null output, @PA_DD_BANK_ACC_NAME varchar(80) = null output, @PA_DD_BANK_ACC_CODE varchar(10) = null output, @PA_DD_SORT_CODE varchar(8) = null output, @PA_DD_CCARD_TYPE varchar(40) = null output, @PA_DD_NAME_ON_CARD varchar(80) = null output, @PA_DD_CCARD_NUMBER varchar(20) = null output, @PA_DD_CCARD_ISSUE varchar(5) = null output, @PA_DD_CCARD_SEC_ID varchar(8) = null output, @PA_DD_CCARD_START_MTH varchar(4) = null output, @PA_DD_CCARD_START_YR varchar(4) = null output, @PA_DD_CCARD_EXPY_MTH varchar(4) = null output, @PA_DD_CCARD_EXPY_YR varchar(4) = null output, @PA_DD_NOTES varchar(500) = null output, @PA_DD_BANK_ORG_ID varchar(11) = null output, @PA_DD_BANK_ADD_ID varchar(11) = null output, @PA_DD_RECORD_STATUS tinyint = null output, @PA_DD_BAT_ID varchar(11) = null output, @PA_DD_TOTAL decimal(19, 4) = null output, @PA_DD_STATUS_NOTES varchar(max) = null output, @PA_DD_STATUS_LAST_DATE datetime = null output, @PA_DD_STATUS_PREVIOUS tinyint = null output, @PA_DD_NO_OF_INSTALLMENTS integer = null output, @PA_DD_DUE_DATE datetime = null output, @_AUDIT_USER_ID varchar(3) = null) as 
+begin
+  update dbo.DirectDebit set
+    DD_MOD_DATE = getDate(),
+    DD_MOD_BY = @_AUDIT_USER_ID,
+    DD_TABLE_NUM = @PA_DD_TABLE_NUM,
+    DD_REC_ID = @PA_DD_REC_ID,
+    DD_TYPE = @PA_DD_TYPE,
+    DD_OIN = @PA_DD_OIN,
+    DD_REC_DATE = @PA_DD_REC_DATE,
+    DD_REC_METHOD = @PA_DD_REC_METHOD,
+    DD_TO_BANK_DATE = @PA_DD_TO_BANK_DATE,
+    DD_EFFECTIVE_DATE = @PA_DD_EFFECTIVE_DATE,
+    DD_END_DATE = @PA_DD_END_DATE,
+    DD_STATUS = @PA_DD_STATUS,
+    DD_FREQUENCY = @PA_DD_FREQUENCY,
+    DD_DAY_OF_MONTH = @PA_DD_DAY_OF_MONTH,
+    DD_VARIABLE = @PA_DD_VARIABLE,
+    DD_MAX_VALUE = @PA_DD_MAX_VALUE,
+    DD_CURRENCY_TYPE = @PA_DD_CURRENCY_TYPE,
+    DD_BANK_NAME = @PA_DD_BANK_NAME,
+    DD_BANK_ADD_1 = @PA_DD_BANK_ADD_1,
+    DD_BANK_ADD_2 = @PA_DD_BANK_ADD_2,
+    DD_BANK_ADD_3 = @PA_DD_BANK_ADD_3,
+    DD_BANK_ADD_4 = @PA_DD_BANK_ADD_4,
+    DD_BANK_POSTCODE = @PA_DD_BANK_POSTCODE,
+    DD_CORE_REF = @PA_DD_CORE_REF,
+    DD_BANK_ACC_NAME = @PA_DD_BANK_ACC_NAME,
+    DD_BANK_ACC_CODE = @PA_DD_BANK_ACC_CODE,
+    DD_SORT_CODE = @PA_DD_SORT_CODE,
+    DD_CCARD_TYPE = @PA_DD_CCARD_TYPE,
+    DD_NAME_ON_CARD = @PA_DD_NAME_ON_CARD,
+    DD_CCARD_NUMBER = @PA_DD_CCARD_NUMBER,
+    DD_CCARD_ISSUE = @PA_DD_CCARD_ISSUE,
+    DD_CCARD_SEC_ID = @PA_DD_CCARD_SEC_ID,
+    DD_CCARD_START_MTH = @PA_DD_CCARD_START_MTH,
+    DD_CCARD_START_YR = @PA_DD_CCARD_START_YR,
+    DD_CCARD_EXPY_MTH = @PA_DD_CCARD_EXPY_MTH,
+    DD_CCARD_EXPY_YR = @PA_DD_CCARD_EXPY_YR,
+    DD_NOTES = @PA_DD_NOTES,
+    DD_BANK_ORG_ID = @PA_DD_BANK_ORG_ID,
+    DD_BANK_ADD_ID = @PA_DD_BANK_ADD_ID,
+    DD_RECORD_STATUS = @PA_DD_RECORD_STATUS,
+    DD_BAT_ID = @PA_DD_BAT_ID,
+    DD_TOTAL = @PA_DD_TOTAL,
+    DD_STATUS_NOTES = @PA_DD_STATUS_NOTES,
+    DD_STATUS_LAST_DATE = @PA_DD_STATUS_LAST_DATE,
+    DD_STATUS_PREVIOUS = @PA_DD_STATUS_PREVIOUS,
+    DD_NO_OF_INSTALLMENTS = @PA_DD_NO_OF_INSTALLMENTS,
+    DD_DUE_DATE = @PA_DD_DUE_DATE
+  where DD_ID = @PA_DD_ID;
+end
+go

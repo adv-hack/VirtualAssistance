@@ -1,0 +1,1530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Consensus.Entity</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{401dcc61-c233-4c3e-8cde-2b6a0ab158c1}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Consensus.Entity</RootNamespace>
+    <AssemblyName>Consensus.Entity</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Entities" />
+    <Folder Include="Procedures\" />
+    <Folder Include="Views" />
+    <Folder Include="Views\Contact" />
+    <Folder Include="Views\Sales" />
+    <Folder Include="Views\Membership" />
+    <None Include="Procedures\Contact\spConsensusContactPersonCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonFetchAllByTitle.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonFetchAllByGender.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonFetchAllByDietrequire.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonFetchAllByEthnicity.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonFetchAllByNationality.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchAllByPersonid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchAllByOrgid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchAllByPostype.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchAllByAddid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchAllByUnionrolno.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchAllByType.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchAllByCostcode.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonRoleFetchAllByJoblvl.sql" />
+    <None Include="Procedures\Contact\spConsensusContactOrganisationCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactOrganisationFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactOrganisationFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactOrganisationModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactOrganisationRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactOrganisationFetchAllByType.sql" />
+    <None Include="Procedures\Contact\spConsensusContactOrganisationFetchAllByIndustry.sql" />
+    <None Include="Procedures\Contact\spConsensusContactOrganisationFetchAllByVatcd.sql" />
+    <None Include="Procedures\Contact\spConsensusContactOrganisationFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressXrefCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressXrefFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressXrefFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressXrefModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressXrefRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressXrefFetchAllByAddid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressXrefFetchAllByOrgid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCountryCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCountryFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCountryFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCountryModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCountryRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCustomerPackCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCustomerPackFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCustomerPackFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCustomerPackModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCustomerPackRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCustomerPackFetchAllByOrgid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCustomerPackFetchAllByPackid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAssociatesCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAssociatesFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAssociatesFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAssociatesModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAssociatesRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAssociatesFetchAllByAssociateid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAssociatesFetchAllByProleid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAssociatesFetchAllByOrgid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAssociatesFetchAllByTypename.sql" />
+    <None Include="Procedures\Contact\spConsensusContactDepartmentCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactDepartmentFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactDepartmentFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactDepartmentModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactDepartmentRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactDepartmentFetchAllByOrgid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationFetchAllByOrgid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationFetchAllByAddid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationFetchAllByLocproleid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationFetchAllByRegion.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationFetchAllByVenuetype.sql" />
+    <None Include="Procedures\Contact\spConsensusContactLocationFetchAllByLinkedlocid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBillOfMaterialCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBillOfMaterialFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBillOfMaterialFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBillOfMaterialModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBillOfMaterialRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBillOfMaterialFetchAllByParentid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningTemplateXrefCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningTemplateXrefFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningTemplateXrefFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningTemplateXrefModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningTemplateXrefRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningTemplateXrefFetchAllByBomid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningTemplateXrefFetchAllByProdid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningTemplateXrefFetchAllByTrainproleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByLocid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByOrgid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByType.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByStatus.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByAddid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllBySuproleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllBySupstatus.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByProvorgid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByProvproleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByFundedorgid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByDefelemst.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByReason.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByAcadycode.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityCreate.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAll.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchById.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityModify.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityRemoveById.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllByStatus.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllByProdinterest.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllByMedium.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllByActid.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllBySalestype.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllByProdid.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllByService.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllBySearchgroup.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityXrefCreate.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityXrefFetchAll.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityXrefFetchById.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityXrefModify.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityXrefRemoveById.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityXrefFetchAllByProleid.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityXrefFetchAllByOppid.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityXrefFetchAllByOrgid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentProductPackCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentProductPackFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentProductPackFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentProductPackModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentProductPackRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentProductPackFetchAllByProdid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentProductPackFetchAllByPackid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountXrefCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountXrefFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountXrefFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountXrefModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountXrefRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountXrefFetchAllByAccid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountXrefFetchAllByOrgid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountXrefFetchAllByAddid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountXrefFetchAllByProleid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByType.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByStatus.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByOrgid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByPnid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByAddid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByAccid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByCardholderproleid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePriceListCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePriceListFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePriceListFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePriceListModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePriceListRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesFetchAllByPlid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesFetchAllByProdid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllByOrgid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllByPersonid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllBySalesmanid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllByType.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllByAccid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeRemoveById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeHeaderCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeHeaderFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeHeaderFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeHeaderModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeHeaderRemoveById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileRemoveById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileFetchAllByOrgid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileFetchAllByPersonid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileFetchAllByProdid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysParamsCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysParamsFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysParamsFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysParamsModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysParamsRemoveById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityCreate.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityFetchAll.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityFetchById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityModify.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityRemoveById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityFetchAllByBomid.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusFetchAllBySmenuid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserFetchAllByPersonid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserGroupCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserGroupFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserGroupFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserGroupModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityStuserGroupRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMembershipCreate.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMembershipFetchAll.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMembershipFetchById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMembershipModify.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMembershipRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodCreate.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAll.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodModify.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByMemid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByPaymethod.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByPaystatus.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByInvproleid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByAccid.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchActivityList.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchOrganisation.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchPerson.sql" />
+    <Folder Include="Procedures\Contact\" />
+    <Folder Include="Procedures\Learning\" />
+    <Folder Include="Procedures\Sales\" />
+    <Folder Include="Procedures\Document\" />
+    <Folder Include="Procedures\Finance\" />
+    <Folder Include="Procedures\Common\" />
+    <Folder Include="Procedures\Activities\" />
+    <Folder Include="Procedures\UserInterface\" />
+    <Folder Include="Procedures\Security\" />
+    <Folder Include="Procedures\Membership\" />
+    <Folder Include="Procedures\Searches\" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchAllByOrgid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchAllByProleid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchAllByAddid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchAllByVatcd.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchAllByType.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchAllByDocsmethod.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchAllByInvpackid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByType.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByCategory.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByGroup.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByRevcode.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByVatcode.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByRegbodyid1.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllBySearchgroup.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByDefelemst.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByDefmethdel.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByCodeimage.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettertmpltCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettertmpltFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettertmpltFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettertmpltModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettertmpltRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettertmpltFetchAllByType.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettmplttypeCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettmplttypeFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettmplttypeFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettmplttypeModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettmplttypeRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllByAdd.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllByLtid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchAllByInvid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchAllByVatcode.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsFetchAllByDevicecode.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsXrefCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsXrefFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsXrefFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsXrefModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsXrefRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsXrefFetchAllByCommid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCommunicationsXrefFetchAllByRecordid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceCostCodeCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceCostCodeFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceCostCodeFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceCostCodeModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceCostCodeRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceCostCodeFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllByPromid.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllByCompetitor.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesOpportunityFetchAllByCourseid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAkaCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAkaFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAkaFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAkaModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAkaRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAkaFetchAllByOrgid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAkaFetchAllByPnid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactGiftaidCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactGiftaidFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactGiftaidFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactGiftaidModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactGiftaidRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactGiftaidFetchAllByPnid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactGiftaidFetchAllByType.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByManproleid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceBookingTermsCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceBookingTermsFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceBookingTermsFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceBookingTermsModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceBookingTermsRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayscheduleheaderCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayscheduleheaderFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayscheduleheaderFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayscheduleheaderModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayscheduleheaderRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByCostcode.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByBktid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByAuthpnid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByOrgid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByPshid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingCampaignCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingCampaignFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingCampaignFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingCampaignModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingCampaignRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingCampaignFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingCampaignFetchAllByProleid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingCampaignFetchAllByAppproleid.sql" />
+    <Folder Include="Procedures\Marketing\" />
+    <None Include="Procedures\Logistics\spConsensusLogisticsProjectCreate.sql" />
+    <None Include="Procedures\Logistics\spConsensusLogisticsProjectFetchAll.sql" />
+    <None Include="Procedures\Logistics\spConsensusLogisticsProjectFetchById.sql" />
+    <None Include="Procedures\Logistics\spConsensusLogisticsProjectModify.sql" />
+    <None Include="Procedures\Logistics\spConsensusLogisticsProjectRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingCampaignFetchAllByProjid.sql" />
+    <Folder Include="Procedures\Logistics\" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByLtid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByGatewayaccid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByRoyaltymodel.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductProdXrefCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductProdXrefFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductProdXrefFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductProdXrefModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductProdXrefRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductProdXrefFetchAllByRelatedprodid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductProdXrefFetchAllBySchnid.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesSalesChannelCreate.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesSalesChannelFetchAll.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesSalesChannelFetchById.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesSalesChannelModify.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesSalesChannelRemoveById.sql" />
+    <Folder Include="Views\Learning" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesFetchAllByRegion.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesFetchAllByType.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByLocid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductEventCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductEventFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductEventFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductEventModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductEventRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductEventFetchAllByProdid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductEventFetchAllByAcadycode.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionFetchAllByType.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionMasterCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionMasterFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionMasterFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionMasterModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionMasterRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionMasterFetchAllByRegion.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionMasterFetchAllByCmpid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionMasterFetchAllByCourseid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionMasterFetchAllByProleid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionMasterFetchAllByAppproleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBillOfMaterialFetchAllBySyllabusid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBillOfMaterialFetchAllByResourceid.sql" />
+    <Folder Include="Views\Marketing" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionFetchAllByCmpid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionFetchAllByChannel.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionFetchAllByMedianame.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionFetchAllByProleid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingPromotionFetchAllByAppproleid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactAddressXrefFetchAllByType.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByPersonid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByProductid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByRevcode.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllBySupplierid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByOppid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByBktid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByContprolid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByMtrproleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByPshid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityXrefCreate.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityXrefFetchAll.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityXrefFetchById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityXrefModify.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityXrefRemoveById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityXrefFetchAllByActid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityXrefFetchAllByPersonid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityXrefFetchAllByProleid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityXrefFetchAllByProdid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityFetchAllByType.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityFetchAllByResult.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActLinkXrefCreate.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActLinkXrefFetchAll.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActLinkXrefFetchById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActLinkXrefModify.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActLinkXrefRemoveById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityFetchAllByOppid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityXrefFetchAllByOrgid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActLinkXrefFetchAllByActid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityC4SessionsCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityC4SessionsFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityC4SessionsFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityC4SessionsModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityC4SessionsRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningTemplateXrefFetchAllByRoomtype.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchAllByProductid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchAllByCourseid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchAllByMelid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationCreate.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchAll.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationModify.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchAllByMemid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchAllByMepid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchAllByOrgid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchAllByProleid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchAllByMailaddid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchAllByMailinvid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchAllByInvlnid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchAllByProdid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberLocationFetchAllByPlid.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesGridColumnsCreate.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesGridColumnsFetchAll.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesGridColumnsFetchById.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesGridColumnsModify.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesGridColumnsRemoveById.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesGridColumnsFetchAllBySyssid.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesParameterFieldsCreate.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesParameterFieldsFetchAll.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesParameterFieldsFetchById.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesParameterFieldsModify.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesParameterFieldsRemoveById.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesParameterFieldsFetchAllBySyssid.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesCreate.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesFetchAll.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesFetchById.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesModify.sql" />
+    <None Include="Procedures\Search\spConsensusSearchSystemSearchesRemoveById.sql" />
+    <Folder Include="Procedures\Search\" />
+    <Folder Include="Views\Finance" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchAllByBookid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchAllByElemid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvlineFetchAllByPrdrevcode.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByOrgid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByPersonid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByInvadd.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByDlvryadd.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByInvorgid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByPlid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByOppid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByDelivadd.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByProleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByInvproleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByAccid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByDelid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByProdid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByActid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByCourseid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByBookid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByVatcd.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByPlid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByBookid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByProductid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByOrgid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByPersonid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByVatcode.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByProleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByCourseid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByMepid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByAddid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityFetchAllByLocid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityFetchAllBySyllabusid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityFetchAllByOrgid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningSessionXrefCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningSessionXrefFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningSessionXrefFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningSessionXrefModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningSessionXrefRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningSessionXrefFetchAllByCourseid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningSessionXrefFetchAllByActid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningSessionXrefFetchAllByVatcd.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileFetchAllByStatus.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBillOfMaterialFetchAllByActtype.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseFetchAllByOwner.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseLimitCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseLimitFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseLimitFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseLimitModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseLimitRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseLimitFetchAllByLicid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseModuleCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseModuleFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseModuleFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseModuleModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseModuleRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityLicenseModuleFetchAllByLicid.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusxrefCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusxrefFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusxrefFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusxrefModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusxrefRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceSystemmenusxrefFetchAllBySmenuid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepFetchAllByProleid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqFilterCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqFilterFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqFilterFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqFilterModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqFilterRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepParamsCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepParamsFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepParamsFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepParamsModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepParamsRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepParamsFetchAllByStepid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqStepParamsFetchAllByFid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryFetchAllByStatus.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryFetchAllByPmid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryFetchAllByCourseid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryFetchAllByChannel.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryFetchAllByMgrproleid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryFetchAllByAppbyproleid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryStepsCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryStepsFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryStepsFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryStepsModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryStepsRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryStepsFetchAllByQryid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryStepsFetchAllByStepid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonC4textCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonC4textFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonC4textFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonC4textModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonC4textRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByNotes.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByPaymentmethd.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllBySourcecode.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByAddid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllBySxrefid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByElemid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllBySalesproleid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllByProleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseselectgroupsCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseselectgroupsFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseselectgroupsFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseselectgroupsModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseselectgroupsRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseselectgroupsFetchAllByEventid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserAccountCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserAccountFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserAccountFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserAccountModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserAccountRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserAccountFetchAllByPersonid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserAccountFetchAllBySelcoid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserCredentialCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserCredentialFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserCredentialFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserCredentialModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserCredentialRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserCredentialFetchAllByUser.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupMemberCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupMemberFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupMemberFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupMemberModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupMemberRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPermissionCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPermissionFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPermissionFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPermissionModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPermissionRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserSessionCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserSessionFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserSessionFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserSessionModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserSessionRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserSessionFetchAllByUserid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPrincipalCreate.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPrincipalFetchAll.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPrincipalFetchById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPrincipalModify.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPrincipalRemoveById.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupMemberFetchAllByPrincipalid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupMemberFetchAllByGroupid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserPermissionFetchAllByPrincipalid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByBookingmethd.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByPrsid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByCostcode.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningEventProductCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningEventProductFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningEventProductFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningEventProductModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningEventProductRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningEventProductFetchAllByEventid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningEventProductFetchAllByProdid.sql" />
+    <Folder Include="Views\Document" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowCreate.sql" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowFetchAll.sql" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowFetchById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowModify.sql" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowRemoveById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowRecTypeCreate.sql" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowRecTypeFetchAll.sql" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowRecTypeFetchById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowRecTypeModify.sql" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowRecTypeRemoveById.sql" />
+    <Folder Include="Procedures\Other\" />
+    <None Include="Procedures\Learning\spConsensusLearningSessionXrefFetchAllByEpid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningSessionXrefFetchAllByRegion.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningEventProductFetchAllByNotes.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysConfigCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceC4currencyCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceC4currencyFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceC4currencyFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceC4currencyModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceC4currencyRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceC4currencyFetchAllBySpid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysConfigCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysConfigFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysConfigFetchAllBySellingCompanyId.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysConfigFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysConfigModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysConfigRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueFetchAllByQryid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueFetchAllByActtype.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueFetchAllByActpromotionid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueFetchAllByBpplitid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueFetchAllByListid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueFetchAllByProfkey.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueFetchAllByProfkeyorg.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByDocsmethod.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllBySchnid.sql" />
+    <None Include="Procedures\Sales\spConsensusSalesSalesChannelFetchAllByPlid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByProdid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByPmid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByStatus.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByCancelreason.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByAppmethod.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceDirectdebitCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceDirectdebitFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceDirectdebitFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceDirectdebitModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceDirectdebitRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceDirectdebitFetchAllByRecid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllByMepid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingSaqQueryQueueFetchAllByPackid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListMemberCreate.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListMemberFetchAll.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListMemberFetchById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListMemberModify.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListMemberRemoveById.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListMemberFetchAllByListid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListMemberFetchAllByPnid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListFetchAllByStatus.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListFetchAllByNoteshtml.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchAllByStatus.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByInvorgid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberPeriodFetchAllByInvaddid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByRevcode.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByGrade.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByPaymentmethd.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByBktid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningElementFetchAllByPshid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByTbagender.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegateFetchAllByTbanationality.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByInvextnotes.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByReason.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingFetchAllByInvoicewhenstatus.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesFetchAllByVatcode.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByMepid.sql" />
+    <None Include="Procedures\Marketing\spConsensusMarketingListFetchAllByUserid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettertmpltFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLettertmpltFetchAllBySendproleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByNotes.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchAllByIntnotes.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalRoleCreate.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalRoleFetchAll.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalRoleFetchById.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalRoleModify.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalRoleRemoveById.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalSetupCreate.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalSetupFetchAll.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalSetupFetchById.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalSetupModify.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalSetupRemoveById.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalUserCreate.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalUserFetchAll.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalUserFetchById.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalUserModify.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalUserRemoveById.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalUserFetchAllByProleid.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortalUserFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortaluserroleCreate.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortaluserroleFetchAll.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortaluserroleFetchById.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortaluserroleModify.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortaluserroleRemoveById.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortaluserroleFetchAllByPuid.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPortaluserroleFetchAllByPrid.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPuSiteCreate.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPuSiteFetchAll.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPuSiteFetchById.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPuSiteModify.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPuSiteRemoveById.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPuSiteFetchAllByPuid.sql" />
+    <None Include="Procedures\Portal\spConsensusPortalPuSiteFetchAllByPsid.sql" />
+    <Folder Include="Procedures\Portal\" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectDisplayCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectDisplayFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectDisplayFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectDisplayModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectDisplayRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectDisplayFetchAllByObjid.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectDisplayFetchAllByPrincipalid.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectEntryCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectEntryFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectEntryFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectEntryModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectEntryRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectEntryFetchAllByObjid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintQueueCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintQueueFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintQueueFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintQueueModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintQueueRemoveById.sql" />
+    <Folder Include="Views\Portal" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintQueueFetchAllByAdminproleid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesC4textCreate.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesC4textFetchAll.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesC4textFetchById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesC4textModify.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesC4textRemoveById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskCreate.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskFetchAll.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskFetchById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskModify.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskRemoveById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskFetchAllByOrgid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskFetchAllByProleid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskFetchAllByGiventoid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskFetchAllByDetailsid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskFetchAllByFixid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskFetchAllByWipid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesHelpdeskFetchAllByPmid.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceHistorylinkCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceHistorylinkFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceHistorylinkFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceHistorylinkModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceHistorylinkRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceHistorylinkFetchAllByUserid.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceQuickaccesslinkCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceQuickaccesslinkFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceQuickaccesslinkFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceQuickaccesslinkModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceQuickaccesslinkRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceQuickaccesslinkFetchAllByUserid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintCreate.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAll.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintModify.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintRemoveById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAllByFromproleid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAllByReproleid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAllByMgrproleid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAllByMedtrproleid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAllByStatus1.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAllByStatus2.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAllByType1.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAllByScheme.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAllByPmid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesComplaintFetchAllByDetailsid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningCourseselectgroupsFetchAllByPsgid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProdselectgroupsCreate.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProdselectgroupsFetchAll.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProdselectgroupsFetchById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProdselectgroupsModify.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProdselectgroupsRemoveById.sql" />
+    <Folder Include="Views\Activities" />
+    <None Include="Procedures\Learning\spConsensusLearningBillOfMaterialFetchAllByProductselectgroup.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProdselectgroupsFetchAllByProduct.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectColumnCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectColumnFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectColumnFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectColumnModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectColumnRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenObjectColumnFetchAllByObjid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByMsnew.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByMsremind1.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByMsremind2.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByMsrenew.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByMslapsed.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByMscancel.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByMsremind3.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByMsrenewed.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByMsapp.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByMsoff.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserAccountFetchAllByPrincipalid.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserGroupFetchAllByPrincipalid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileFetchAllByCourseid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayAllocationCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayAllocationFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayAllocationFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayAllocationModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayAllocationRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayAllocationFetchAllByInvid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayAllocationFetchAllByPayid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePayAllocationFetchAllByCreditid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactPersonFetchAllByPromoid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessageCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessageFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessageFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessageModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessageRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessageFetchAllByIcmtid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessageFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessagetypeCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessagetypeFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessagetypeFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessagetypeModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentIcalmessagetypeRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPacktypeCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPacktypeFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPacktypeFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPacktypeModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPacktypeRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsMessageCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsMessageFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsMessageFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsMessageModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsMessageRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsMessageFetchAllBySmtid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsMessageFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsTypeCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsTypeFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsTypeFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsTypeModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentSmsTypeRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackFetchAllByEmailbody.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackFetchAllBySendproleid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackFetchAllByPqid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLiteratureCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLiteratureFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLiteratureFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLiteratureModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLiteratureRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentLiteratureFetchAllByLtid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackXrefCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackXrefFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackXrefFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackXrefModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackXrefRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackXrefFetchAllByPackid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackXrefFetchAllByLitid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackXrefFetchAllBySmsid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPackXrefFetchAllByIcmid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceInvheaderFetchAllByCreditnteref.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByBookid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePaymentFetchAllByRefundpayid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceMasterClubCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceMasterClubFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceMasterClubFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceMasterClubModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceMasterClubRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceMasterClubFetchAllByOrgid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceMasterClubFetchAllByContact.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceMasterClubFetchAllByStatus.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceMasterClubFetchAllByProdid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceMasterClubFetchAllByMepid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonGenericmodeltableCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonGenericmodeltableFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonGenericmodeltableFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonGenericmodeltableModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonGenericmodeltableRemoveById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchCreate.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchFetchAll.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchFetchById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchModify.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchRemoveById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchXrefCreate.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchXrefFetchAll.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchXrefFetchById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchXrefModify.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchXrefRemoveById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchXrefFetchAllByBatid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberBomCreate.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberBomFetchAll.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberBomFetchById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberBomModify.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberBomRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberBomFetchAllByParentid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipMemberBomFetchAllByGradeid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchCreate.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchFetchAll.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchFetchById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchModify.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchFetchAllByStatus.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchFetchAllByType.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchFetchAllByCategory.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchFetchAllByGroup.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchFetchAllByRegion.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchXrefCreate.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchXrefFetchAll.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchXrefFetchById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchXrefModify.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchXrefRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchXrefFetchAllByBrid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipBranchXrefFetchAllByStatus.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentRemoveById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentDataCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentDataFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentDataFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentDataModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentDataRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeCreate.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeFetchAll.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeFetchById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeModify.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeFetchAllByStatus.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeFetchAllByType.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeFetchAllByCategory.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeFetchAllByGroup.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeFetchAllByDisid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeFetchAllByProdid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeFetchAllByBrid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipDistrictCreate.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipDistrictFetchAll.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipDistrictFetchById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipDistrictModify.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipDistrictRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipDistrictFetchAllByStatus.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipDistrictFetchAllByType.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipDistrictFetchAllByCategory.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipDistrictFetchAllByGroup.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipDistrictFetchAllByRegion.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentFetchAllByAttrib01.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentFetchAllByCategory.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachlearningzonecategoriesCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachlearningzonecategoriesFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachlearningzonecategoriesFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachlearningzonecategoriesModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachlearningzonecategoriesRemoveById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonLearningzonecategoriesCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonLearningzonecategoriesFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonLearningzonecategoriesFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonLearningzonecategoriesModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonLearningzonecategoriesRemoveById.sql" />
+    <Folder Include="Views\Common" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentDataFetchAllByAttid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachlearningzonecategoriesFetchAllByAttid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachlearningzonecategoriesFetchAllByLzcid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceGiftaidclaimCreate.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceGiftaidclaimFetchAll.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceGiftaidclaimFetchById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceGiftaidclaimModify.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceGiftaidclaimRemoveById.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceGiftaidclaimFetchAllBySubmitterproleid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceGiftaidclaimFetchAllByTrusteeproleid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceGiftaidclaimFetchAllByOrgid.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldFetchAllByCftypeid.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldListitemCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldListitemFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldListitemFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldListitemModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldListitemRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldListitemFetchAllByCfieldid.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldTypeCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldTypeFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldTypeFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldTypeModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldTypeRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldValueCreate.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldValueFetchAll.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldValueFetchById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldValueModify.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldValueRemoveById.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldValueFetchAllByCfieldid.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeXrefCreate.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeXrefFetchAll.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeXrefFetchById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeXrefModify.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeXrefRemoveById.sql" />
+    <None Include="Procedures\Membership\spConsensusMembershipCommitteeXrefFetchAllByComid.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceGiftaidclaimFetchAllBySelcospid.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportCreate.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportFetchAll.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportFetchById.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportModify.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportRemoveById.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportFetchAllByType.sql" />
+    <Folder Include="Procedures\Reporting\" />
+    <None Include="Procedures\Activities\spConsensusActivitiesC4textFetchAllByAddby.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesC4textFetchAllByOwnerUrlAndOwnerId.sql" />
+    <None Include="Procedures\Common\spConsensusCommonAttachmentFetchAllByAddby.sql" />
+    <None Include="Procedures\Common\spConsensusCommonC4textFetchAllByAddby.sql" />
+    <None Include="Procedures\Common\spConsensusCommonC4textFetchAllByModby.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchFetchAllByEcid.sql" />
+    <None Include="Procedures\Other\spConsensusOtherBatchFetchAllByDiid.sql" />
+    <None Include="Procedures\Other\spConsensusOtherDataimportsCreate.sql" />
+    <None Include="Procedures\Other\spConsensusOtherDataimportsFetchAll.sql" />
+    <None Include="Procedures\Other\spConsensusOtherDataimportsFetchById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherDataimportsModify.sql" />
+    <None Include="Procedures\Other\spConsensusOtherDataimportsRemoveById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherExportconfigurationsCreate.sql" />
+    <None Include="Procedures\Other\spConsensusOtherExportconfigurationsFetchAll.sql" />
+    <None Include="Procedures\Other\spConsensusOtherExportconfigurationsFetchById.sql" />
+    <None Include="Procedures\Other\spConsensusOtherExportconfigurationsModify.sql" />
+    <None Include="Procedures\Other\spConsensusOtherExportconfigurationsRemoveById.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByDescrip.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByText1.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByText2.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByText3.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllBySellhint.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByShortdesc.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByTrnrulestxt.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserAccountFetchAllByRepid.sql" />
+    <Folder Include="Views\Other" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportFetchAllByRptpid.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportFetchAllByRppid.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportPageCreate.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportPageFetchAll.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportPageFetchById.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportPageModify.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportPageRemoveById.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportParampageCreate.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportParampageFetchAll.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportParampageFetchById.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportParampageModify.sql" />
+    <None Include="Procedures\Reporting\spConsensusReportingReportParampageRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintReqCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintReqFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintReqFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintReqModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintReqRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintReqFetchAllByPqid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintReqFetchAllByPackid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintReqFetchAllByBatid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintReqFetchAllBySendfromproleid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentPrintReqFetchAllBySendtoproleid.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByProleid.sql" />
+    <Folder Include="Triggers" />
+    <Folder Include="Triggers\Common" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerFetchAllByAinproleid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerFetchAllByAinselcospid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerFetchAllByAinfeenotestextid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerFetchAllByAinhotelreqtextid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerFetchAllByAinotherinfotextid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerFetchAllByAinstatus.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainerFetchAllByAinattrib01.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticleCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticleFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticleFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticleModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticleRemoveById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticleFetchAllByGroup.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticleFetchAllByCategory.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticleFetchAllByArea.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTimeSpentCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTimeSpentFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTimeSpentFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTimeSpentModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTimeSpentRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTimeSpentFetchAllByTimtype.sql" />
+    <None Include="Procedures\Common\spConsensusCommonViewLogCreate.sql" />
+    <None Include="Procedures\Common\spConsensusCommonViewLogFetchAll.sql" />
+    <None Include="Procedures\Common\spConsensusCommonViewLogFetchById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonViewLogModify.sql" />
+    <None Include="Procedures\Common\spConsensusCommonViewLogRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainProdXrefCreate.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainProdXrefFetchAll.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainProdXrefFetchById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainProdXrefModify.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainProdXrefRemoveById.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainProdXrefFetchAllByTrainid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactTrainProdXrefFetchAllByProdid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticlexrefCreate.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticlexrefFetchAll.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticlexrefFetchById.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticlexrefModify.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticlexrefRemoveById.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileFetchAllByTrainid.sql" />
+    <None Include="Procedures\Document\spConsensusDocumentArticlexrefFetchAllByRelartiid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonProfileFetchAllByVolid.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysConfigFetchAllBySpid.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Contact\vConsensusOrganisationPersonList.sql" />
+    <None Include="Views\Contact\vConsensusOrganisationAddresses.sql" />
+    <None Include="Views\Contact\vConsensusDepartments.sql" />
+    <None Include="Views\Sales\vConsensusOpportunityXref.sql" />
+    <None Include="Views\Membership\vConsensusMemberships.sql" />
+    <None Include="Views\Contact\vConsensusAssociates.sql" />
+    <None Include="Views\Contact\vConsensusCommunication.sql" />
+    <None Include="Views\Contact\vConsensusGiftAid.sql" />
+    <None Include="Views\Learning\vConsensusPrices.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeFetchByTypeAndCodeValue3.sql" />
+    <None Include="Procedures\Security\spConsensusSecurityUserAccountFetchByUsername.sql" />
+    <None Include="Views\Learning\vConsensusBookingLines.sql" />
+    <None Include="Procedures\Other\spConsensusOtherWorkflowFetchByRecType.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysConfigFetchAllBySellingCompanyId.sql" />
+    <None Include="Views\Learning\vConsensusBookingPayments.sql" />
+    <None Include="Views\Learning\vConsensusBookingInvoices.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePriceListFetchAllByProductId.sql" />
+    <None Include="Procedures\Finance\spConsensusFinancePricesFetchAllByProdidPriceListid.sql" />
+    <None Include="Views\Activities\vConsensusComplaints.sql" />
+    <None Include="Views\Membership\vConsensusMembershipInvoices.sql" />
+    <None Include="Views\Learning\vConsensusBookingCreditNotes.sql" />
+    <None Include="Views\Membership\vConsensusMembershipCreditNoteList.sql" />
+    <None Include="Views\Finance\vConsensusCreditNoteAllocations.sql" />
+    <None Include="Views\Finance\vConsensusPaymentAllocations.sql" />
+    <None Include="Views\Finance\vConsensusInvoiceAllocations.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchLocation.sql" />
+    <None Include="Views\Finance\vConsensusMergeFields.sql" />
+    <None Include="Views\Document\vConsensusSmsMergeFields.sql" />
+    <None Include="Views\Document\vConsensusDocumentTemplates.sql" />
+    <None Include="Views\Document\vConsensusPackMergeFields.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegatesToConfirm.sql" />
+    <None Include="Procedures\Common\spConsensusCommonGenericmodeltableFetchAllByAccIdAccountXref.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchEvent.sql" />
+    <None Include="Procedures\Common\spConsensusCommonGenericmodeltableFetchAllByCourseIdSessions.sql" />
+    <None Include="Procedures\Common\spConsensusCommonGenericmodeltableFetchAllByCourseIdPrices.sql" />
+    <None Include="Procedures\Common\spConsensusCommonGenericmodeltableFetchAllByProdIdPrices.sql" />
+    <None Include="Views\Membership\vConsensusMembershipGrades.sql" />
+    <None Include="Views\Membership\vConsensusMembershipProdGrades.sql" />
+    <None Include="Views\Membership\vConsensusMembershipDiscounts.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookingGenerateGrpId.sql" />
+    <None Include="Views\Membership\vConsensusSpecialistGroups.sql" />
+    <None Include="Views\Membership\vConsensusActiveSpecialistGroups.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchBranch.sql" />
+    <None Include="Views\Membership\vConsensusBranchDistricts.sql" />
+    <None Include="Views\Membership\vConsensusConsultantSchemes.sql" />
+    <None Include="Procedures\Common\spConsensusCommonGenericmodeltableValidateDelegate.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchDistrict.sql" />
+    <None Include="Procedures\Common\spConsensusCommonSysConfigFetchAllBySellingCompanyIdKeyName.sql" />
+    <None Include="Procedures\Finance\spConsensusFinanceAccountFetchByXrefRoleIdandOrgId.sql" />
+    <None Include="Views\Finance\vConsensusAccountInvoiceCreditNotes.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchPayment.sql" />
+    <None Include="Views\Finance\vConsensusGiftAidClaimBatches.sql" />
+    <None Include="Views\Finance\vConsensusAccountPerson.sql" />
+    <None Include="Views\Membership\vConsensusCommitteeMember.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchInvoice.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningBookLinesToInvoice.sql" />
+    <None Include="Procedures\Membership\spDeleteCommitteePerson.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningDelegatesToCancel.sql" />
+    <None Include="Views\Other\vConsensusBatchRecords.sql" />
+    <None Include="Triggers\Common\trAttachmentMapTableID.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldFetchAllByPage.sql" />
+    <None Include="Views\Sales\vConsensusOrganisationOpportunities.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Contact\vConsensusProfiles.sql" />
+    <None Include="Views\Contact\vConsensusRoles.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Sales\vConsensusOpportunities.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchAccount.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchTemplate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Common\spConsensusCommonCodeFetchAllByType.sql" />
+    <None Include="Procedures\Common\spConsensusCommonCodeFetchByTypeAndCode.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Learning\vConsensusRelatedProducts.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Learning\vConsensusBOMs.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Marketing\vConsensusPromotionMasters.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchProduct.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Learning\spConsensusLearningCourseFetchByCourseParentId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Marketing\vConsensusPromotions.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Finance\vConsensusInvoiceLines.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Learning\vConsensusSessions.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchQueryStep.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Learning\vConsensusDonations.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchStepParameter.sql" />
+    <None Include="Views\Document\vConsensusProductPacks.sql" />
+    <None Include="Views\Learning\vConsensusSessionPrices.sql" />
+    <None Include="Views\Learning\vConsensusEventProducts.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Learning\vConsensusDelegates.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchPack.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchParameterFilter.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesSessionRemoveById.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchPromotion.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchStep.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Membership\vConsensusMembershipLocations.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Finance\spConsensusFinancePricesRecalculateMemberFee.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Marketing\spConsensusMarketingListFetchAllByOwnerproleid.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Finance\spConsensusFinanceC4CurrencyFetchbyCodeandSellingCompany.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Learning\spInsertUpdateEvent.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Learning\vConsensusMemberMailingLists.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchPortalUserPortalsList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchPortalUserRolesList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Membership\vConsensusMembershipPeriods.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Document\spInsertUpdateLetterTemplate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchSelectionGroups.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceHistoryLinkCleanUp.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceHistorylinkFetchByUserIDandURL.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Membership\vConsensusMembershipDirectDebits.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Document\spConsensusSearchDocumentTemplate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByReference.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Common\spRemoveSystemCode.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Learning\spConsensusLearningConfirmedEvents.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityRoleGrpFetchAllByAddid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityRoleGrpFetchAll.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityRoleGrpFetchAllByOrgid.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActivityRoleGrpFetchById.sql" />
+    <None Include="Procedures\Activities\spConsensusActivitiesActLinkXrefFetchAllByRecid.sql" />
+    <None Include="Procedures\Contact\spConsensusContactCustomerPackFetchAllByType.sql" />
+    <None Include="Procedures\Learning\spConsensusLearningProductFetchAllByProleid.sql" />
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceHistorylinkFetchAllByUserIDandURL.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Membership\spConsensusMembershipInvoiceToCreate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Learning\vConsensusDonationBookingLines.sql" />
+    <None Include="Views\Membership\vConsensusMembershipBranches.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Common\vConsensusAttachments.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Membership\vConsensusBranchCommittees.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchCommittee.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchReport.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Document\vConsensusPacks.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Common\spConsensusCommonAttachmentFetchAllByUrlAndRecordId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\UserInterface\spConsensusUserInterfaceScreenCustomFieldValueFetchByFieldIdAndRecordId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Contact\vConsensusAssociateCourseList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchProfileSearchOptions.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Document\vConsensusArticles.sql" />
+    <None Include="Procedures\Searches\spConsensusSearchArticle.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Procedures\Searches\spConsensusSearchActivity.sql" />
+  </ItemGroup>
+</Project>

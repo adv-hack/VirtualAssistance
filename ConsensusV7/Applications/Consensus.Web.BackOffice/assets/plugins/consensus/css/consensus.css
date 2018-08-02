@@ -1,0 +1,1390 @@
+﻿
+/*#region animation definitions */
+
+@keyframes spin {
+  000% { -webkit-transform: rotate(0); -moz-transform: rotate(0); -ms-transform: rotate(0); -o-transform: rotate(0); transform: rotate(0); }
+  100% { -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+  000% { -webkit-transform: rotate(0); -moz-transform: rotate(0); -ms-transform: rotate(0); -o-transform: rotate(0); transform: rotate(0); }
+  100% { -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  000% { -webkit-transform: rotate(0); -moz-transform: rotate(0); -ms-transform: rotate(0); -o-transform: rotate(0); transform: rotate(0); }
+  100% { -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+/*#endregion */
+
+/*#region site layout */
+
+/* Ensure that the site container fills the available viewport */
+body > div.container-fluid {
+  position: absolute;
+  padding-top: 51px;
+  height: 100%;
+  width: 100%;
+}
+
+/* Ensure that the inner container fills the available viewport */
+body > div.container-fluid > .row {
+  height: 100%;
+}
+
+/* Ensure that the side bar fills the available viewport */
+nav.sidebar {
+  height: 92%;
+  position: fixed;
+  overflow: auto;
+  background-color:#333333;
+}
+
+/* Ensure that the main content is consistently padded */
+form > main {
+  padding: 0 10px 20px 10px;
+}
+
+/*#endregion */
+
+/*#region site menu */
+
+/* Ensure brand logo fits within navbar */
+.navbar-brand img {
+  height: 20px;
+  position: relative;
+  top: -3px;
+  left: -5px;
+}
+
+
+.dropdown-menu {
+    background-color: #292b2c;
+    border:none;
+}
+
+/* Adjust colour of brand text */
+.navbar-inverse .navbar-brand {
+  color: #ccc;
+}
+.navbar-inverse .navbar-nav .nav-link {color:white;}
+
+/* Set the cursor to default for the main menu */
+.navbar {
+  cursor: default;
+  border-bottom:0px;
+}
+
+/* Set the margin for the search box in the header*/
+form.form-inline.my-2.float-right {
+    margin-left: 10px;
+}
+
+#Content_perSurname {height:35px;}
+
+/* Set the cursor to a pointer for the hyperlinks */
+.navbar a {
+    cursor: pointer;
+    color: #b3b3b3;
+}
+
+/* Change the heading text to be white*/
+.text-primary {
+    color: white !important;
+}
+
+/* Set the system so that there isn't a gap between the megamenu drop down and the menu bar */
+.mt-1 {margin-top:0px !important;}
+
+/* Ensure menu items are rendered in colour when hovering */
+.nav-menu-item:hover {
+  color: #dc4405;
+  text-decoration: none;
+}
+
+/* Remove bottom margin from navbar */
+body > nav.navbar {
+  margin-bottom: 0;
+}
+
+/* Ensure megamenu collapses at the correct breakpoint */
+@media (max-width: 1023px) {
+    body > .navbar {
+        align-items: stretch !important;
+        flex-direction: column !important;
+    }
+  body > .navbar > .header-collapse {
+    display: block !important;
+    max-height: none !important;
+  }
+  body > .navbar > .header-collapse:not(.show) {
+    display: none !important;
+  }
+  body > .navbar > .header-collapse > ul.navbar-nav {
+    flex-direction: column !important;
+    float: none !important;
+  }
+  body > .navbar > .navbar-toggler {
+    display: block !important;
+    margin-top: 5px;
+  }
+  body > .navbar > .header-collapse > .float-right {
+    float: none !important;
+  }
+}
+
+/*#endregion */
+
+/*#region page menu */
+
+/* Fix the page header */
+body.standard form > header {
+  background: white;
+  padding: 1rem 1rem 0 1rem;
+  position: fixed;
+  z-index: 100;
+  left: 16.66666667%;
+  right: 0;
+  margin-bottom: 20px;
+}
+
+
+
+/* Fix the page form */
+body.standard form  {
+  margin-left: 16.66666667%;
+}
+
+
+/* Provide a gradient to "fade" content that scrolls under the page header */
+body.standard form > header:after {
+  content: '';
+  display: block;
+  height: 30px;
+  position: absolute;
+  top: 100%;
+  right: 1rem;
+  left: 1rem;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 70%);
+}
+
+/* To ensure spacing underneath the header is correct, the header is cloned.  This clone needs to be positioned relatively and hidden */
+body.standard form > header + header {
+  visibility: hidden;
+  position: relative;
+  left: 0;
+}
+
+/* Remove the margin from the page heading */
+body.standard form > header hgroup h1 {
+  margin-top: 0;
+}
+
+/* Create a space between the heading text and icon */
+body.standard form > header hgroup h1 .consensus-header-text {
+  padding-left: 10px;
+}
+
+/* Position the page header icon */
+body.standard form > header hgroup h1 .consensus-header-icon {
+  position: relative;
+  top: 5px;
+  left: 10px;
+}
+
+/* Space navigational links in the header */
+body.standard form > header nav a {
+  background: none !important;
+  display: inline-block;
+  padding: 8px 0 8px 8px;
+  white-space: nowrap;
+  text-decoration: none !important;
+}
+
+/* Pipe-delimit navigational links in the header */
+body.standard form > header nav a:not(:last-of-type):after {
+  content: '';
+  border-right: 1px solid rgba(0,0,0,0.2);
+  margin-left: 8px;
+}
+
+/* Ensure navigational links are rendered in colour when hovering */
+body.standard form > header nav a:hover {
+  color: #dc4405;
+}
+
+/* Render a border line to separate the header from the links */
+body.standard form > header hgroup, form > header nav {
+  border-bottom: 1px solid #eee;
+}
+
+/* Ensure that the header is repositioned when the viewport automatically hides the sidebar */
+@media (max-width: 767px) {
+  body.standard form > header {
+    left: 0;
+  }
+  body.standard form  {
+  margin-left: 0;
+}
+
+}
+
+/*#endregion */
+
+/* #region sidebar menu */
+
+.favouritesList img {
+  cursor: pointer;
+}
+
+.favouritesList a
+{
+    margin-left:8px;
+    text-decoration:none !important;
+    color:#b3b3b3;
+}
+
+.favouritesList a:hover
+{
+    color: #dc4405;
+    text-decoration:none;
+}
+
+.favouritesList a:hover svg
+{
+    fill: #dc4405 !important;
+    text-decoration:none;
+}
+
+.favouritesList ul
+{
+    margin-top:3px;
+}
+
+.favouritesList ul > a {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color:#b3b3b3;
+}
+
+.favouritesList h3 {
+    color:white;
+    font-size:18px;
+}
+
+.favouritesList ul > a > span {
+  white-space: nowrap;
+  line-height:26px;
+}
+
+.favouritesList ul > a > span:not([class^=icons8]) + span {
+  margin-left: 22px;
+  fill:white;
+}
+
+.favouritesList ul > a > span:not([class^=icons8]) + span {
+  margin-left: 8px;
+  fill:white;
+}
+
+/* #endregion */
+
+/*#region form containers */
+
+/* Render panels with a background colour */
+.panel {
+  background-color: #fafafa;
+}
+
+/* Close the borders on the tab controls */
+.tab-content {
+  background: #fcfcfc;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+}
+
+/* Ensure tabs are positioned relatively, to allow repositioning of the icon */
+ul.nav-tabs > li.nav-item > a.nav-link {
+  position: relative;
+} 
+
+/* Resize the icon to a valid size */
+ul.nav-tabs > li.nav-item > a.nav-link > i[class^=icons8] {
+  position: absolute;
+  left: 0.6em;
+  top: 0.6em;
+  height: 1.5em;
+  width: 1.5em;
+}
+
+/* Apply a margin to the tab text to space away from the icon */
+ul.nav-tabs > li.nav-item > a.nav-link > i[class^=icons8] + span {
+  margin-left: 1.2em;
+}
+
+/* Resize the tab headings */
+.nav-tabs .nav-item a.nav-link {
+  font-size: 18px;
+}
+
+/* Colour the active tab to match the tab control background */
+.nav-tabs .nav-item a.nav-link.active {
+  border-bottom-color: #fcfcfc;
+  background: #fcfcfc;
+  border-top-color: #dc4405;
+  border-top-width: 2px;
+}
+
+/* Render group headings with border line */
+.consensus-group > h3 { 
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  color: #dc4405;
+  font-size: 18px;
+  padding: 0.5rem 0; 
+}
+
+/* Render the group heading without a top margin */
+div.row:first-child > div > .consensus-group > h3:first-of-type {
+  margin-top: 0;
+}
+
+/* Ensure space exists between two groups */
+.consensus-group + .consensus-group {
+  margin-top: 1.5rem;
+}
+
+/* Ensure space exists between two sections */
+section + section {
+  margin-top: 2rem;
+}
+
+/* Colour the section headings consistently */
+.card-header {
+  background-color: #ebebeb !important;
+  color: #333333;
+  font-size: 18px;
+}
+
+/* Separate section headings from icons */
+.card-header > i[class^=icons8] {
+  margin-right: 0.25em;
+  margin-top: -0.25em;
+  margin-bottom: -0.25em;
+  height: 1.5em;
+  width: 1.5em;
+}
+
+/* Remove the border radius from the card to align with the Advance styling */
+.card {
+  border-radius: 0;
+}
+
+/* Render a gap between two adjacent cards */
+.card + .card {
+  margin-top: 20px;
+}
+
+/*#endregion */
+
+/*#region form controls */
+
+/* Remove any autocompletion background colour that may be applied by Chrome */
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+  background-color: transparent;
+}
+
+/* Remove the up/down steppers that are added to numerical fields by Chrome */
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/* Remove the clear button that is added to input control by Internet Explorer */
+input::-ms-clear {
+  display: none;
+}
+
+/* Remove the up/down steppers that are added to numerical fields by Firefox */
+input[type=number]  {
+  -moz-appearance:textfield;
+}
+
+/* Ensure dropdown lists are sized to match other input controls */
+select.form-control:not([size]):not([multiple]) {
+  height: 31px !important;
+  display: block;
+}
+
+/* Ensure hyperlinks are sized to match other input controls */
+.consensus-input[consensus-input-link] a {
+  height: 31px !important;
+  display: block;
+  padding: 6px 0;
+}
+
+/* Ensure input add-ons have a pointer cursor */
+.input-group .input-group-addon:not([disabled=disabled])  {
+  cursor: pointer;
+}
+
+/* Animate loading spinners */
+.input-group-addon .icon-spin {
+  -moz-animation: spin 1s infinite linear;
+  -o-animation: spin 1s infinite linear;
+  -webkit-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+}
+
+/* Add a space above each input control */
+.consensus-input {
+  display: block;
+  margin-top: 1.5rem;
+}
+
+/* Reduce the space between the label and the input control */
+.consensus-input label {
+  min-height: 13px;
+  font-size: 15px;
+  margin-bottom: 0.4rem;
+}
+
+/* Remove the disabled mouse cursor */
+.consensus-input .form-control[disabled] {
+  cursor: default;
+}
+
+
+/*#endregion */
+
+/*#region switch controls */
+
+/* Style the bootstrap switches to render using a consistent height/font */
+.bootstrap-switch .bootstrap-switch-handle-on, 
+.bootstrap-switch .bootstrap-switch-handle-off, 
+.bootstrap-switch .bootstrap-switch-label {
+  font-size: 12px;
+  padding: 5px 12px;
+  line-height: 19px;
+}
+
+/* Remove the border radius from the bootstrap switches to match the Advanced style */
+.bootstrap-switch, 
+.bootstrap-switch .bootstrap-switch-handle-on, 
+.bootstrap-switch .bootstrap-switch-handle-off, 
+.bootstrap-switch .bootstrap-switch-label {
+  border-radius: 0 !important;
+}
+
+/*#endregion */
+
+/*#region check controls */
+
+input[type=checkbox].stylised {
+  display: none;
+}
+
+input[type=checkbox].stylised + label {
+  display: block;
+  cursor: pointer;
+  margin: 2px auto -2px auto;
+  height: 14px;
+  width: 14px;
+  border: 1px solid #999;
+  position: relative;
+}
+
+input[type=checkbox].stylised + label:before {
+  background: #55ae7c;
+  content: '';
+  display: block;
+  height: 0;
+  left: 50%;
+  position: absolute;
+  width: 0;
+  top: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -wekbit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  transition-property: height, width;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+input[type=checkbox].stylised + label:after {
+  background: url('../../../icons/icons8/icons8-delete_sign.svg') no-repeat;
+  display: block;
+  position: absolute;
+  content: '';
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+input[type=checkbox].stylised:checked + label:before {
+  width: 100%;
+  height: 100%;
+}
+
+input[type=checkbox].stylised:checked + label:after {
+  opacity: 1;
+}
+
+/*#endregion */
+
+/*#region wizard control */
+
+/* Ensure the entries in the header are rendered left-to-right */
+.wizard > header {
+  border-bottom: 1px solid #999;
+  border-top: 1px solid #999;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  height: 32px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+}
+
+/* Style the entries in the header, the SVG background renders three blocks coloured grey/blue/green  */
+.wizard > header > div {
+  background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSczMDAnIGhlaWdodD0nMTAwJz4NCiAgPHJlY3QgeD0nMDAwJyB5PScwJyB3aWR0aD0nMTAwJyBoZWlnaHQ9JzEwMCcgc3R5bGU9J2ZpbGw6ICMwMDlhNDQnIC8+DQogIDxyZWN0IHg9JzEwMCcgeT0nMCcgd2lkdGg9JzEwMCcgaGVpZ2h0PScxMDAnIHN0eWxlPSdmaWxsOiAjMDA5ZmRmJyAvPg0KICA8cmVjdCB4PScyMDAnIHk9JzAnIHdpZHRoPScxMDAnIGhlaWdodD0nMTAwJyBzdHlsZT0nZmlsbDogI2Y3ZjdmNycgLz4NCjwvc3ZnPg==");
+  background-position: 100% 0;
+  background-size: 300% 100%;
+  cursor: default;
+  -ms-flex: 100% 1 1;
+  -webkit-flex: 100% 1 1;
+  flex: 100% 1 1;
+  position: relative;
+  text-align: left;
+}
+
+/* Style the 'current' entry in blue by shifting the background */
+.wizard > header > div.current {
+  background-position: 50% 0;
+}
+
+/* Style the 'completed' entry in green by shifting the background */
+.wizard > header > div.complete {
+  background-position: 0 0;
+}
+
+/* Add a left border to the first entry, the "close" the outside of the header area */
+.wizard > header > div:first-child {
+  border-left: 1px solid #999;
+}
+
+/* Ensure that the textual label fills the element */
+.wizard > header > div > span {
+  display: block;  
+  padding: 6px 0 6px 12px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+}
+
+/* Style the current/complete labels to use white bold text */
+.wizard > header > div.current > span, .wizard > header > div.complete > span {
+  color: white;
+  font-weight: 600;
+}
+
+/* Add left padding to each entry to account for the triangular borders */
+.wizard > header > div:not(:first-child) > span {
+  padding-left: 24px;  
+}
+
+/* Add a triangular border to the end of each entry in the header */
+.wizard > header > div:before, .wizard > header > div:after {
+  border: 15.5px solid transparent;
+  content: '';
+  display: block;
+  height: 0;
+  position: absolute;
+  width: 0;
+  top: -1px;
+}
+
+/* Colour the first triangular border in dark grey */
+.wizard > header > div:before {
+  border-left-color: #999;
+  right: -30px;
+  z-index: 1;
+}
+
+/* Colour the second triangular border to match the background */
+.wizard > header > div:after {
+  border-left-color: #f7f7f7;
+  right: -29px;
+  z-index: 2;
+}
+
+/* Add a triangle to each label to provide an animatable graphic for current/complete states */
+.wizard > header > div > span:before, .wizard > header > div > span:after {
+  border: 15.5px solid transparent;
+  content: '';
+  display: block;
+  opacity: 0;
+  height: 0;
+  position: absolute;
+  width: 0;
+  margin-right: -29px;
+  right: calc(100%);
+  top: -1px;
+}
+
+/* Colour the first triangular border in blue for 'current' status */
+.wizard > header > div > span:before {
+  border-left-color: #009fdf;
+  z-index: 3;
+}
+
+/* Colour the second triangular border in green for 'complete' status */
+.wizard > header > div > span:after {
+  border-left-color: #009a44;
+  z-index: 4;
+}
+
+/* Move the blue and green triangles with the backgound and remove the delay from the opacity transition */
+.wizard > header > div.current > span:before,
+.wizard > header > div.complete > span:before,
+.wizard > header > div.complete > span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* Define the transitions for animating the changes between the different states */
+.wizard > header > div:not(.no-transition) {  
+  -moz-transition: background-position 0.25s ease-in-out 0s;
+  -o-transition: background-position 0.25s ease-in-out 0s;
+  -webkit-transition: background-position 0.25s ease-in-out 0s;
+  transition: background-position 0.25s ease-in-out 0s;
+}
+.wizard > header > div:not(.no-transition) > span {
+  -moz-transition: color 0.125s ease-in-out 0.125s, font-weight 0.125s ease-in-out 0.125s;
+  -o-transition: color 0.125s ease-in-out 0.125s, font-weight 0.125s ease-in-out 0.125s;
+  -webkit-transition: color 0.125s ease-in-out 0.125s, font-weight 0.125s ease-in-out 0.125s;
+  transition: color 0.125s ease-in-out 0.125s, font-weight 0.125s ease-in-out 0.125s;
+}
+.wizard > header > div:not(.no-transition) > span:before {  
+  -moz-transition: right 0.25s ease-in-out 0s, opacity 0s ease-in-out 0.25s;
+  -o-transition: right 0.25s ease-in-out 0s, opacity 0s ease-in-out 0.25s;
+  -webkit-transition: right 0.25s ease-in-out 0s, opacity 0s ease-in-out 0.25s;
+  transition: right 0.25s ease-in-out 0s, opacity 0s ease-in-out 0.25s;
+}
+.wizard > header > div.current:not(.no-transition) {
+  -moz-transition: background-position 0.25s ease-in-out 0.25s;
+  -o-transition: background-position 0.25s ease-in-out 0.25s;
+  -webkit-transition: background-position 0.25s ease-in-out 0.25s;
+  transition: background-position 0.25s ease-in-out 0.25s;
+}
+.wizard > header > div.current:not(.no-transition) > span {
+  -moz-transition: color 0.125s ease-in-out 0.25s, font-weight 0.125s ease-in-out 0.25s;
+  -o-transition: color 0.125s ease-in-out 0.25s, font-weight 0.125s ease-in-out 0.25s;
+  -webkit-transition: color 0.125s ease-in-out 0.25s, font-weight 0.125s ease-in-out 0.25s;
+  transition: color 0.125s ease-in-out 0.25s, font-weight 0.125s ease-in-out 0.25s;
+}
+.wizard > header > div.current:not(.no-transition) > span:before {
+  -moz-transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 0.25s;
+  -o-transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 0.25s;
+  -webkit-transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 0.25s;
+  transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 0.25s;
+}
+.wizard > header > div.current:not(.no-transition) > span:after {
+  -moz-transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 1s;
+  -o-transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 1s;
+  -webkit-transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 1s;
+  transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 1s;
+}
+.wizard > header > div.complete:not(.no-transition) > span:before {
+  -moz-transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 0s;
+  -o-transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 0s;
+  -webkit-transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 0s;
+  transition: right 0.25s ease-in-out 0.25s, opacity 0s ease-in-out 0s;
+}
+.wizard > header > div.complete:not(.no-transition) > span:after {
+  -moz-transition: right 0.25s ease-in-out 0s, opacity 0s ease-in-out 0s;
+  -o-transition: right 0.25s ease-in-out 0s, opacity 0s ease-in-out 0s;
+  -webkit-transition: right 0.25s ease-in-out 0s, opacity 0s ease-in-out 0s;
+  transition: right 0.25s ease-in-out 0s, opacity 0s ease-in-out 0s;
+}
+
+/* Style all progress indicator labels in grey */
+.wizard .wizard-indicator label {
+  color: #999;
+  font-weight: 600;
+  font-size: 110%;
+}
+
+/* Render a square block for the progress indicator */
+.wizard .wizard-indicator > .wizard-indicator-spinner {
+  display: inline-block;
+  margin: 2em;
+  position: relative;
+  height: 10em;
+  width: 10em;
+}
+
+/* Center the progress indicator label */
+.wizard .wizard-indicator > .wizard-indicator-spinner > label {
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* Render a spinning blue circle for the progress indicator */
+.wizard .wizard-indicator > .wizard-indicator-spinner > div {
+  border: 4px solid #3498db;
+  border-radius: 50%;
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 2s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -o-animation-name: spin;
+  -o-animation-duration: 2s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-timing-function: linear;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-name: spin;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Render two white blocks over the indicator circle (to give the impression of two rotating arcs) */
+.wizard .wizard-indicator > .wizard-indicator-spinner > div:before, .wizard-indicator > .wizard-indicator-spinner > div:after {
+  background: #fff;
+  content: '';
+  display: block;
+  height: calc(15% + 8px);
+  left: -4px;
+  position: absolute;
+  width: calc(100% + 8px);
+  z-index: 1;
+}
+
+/* Position the first white block at the top of the circle */
+.wizard .wizard-indicator > .wizard-indicator-spinner > div:before {
+  top: -4px;
+}
+
+/* Position the first white block at the bottom of the circle */
+.wizard .wizard-indicator > .wizard-indicator-spinner > div:after {
+  bottom: -4px;
+}
+
+/* Reposition the sweetalert icon that is reproduced within the wizard indicator */
+.wizard .wizard-indicator > .swal2-icon {
+  margin: 3em auto 1em;
+}
+
+/* Style the footer so that buttons are right-aligned */
+.wizard > footer {
+  padding-top: 2rem;
+  text-align: right;
+}
+
+/* Create a space between each button */
+.wizard > footer .btn {
+  margin-left: 1rem;
+}
+
+/* Ensure that the first button (cancel) is positioned on the left */
+.wizard > footer .btn:first-child {
+ /* float: left; */
+  margin-left: 0;
+}
+
+/*#endregion */
+
+/*#region datatable control */
+
+table.dataTable {
+  background: white;
+  border-collapse: collapse; 
+  border-spacing: 0; 
+  width: 100% !important;
+}
+
+table.dataTable .dataTables_empty {
+  background: white;
+  color: #aaa;
+}
+
+table.dataTable > thead > tr > th,
+table.dataTable > tbody > tr > th,
+table.dataTable > tfoot > tr > th, 
+table.dataTable > thead > tr > td, 
+table.dataTable > tbody > tr > td, 
+table.dataTable > tfoot > tr > td {
+  vertical-align: middle;
+}
+
+table.dataTable td.datatable-buttons {
+  text-align: center;
+  font-size:21px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+table.dataTable .datatable-buttons a {
+  position: relative;
+  text-align: center;
+  font-size: 21px;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+table.dataTable .datatable-buttons a:hover {
+  text-decoration: none !important;
+}
+
+.dataTables_wrapper .dt-buttons {
+  float: right;
+  margin-bottom: 5px;
+}
+
+.dataTables_wrapper .dataTables_filter label {
+   float:left;
+}
+
+.con-grid-row-saving
+{
+    position: absolute;
+    /*background-color: white;*/
+    font-style: italic;
+    font-weight: bold;
+    color: #b0b0b0;
+    padding-top: 15px;
+    padding-left: 30px;
+}
+/*#endregion */
+
+div.con-list-refreshing
+{
+    position: absolute;
+    background-color: white;
+    color: #505050;
+    opacity: 0.5;
+    z-index: 50;
+    padding: 6px;
+}
+.con-list-refreshing div
+{
+    width: 1.2em;
+    height: 1.2em;
+    animation: spin 1s infinite linear;
+}
+
+/*#region popup control */
+
+/* Fade out the background when the popup is displayed */
+.modal-backdrop.fade {
+  opacity: 0.4;
+}
+
+/* Ensure that the titlebar of the popup expands so that the close button is right-aligned */
+.modal-title {
+  flex-grow: 1;
+}
+
+/* Ensure that the close button is clearly visible */
+.modal-header .close {
+  flex-grow: 0;
+  text-shadow: none;
+  color: white;
+  opacity: 0.7;
+}
+
+/* Ensure that the close button highlights when hovered over */
+.modal-header .close:hover {
+  opacity: 0.95;
+}
+
+/* Prevent the popup from being resized off the page */
+.modal-dialog .modal-body {
+  max-height: calc(100vh - 98px);
+  overflow: auto;
+}
+
+/* Prevent the popup from being moved off the page */
+.modal-dialog {
+  margin: 0 auto !important;
+  padding: 0 30px;
+  top: 50%;
+  -ms-transform: translateY(-50%) !important;
+  -moz-transform: translateY(-50%) !important;
+  -o-transform: translateY(-50%) !important;
+  -webkit-transform: translateY(-50%) !important;
+  transform: translateY(-50%) !important;
+}
+
+/* Ensure popups fill the viewport when viewed on a smaller device */
+@media(max-width: 1209px) {
+  .modal {
+    padding-right: 0 !important;
+  }
+
+  .modal-dialog {
+    width: unset !important;
+    padding: 0 15px;
+  }
+
+  .modal-dialog .modal-body {
+    max-height: calc(100vh - 70px);
+  }
+}
+
+/*#endregion */
+
+/*#region rendering mode: view */
+
+/* Hide any control that is designated as being visible for another mode */
+form[data-mode=read] [class^="consensus-visible-"]:not(.consensus-visible-read),
+form[data-mode=read] [class*=" consensus-visible-"]:not(.consensus-visible-read) {
+  display: none;  
+}
+
+/* Render input controls as text */
+form[data-mode=read] .consensus-input input.form-control,
+form[data-mode=read] .consensus-input select.form-control,
+form[data-mode=read] .consensus-input textarea.form-control {
+  border-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: #333;
+  cursor: default;
+  background: none;
+  text-indent: 0;
+  padding-left: 0;
+  padding-right: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Render switch controls as text */
+form[data-mode=read] .consensus-bootstrap-switch {
+  border: none;
+  width: auto !important;
+}
+form[data-mode=read] .consensus-bootstrap-switch .bootstrap-switch-container {
+  margin-left: 0 !important;
+  width: auto !important;
+}
+form[data-mode=read] .consensus-bootstrap-switch .bootstrap-switch-handle-on,
+form[data-mode=read] .consensus-bootstrap-switch .bootstrap-switch-handle-off {
+  background: none !important;
+  color: #333 !important;
+  opacity: 1 !important;
+  padding: 3px 0;
+  width: auto !important;
+}
+form[data-mode=read] .consensus-bootstrap-switch .bootstrap-switch-label,
+form[data-mode=read] .consensus-bootstrap-switch.bootstrap-switch-on .bootstrap-switch-handle-off,
+form[data-mode=read] .consensus-bootstrap-switch.bootstrap-switch-off .bootstrap-switch-handle-on {
+  display: none;
+}
+
+/* Hide the input element for any control that renders as a hyperlink */
+form[data-mode=read] .consensus-input[consensus-input-link] input,
+form[data-mode=read] .consensus-input[consensus-input-link] select {
+  display: none;
+}
+
+/* Hide the input add-ons */
+form[data-mode=read] .consensus-input .input-group-addon {
+  display: none;
+}
+
+/* Remove the native dropdown from the select elements */
+form[data-mode=read] .consensus-input select.form-control {
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Use pointer-events to prevent checkboxes from being clicked */
+form[data-mode=read] input[type=checkbox].stylised + label {
+  pointer-events: none;
+}
+
+/* Render checkboxes with a gray background */
+form[data-mode=read] input[type=checkbox].stylised + label:before {
+  background: #ccc;
+}
+
+/* Hide the help/error text when in read-mode */
+form[data-mode=read] > small > span {
+  display: none;
+}
+
+/*#endregion */
+
+/*#region rendering mode: edit */
+
+/* Hide any control that is designated as being visible for another mode */
+form[data-mode=edit] [class^="consensus-visible-"]:not(.consensus-visible-edit),
+form[data-mode=edit] [class*=" consensus-visible-"]:not(.consensus-visible-edit) {
+  display: none;  
+}
+
+/* Hide the hyperlink for any control that renders as an input element */
+form[data-mode=edit] .consensus-input[consensus-input-link] a {
+  display: none;
+}
+
+/* Hide the help text when displaying a validation error */
+form[data-mode=edit] .consensus-input.has-error > small > span:not(.consensus-validator),
+form[data-mode=edit] .consensus-input.has-warning > small > span:not(.consensus-validator) {
+  display: none;
+}
+
+/*#endregion */
+
+/*#region rendering mode: customisation */
+
+form[data-mode=customise] [class^="consensus-visible-"]:not(.consensus-visible-customise),
+form[data-mode=customise] [class*=" consensus-visible-"]:not(.consensus-visible-customise) {
+  display: none;  
+}
+
+/* Hide the hyperlink for any control that renders as an input element */
+form[data-mode=customise] .consensus-input[consensus-input-link] a {
+  display: none;
+}
+
+table.dataTable.customisation td input {
+  color: #e57200;
+  font-family: 'Open Sans Semibold';
+}
+
+table.dataTable.customisation td input::placeholder {
+  color: #555555;
+  font-family: 'Open Sans Light';
+}
+table.dataTable.customisation td input::-webkit-input-placeholder {
+  color: #555555;
+  font-family: 'Open Sans Light';
+}
+table.dataTable.customisation td input::-moz-placeholder {
+  color: #555555;
+  font-family: 'Open Sans Light';
+}
+table.dataTable.customisation td input:-ms-input-placeholder {
+  color: #555555;
+  font-family: 'Open Sans Light';
+}
+table.dataTable.customisation td input:-moz-placeholder {
+  color: #555555; 
+  font-family: 'Open Sans Light';
+}
+
+
+
+/*#endregion */
+
+/*#region override the advanced stylesheet */
+
+/* Position the advanced logo so that it is not hard-against the viewport edge */
+.advanced-login .logo {
+  margin: 2rem;
+}
+
+/* Remove the fixed height from the input controls */
+.advanced-login .field {
+  height: auto !important;
+}
+
+/* Render the labels in bold */
+.advanced-login .login > span {
+  margin-bottom: 5px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* Ensure that the background does not prevent clicking on the logo */
+.advanced-login .background {
+  opacity: 0.075;
+  pointer-events: none;
+}
+
+/* Use a consistent font size across various screen elements */
+body, 
+.nav-tabs .nav-item a.nav-link, 
+.consensus-input label, 
+.consensus-input input, 
+.consensus-input select, 
+.consensus-input textarea {
+  font-size: 13.5px !important;
+  color: #333333
+}
+
+span.consensus-input {
+    width: 100%;
+}
+
+.dropdown-menu,
+.navbar-nav .nav-link,
+.navbar-nav .nav-item .dropdown-menu,
+.navbar-nav .nav-item .dropdown-menu .nav-link,
+.navbar-nav .nav-item .dropdown-menu .nav-menu-item {
+  font-size: 13px !important;
+}
+
+.btn-search-master{
+    position: relative;
+    left: -10px;
+    box-shadow: none;
+}
+.loginuser-master{ overflow:hidden;
+                      text-overflow:ellipsis;
+                      white-space:nowrap;
+                      max-width:190px;
+}
+.loginuser-master > a
+{
+    margin-left:0px;
+}
+.logoff-master{
+    height:20px;
+    width:20px;
+    position:relative;
+    top: -30px;
+    cursor: pointer;
+}
+.logoff-master svg:hover
+{
+    fill: #dc4405 !important;
+    
+}
+
+/*#endregion */
+
+/*region svg icon manipulation*/
+.svg-hidden{
+    visibility:hidden;
+    height:0;
+    width:0;
+}
+.icon {
+    height: 18px;
+    width: 18px;
+}
+.icon-white{
+    fill:white;
+    vertical-align: text-bottom;
+    height:18px;
+    width:18px;
+}
+
+.icon-black{
+    fill:#262626;
+    vertical-align: text-bottom;
+    height:18px;
+    width:18px;
+}
+.icon-orange{
+    fill: #dc4405;
+    vertical-align: text-bottom;
+    height:18px;
+    width:18px;
+}
+/*end svg region*/
+
+.toggleButtonShowHide
+{
+    display:none !important;
+}
+.btnreverse{
+    position:fixed;
+    bottom:18.5px;
+    right:155px;
+    
+}
+
+.datepicker.dropdown-menu{
+    z-index: 10000 !important;
+}
+
+/* Hide the resize bar in the summernote HTML/wysiwyg editor */
+.note-resizebar {
+    display: none;
+}
+.note-editor.note-frame .note-editing-area .note-editable[contenteditable="false"]
+{
+    background-color: inherit;
+}
+.note-editor.note-frame
+{
+    display: table;
+    width: 100%;
+}
+.input-group[disabled="disabled"] .note-frame {
+    border-color: rgba(0,0,0,.125);
+} 
+.note-toolbar {
+    z-index: auto; /* for some reason, if this is set at all then it is drawn in front of something else with a higher z-index */
+}
+.note-toolbar .dropdown-menu {
+    background-color: #ffffff;
+}
+
+.con-footer {
+    border: 1px solid #ddd;
+}
+
+.con-footer .nav.nav-tabs,
+.con-footer .tab-content {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.con-footer .tab-content {
+    margin-bottom: 6px;
+}
+
+.qq-uploader {
+    min-height: 115px;
+    border: 0;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.qq-uploader:before {
+    top: auto;
+}
+.qq-upload-file {
+    width: 400px;
+}
+
+.btn {
+    font-size: 15px;
+}
+
+
+.con-foot-comments .btn-group {
+    float: right;
+}
+.con-comments-modified {
+    margin-top: 8px;
+    color: #808080
+}
+.con-comments-modified label,
+.con-comments-modified label+span {
+    margin-right: 5px;
+}
+.con-comments-modified label {
+    font-weight: normal;
+    /*font-style: italic;*/
+    font-size: 13px;
+}
+.con-comments-modified label+span{
+    font-weight: bold;
+    color: #909090;
+}
+.con-comments-modified label+span:last-of-type {
+    margin-right: 0px;
+}
+.con-comments-container {
+    border: 1px solid #cccccc;
+    border-left-width: 8px;
+    border-left-color: #ebebeb;
+    padding: 6px 6px 6px 15px;
+    overflow-x: auto;
+    margin-right: 24px;
+    /*margin-left: 15px;*/
+    margin-bottom: 18px;
+    min-height: 60px;
+}
+.con-comments-container.con-comments-limited {
+    max-height: 100px;
+    overflow: hidden;
+}
+.con-comments-btn {
+    position: absolute;
+    right: -3px;
+    box-shadow: none;
+    padding: 4px 8px;
+
+}
+.con-comments-expand {
+    bottom: 18px;
+}
+.con-comments-edit {
+    top: 0;
+}
+.con-comments-btn i {
+    font-size: 16px;
+}
+.con-comments-text {
+    white-space: pre-wrap;
+}
+.con-comments-tbb-text {
+    width: 96px;
+}
+
+.con-comments-tbb-show {
+    width: 104px;
+}
+
+/* region new styles for svg icons */
+.svgAdd {
+    padding-left: 5px;
+}
+
+.svgAdd svg:hover
+{
+    fill: #dc4405 !important;
+    cursor: pointer;
+}
+/* end styles for svg icons */
+
+/*Custom styles added for Asp controls*/
+label.form-control {
+  border-color: transparent;
+  /*border: 1px solid;*/
+  box-shadow: none;
+  background: none;
+  text-indent: 0;
+  padding-left: 0;
+  padding-right: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  /*height: 31px;*/
+  display:block;
+  overflow:hidden;
+  white-space:nowrap;
+
+}
+.Content_CustomiseButton {
+    float: left !important;
+    /* display: block; */
+    margin-top: -5.0rem;
+}
+/*end custom style*/

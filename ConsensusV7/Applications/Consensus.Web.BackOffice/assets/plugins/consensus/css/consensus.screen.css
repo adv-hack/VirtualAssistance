@@ -1,0 +1,22 @@
+﻿@media screen {
+ 
+  /*#region Tab Control */
+
+  .nav-tabs .nav-item a.nav-link.active {
+    border-bottom-color: #fcfcfc;
+    background: #fcfcfc;
+  }
+  .tab-content {
+    background: #fcfcfc;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+  }
+  .tab-content table, .tab-content .btn-group {
+    background: white;
+  }
+
+/*#endregion */
+     
+}

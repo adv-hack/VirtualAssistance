@@ -1,0 +1,229 @@
+if not exists (select object_id from sys.objects where type = 'P' and name = 'spInsertUpdateLetterTemplate')
+  exec ('create procedure dbo.spInsertUpdateLetterTemplate as select 1 as temp')
+go
+ALTER procedure [dbo].[spInsertUpdateLetterTemplate]
+(
+@PA_USER_LOGIN_ID varchar(3),
+@PA_ERRORCODE int = null OUTPUT,
+@PA_ERRORDESC varchar(1000) = null OUTPUT,
+@PA_RETURN_ID varchar(11) = null OUTPUT,
+@PA_LT_ID varchar(11) = null,
+@PA_LT_NAME varchar(500) = null,
+@PA_LT_TYPE varchar(40) = null,
+@PA_LT_FOR_USE_WITH tinyint = null,
+@PA_LT_FILE_NAME varchar(255) = null,
+@PA_LT_SELCO_SP_ID varchar(11) = null,
+@PA_LT_PRINT_ONLY tinyint = null,
+@PA_LT_CURRENT tinyint = null,
+@PA_LT_PDF tinyint = null,
+@PA_LT_SEND_PROLE_ID varchar(11) = null,
+@PA_LT_EMAIL_BODY tinyint = null,
+@PA_LT_PQ_ID varchar(11) = null,
+@PA_LT_ATT_ID varchar(11) = null,
+@PA_LT_LABEL tinyint = null
+)
+as
+
+declare
+@SP_DB_ID varchar(3),
+@PA_USER_LOGIN_ID2 varchar(11),
+@ERRORCODE int, -- Local @@ERROR,
+@ERRORDESC varchar(1000),
+@ROWCOUNT int,
+@TRANCOUNT int,
+@OUTPUT_ERRORCODE int,
+@OUTPUT_ERRORDESC varchar(1000),
+@OUTPUT_RETURN_ID varchar(11),
+@LIT_TYPE int,
+@LIT_ID varchar(11),
+@LIT_TEMPLATE varchar(40),
+@OLD_CURRENT tinyint,
+@LIT_CURRENT tinyint
+
+SET @TRANCOUNT = @@TRANCOUNT
+
+if @TRANCOUNT = 0
+BEGIN
+	BEGIN TRANSACTION
+END
+
+set @PA_USER_LOGIN_ID2 = @PA_USER_LOGIN_ID
+select @SP_DB_ID=SP_DB_ID from Sys_Params  where SP_ID = '1'
+
+if datalength(@SP_DB_ID) > 0
+BEGIN
+	select @PA_USER_LOGIN_ID2 = @PA_USER_LOGIN_ID2 + '-' + @SP_DB_ID
+END
+
+IF @PA_LT_ID is not null and datalength(@PA_LT_ID) > 0
+BEGIN
+	update dbo.LetterTmplt set
+	LT_MOD_DATE = GetDate(),
+	LT_MOD_BY = @PA_USER_LOGIN_ID2,
+	LT_NAME = COALESCE(@PA_LT_NAME,LT_NAME),
+	LT_TYPE = COALESCE(@PA_LT_TYPE,LT_TYPE),
+	LT_EMAIL_BODY = COALESCE(@PA_LT_EMAIL_BODY,LT_EMAIL_BODY),
+	LT_PRINT_ONLY = COALESCE(@PA_LT_PRINT_ONLY,LT_PRINT_ONLY),
+	LT_SEND_PROLE_ID = COALESCE(@PA_LT_SEND_PROLE_ID,LT_SEND_PROLE_ID),
+	LT_PQ_ID  = COALESCE(@PA_LT_PQ_ID,LT_PQ_ID),
+	LT_FOR_USE_WITH = COALESCE(@PA_LT_FOR_USE_WITH,LT_FOR_USE_WITH),
+	LT_FILE_NAME = COALESCE(@PA_LT_FILE_NAME,LT_FILE_NAME),
+	LT_SELCO_SP_ID = COALESCE(@PA_LT_SELCO_SP_ID,LT_SELCO_SP_ID),
+	@OLD_CURRENT = LT_CURRENT,
+	LT_CURRENT = COALESCE(@PA_LT_CURRENT,LT_CURRENT),
+	LT_PDF = COALESCE(@PA_LT_PDF,LT_PDF),
+	LT_ATT_ID = COALESCE(@PA_LT_ATT_ID,LT_ATT_ID),
+	LT_LABEL = COALESCE(@PA_LT_LABEL, LT_LABEL)
+	where LT_ID = @PA_LT_ID
+	SELECT @ERRORCODE = @@ERROR,@ROWCOUNT = @@ROWCOUNT
+	IF @ERRORCODE != 0 GOTO HANDLE_ERROR
+
+	if isnull(@PA_LT_TYPE,'')<>''
+	begin
+		select @LIT_TYPE = case LTT_NAME when 'Delegate' then '0' when 'Booking' then '0' else isnull(PACKTYP_TYPE,100) end 
+		from dbo.LetTmpltType 
+		left join dbo.PackType ON PACKTYP_DESC = LTT_NAME
+		where LTT_ID = @PA_LT_TYPE		
+	end
+
+
+	DECLARE Literature CURSOR LOCAL STATIC FORWARD_ONLY FOR
+	Select LIT_ID,COALESCE(@PA_LT_NAME,LIT_TEMPLATE),COALESCE(@LIT_TYPE,LIT_TYPE),
+	case isnull(@PA_LT_CURRENT,2)
+		when 0 then
+			case when @OLD_CURRENT = LIT_CURRENT and @OLD_CURRENT=1 then 0
+			else LIT_CURRENT
+			end
+		when 1 then
+			case when @OLD_CURRENT = LIT_CURRENT and @OLD_CURRENT=0 then 1
+			else LIT_CURRENT
+			end
+		when 2 then LIT_CURRENT
+	end
+	from dbo.Literature 
+	where LIT_LT_ID=@PA_LT_ID
+	OPEN Literature
+	FETCH Literature INTO @LIT_ID,@LIT_TEMPLATE,@LIT_TYPE,@LIT_CURRENT
+	WHILE (@@fetch_status=0)
+	BEGIN 
+			exec dbo.spInsertUpdateLiterature
+				@PA_USER_LOGIN_ID = @PA_USER_LOGIN_ID,
+				@PA_LIT_ID = @LIT_ID,
+				@PA_ERRORCODE = @OUTPUT_ERRORCODE OUTPUT,
+				@PA_ERRORDESC = @OUTPUT_ERRORDESC OUTPUT,
+				@PA_LIT_TEMPLATE =  @LIT_TEMPLATE,
+				@PA_LIT_NAME = @LIT_TEMPLATE,
+				@PA_LIT_TYPE = @LIT_TYPE,
+				@PA_LIT_CURRENT = @LIT_CURRENT
+			if @OUTPUT_ERRORCODE <> 0
+			BEGIN
+				CLOSE Literature
+				DEALLOCATE Literature
+				SELECT @ERRORCODE = -1,@ROWCOUNT = 1,@ERRORDESC = @OUTPUT_ERRORDESC
+				IF @ERRORCODE != 0 GOTO HANDLE_ERROR
+			END	
+		FETCH Literature INTO @LIT_ID,@LIT_TEMPLATE,@LIT_TYPE,@LIT_CURRENT
+	END 
+	CLOSE Literature
+	DEALLOCATE Literature
+
+END
+ELSE
+BEGIN
+	exec dbo.spNextID 251,@PA_LT_ID OUTPUT
+	Insert into dbo.LetterTmplt
+	(
+	LT_ID,
+	LT_ADD_DATE,
+	LT_ADD_BY,
+	LT_MOD_DATE,
+	LT_MOD_BY,
+	LT_RCV_DATE,
+	LT_RCV_FROM,
+	LT_NAME,
+	LT_TYPE,
+	LT_EMAIL_BODY,
+	LT_PRINT_ONLY,
+	LT_SEND_PROLE_ID,
+	LT_PQ_ID,
+	LT_FOR_USE_WITH,
+	LT_FILE_NAME,
+	LT_SELCO_SP_ID,
+	LT_CURRENT,
+	LT_PDF,
+	LT_ATT_ID,
+	LT_LABEL
+	)
+	values
+	(
+	@PA_LT_ID,
+	Getdate(),
+	@PA_USER_LOGIN_ID2,
+	Getdate(),
+	@PA_USER_LOGIN_ID2,
+	Getdate(),
+	@SP_DB_ID,
+	COALESCE(@PA_LT_NAME,null),
+	COALESCE(@PA_LT_TYPE,null),
+	COALESCE(@PA_LT_EMAIL_BODY,0),
+	COALESCE(@PA_LT_PRINT_ONLY,0),
+	COALESCE(@PA_LT_SEND_PROLE_ID,null),
+	COALESCE(@PA_LT_PQ_ID,null),
+	COALESCE(@PA_LT_FOR_USE_WITH,1),
+	COALESCE(@PA_LT_FILE_NAME,null),
+	COALESCE(@PA_LT_SELCO_SP_ID,null),
+	COALESCE(@PA_LT_CURRENT,1),
+	COALESCE(@PA_LT_PDF,0),
+	COALESCE(@PA_LT_ATT_ID,null),
+	COALESCE(@PA_LT_LABEL, 0)
+	)
+	
+	SELECT @ERRORCODE = @@ERROR,@ROWCOUNT = @@ROWCOUNT
+	IF @ERRORCODE != 0 GOTO HANDLE_ERROR
+
+	set @LIT_TYPE = 100
+
+	select @LIT_TYPE = case LTT_NAME when 'Delegate' then '0' when 'Booking' then '0' else isnull(PACKTYP_TYPE,100) end
+	from dbo.LetTmpltType 
+	left join dbo.PackType ON PACKTYP_DESC = LTT_NAME
+	where LTT_ID = @PA_LT_TYPE
+
+	if (@LIT_TYPE<100)
+	begin
+		exec dbo.spInsertUpdateLiterature
+			@PA_USER_LOGIN_ID = @PA_USER_LOGIN_ID,
+			@PA_ERRORCODE = @OUTPUT_ERRORCODE OUTPUT,
+			@PA_ERRORDESC = @OUTPUT_ERRORDESC OUTPUT,
+			@PA_RETURN_ID = @OUTPUT_RETURN_ID OUTPUT,
+			@PA_LIT_LT_ID = @PA_LT_ID,
+			@PA_LIT_TEMPLATE =  @PA_LT_NAME,
+			@PA_LIT_NAME = @PA_LT_NAME,
+			@PA_LIT_TYPE = @LIT_TYPE,
+			@PA_LIT_CURRENT = @PA_LT_CURRENT
+			if @OUTPUT_ERRORCODE <> 0
+			BEGIN
+				SELECT @ERRORCODE = -1,@ROWCOUNT = 1,@ERRORDESC = @OUTPUT_ERRORDESC
+				IF @ERRORCODE != 0 GOTO HANDLE_ERROR
+			END	
+	end				
+END
+
+if @TRANCOUNT = 0
+BEGIN
+	COMMIT TRANSACTION
+END
+
+set @PA_ERRORCODE = 0
+set @PA_RETURN_ID = @PA_LT_ID
+Return
+
+HANDLE_ERROR:
+	if @TRANCOUNT = 0
+	BEGIN
+		ROLLBACK TRAN
+	END
+	set @PA_ERRORCODE = @ERRORCODE
+	set @PA_ERRORDESC = @ERRORDESC
+	Return
+
+GO

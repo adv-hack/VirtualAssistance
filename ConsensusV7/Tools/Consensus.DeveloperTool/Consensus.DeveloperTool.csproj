@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DA0F32E8-2D32-49F1-91F5-E43E00CF48FA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Consensus.CodeGenerator</RootNamespace>
+    <AssemblyName>Consensus.DeveloperTools</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Advanced.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Conversion.cs" />
+    <Compile Include="Editors\AttributeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\AttributeEditor.designer.cs">
+      <DependentUpon>AttributeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\ContainerEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\ContainerEditor.designer.cs">
+      <DependentUpon>ContainerEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\DataSourceEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\DataSourceEditor.designer.cs">
+      <DependentUpon>DataSourceEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\DomainEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\DomainEditor.designer.cs">
+      <DependentUpon>DomainEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\EntityEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\EntityEditor.designer.cs">
+      <DependentUpon>EntityEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\IndexEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\IndexEditor.designer.cs">
+      <DependentUpon>IndexEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\TableEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\TableEditor.designer.cs">
+      <DependentUpon>TableEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\TableImporter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\TableImporter.designer.cs">
+      <DependentUpon>TableImporter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extension.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessFactory.Dynamic.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessFactoryCollection.Dynamic.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessFactoryCollectionFromContainer.Dynamic.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessFactoryFromEntity.Dynamic.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessFactoryOfTModel.Dynamic.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessFactoryOfTModelTId.Dynamic.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessModel.Dynamic.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessModelFromEntity.Dynamic.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessModelOfTId.Dynamic.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessProject.cs" />
+    <Compile Include="Generators\Business Interface Library\GenericBusinessProvider.Dynamic.cs" />
+    <Compile Include="Generators\Client Consumer Library\ClientConsumerProject.cs" />
+    <Compile Include="Generators\Client Consumer Library\ClientConsumerProxyFromEntity.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactory.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactory.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryCollection.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryCollection.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryCollectionFromContainer.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryCollectionFromContainer.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessModelFromEntity.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryFromEntity.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessModelFromEntity.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryFromEntity.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryOfTModel.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryOfTModel.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryOfTModelTRecord.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryOfTModelTRecord.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryOfTModelTRecordTId.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessFactoryOfTModelTRecordTId.User .cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessModelOfTRecordTId.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessModelOfTRecord.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessModel.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessModelOfTRecordTId.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessModelOfTRecord.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessModel.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessProject.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessProvider.Dynamic.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessProvider.User.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataProject.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataProvider.Dynamic.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRecord.Dynamic.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRecord.User.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRecordFromEntity.Dynamic.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRecordOfTId.Dynamic.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRecordOfTId.User.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRepository.Dynamic.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRepositoryCollection.Dynamic.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRepositoryCollectionFromContainer.Dynamic.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRepositoryFromEntity.Dynamic.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRepositoryOfTRecord.Dynamic.cs" />
+    <Compile Include="Generators\Data Interface Library\GenericDataRepositoryOfTRecordTId.Dynamic.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerOperation.Dynamic.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerProject.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerProvider.Dynamic.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerProvider.User.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepository.Dynamic.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepository.User.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepositoryCollection.Dynamic.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepositoryCollection.User.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepositoryCollectionFromContainer.Dynamic.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepositoryCollectionFromContainer.User.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepositoryFromEntity.Dynamic.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepositoryFromEntity.User.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepositoryOfTRecord.Dynamic.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepositoryOfTRecord.User.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepositoryOfTRecordTId.Dynamic.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerRepositoryOfTRecordTId.User.cs" />
+    <Compile Include="Generators\Business Logic Library\LocalBusinessInjector.cs" />
+    <Compile Include="Generators\Client Consumer Library\ClientConsumerInjector.cs" />
+    <Compile Include="Generators\Data SqlServer Library\SqlServerInjector.cs" />
+    <Compile Include="Generators\GeneratorTransfer.cs" />
+    <Compile Include="Generators\Stored Procedures\StoredProcRemoveById.cs" />
+    <Compile Include="Generators\Stored Procedures\StoredProcFetchAll.cs" />
+    <Compile Include="Generators\Stored Procedures\StoredProcFetchAllByColumn.cs" />
+    <Compile Include="Generators\Stored Procedures\StoredProcFetchById.cs" />
+    <Compile Include="Generators\Stored Procedures\StoredProcCreate.cs" />
+    <Compile Include="Generators\Stored Procedures\StoredProcProject.cs" />
+    <Compile Include="Generators\Generator.cs" />
+    <Compile Include="Generators\Stored Procedures\StoredProcModify.cs" />
+    <Compile Include="Models\CSharpAbstractions.cs" />
+    <Compile Include="Models\CSharpAccessor.cs" />
+    <Compile Include="Models\CSharpConstructor.cs" />
+    <Compile Include="Models\CSharpEnumeration.cs" />
+    <Compile Include="Models\CSharpField.cs" />
+    <Compile Include="Models\CSharpFieldFlags.cs" />
+    <Compile Include="Models\CSharpGeneric.cs" />
+    <Compile Include="Models\CSharpImplementation.cs" />
+    <Compile Include="Models\CSharpImplementationMethod.cs" />
+    <Compile Include="Models\CSharpImplementationProperty.cs" />
+    <Compile Include="Models\CSharpMember.cs" />
+    <Compile Include="Models\CSharpMethod.cs" />
+    <Compile Include="Models\CSharpModifiers.cs" />
+    <Compile Include="Models\CSharpParameter.cs" />
+    <Compile Include="Models\CSharpProperty.cs" />
+    <Compile Include="Models\CSharpReference.cs" />
+    <Compile Include="Models\CSharpTypes.cs" />
+    <Compile Include="Models\Domain.cs" />
+    <Compile Include="Models\DomainContainer.cs" />
+    <Compile Include="Models\DomainDataSource.cs" />
+    <Compile Include="Models\DomainDataType.cs" />
+    <Compile Include="Models\DomainEntity.cs" />
+    <Compile Include="Models\DomainEntityAttribute.cs" />
+    <Compile Include="Models\DomainEntityAttributeExposure.cs" />
+    <Compile Include="Models\DomainEntityExtender.cs" />
+    <Compile Include="Models\DomainEntityFilterType.cs" />
+    <Compile Include="Models\DomainGenerationLayers.cs" />
+    <Compile Include="Models\DomainGenerationModes.cs" />
+    <Compile Include="Models\DomainTable.cs" />
+    <Compile Include="Models\DomainTableColumn.cs" />
+    <Compile Include="Models\DomainTableConstraint.cs" />
+    <Compile Include="Models\DomainTableConstraintColumn.cs" />
+    <Compile Include="Models\DomainTableIndex.cs" />
+    <Compile Include="Models\DomainTableIndexColumn.cs" />
+    <Compile Include="Models\GeneratedClass.cs" />
+    <Compile Include="Models\GeneratedEncapsulator.cs" />
+    <Compile Include="Models\GeneratedEncapsulatorClass.cs" />
+    <Compile Include="Models\GeneratedEncapsulatorTaskList.cs" />
+    <Compile Include="Models\GeneratedEnumerator.cs" />
+    <Compile Include="Models\GeneratedFile.cs" />
+    <Compile Include="Models\GeneratedInjector.cs" />
+    <Compile Include="Models\GeneratedInjectorBuildTask.cs" />
+    <Compile Include="Models\GeneratedInjectorClass.cs" />
+    <Compile Include="Models\GeneratedInjectorInterface.cs" />
+    <Compile Include="Models\GeneratedInjectorTaskList.cs" />
+    <Compile Include="Models\GeneratedInterface.cs" />
+    <Compile Include="Models\GeneratedProject.cs" />
+    <Compile Include="Models\GeneratedProjectAction.cs" />
+    <Compile Include="Models\GeneratedProjectItem.cs" />
+    <Compile Include="Models\GeneratedRuntimeType.cs" />
+    <Compile Include="Models\GeneratedSqlProcedure.cs" />
+    <Compile Include="Models\GeneratedSqlScript.cs" />
+    <Compile Include="Models\GeneratedStruct.cs" />
+    <Compile Include="Models\GeneratedType.cs" />
+    <Compile Include="Databases\SqlDataSource.cs" />
+    <Compile Include="Models\RuntimeControl.cs" />
+    <Compile Include="Models\SqlParameter.cs" />
+    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\TaskEvent.cs" />
+    <Compile Include="Models\TaskIsolator.cs" />
+    <Compile Include="Models\TaskList.cs" />
+    <Compile Include="Models\TaskState.cs" />
+    <Compile Include="Models\Version.cs" />
+    <Compile Include="Models\VersionData.cs" />
+    <Compile Include="Models\VersionState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Editors\AttributeEditor.resx">
+      <DependentUpon>AttributeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\ContainerEditor.resx">
+      <DependentUpon>ContainerEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\DataSourceEditor.resx">
+      <DependentUpon>DataSourceEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\DomainEditor.resx">
+      <DependentUpon>DomainEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\EntityEditor.resx">
+      <DependentUpon>EntityEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\IndexEditor.resx">
+      <DependentUpon>IndexEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\TableEditor.resx">
+      <DependentUpon>TableEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\TableImporter.resx">
+      <DependentUpon>TableImporter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Advanced.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
