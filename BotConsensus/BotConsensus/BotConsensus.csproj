@@ -151,7 +151,10 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Dialogs\CourseFirstDialog.cs" />
     <Compile Include="Dialogs\DonationFirstDialog.cs" />
+    <Compile Include="Model\CourseProduct.cs" />
+    <Compile Include="Model\CourseProductPrice.cs" />
     <Compile Include="Model\DonationProduct.cs" />
     <Compile Include="Dialogs\RootDialog.cs" />
     <Compile Include="Global.asax.cs">
