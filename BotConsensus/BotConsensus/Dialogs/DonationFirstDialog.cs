@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Script.Serialization;
 
 namespace BotConsensus.Dialogs
 {
@@ -138,6 +139,13 @@ namespace BotConsensus.Dialogs
         {
             string response = await mobile;
             phone = response;
+            
+            string api = "http://brd-conse-vm1/v7chatbot/rest/learning/product/FetchDonationProduct";
+            var responseFromServer = GetResponseFromServer(api);
+
+            var serializer = new JavaScriptSerializer();
+            var donationProductList = serializer.Deserialize<List<DonationProduct>>(responseFromServer);
+
             PromptDialog.Choice(
                context: context,
                resume: ChildDialogComplete,
@@ -206,5 +214,5 @@ namespace BotConsensus.Dialogs
             return responseFromServer;
         }
 
-    }
+    }    
 }
