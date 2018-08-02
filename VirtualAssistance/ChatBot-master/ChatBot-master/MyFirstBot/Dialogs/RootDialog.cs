@@ -33,7 +33,8 @@ namespace MyFirstBot.Dialogs
         {
             var message = await activity;
 
-            WebRequest request = WebRequest.Create("http://10.33.16.55/rest/finance/account?id=1");
+            //WebRequest request = WebRequest.Create("http://BRD-CONSE-VM1/V7ChatBot/rest/finance/account?id=1");
+            WebRequest request = WebRequest.Create("http://a5e42f25.ngrok.io/rest/finance/account?id=1");
             request.Method = "GET";
 
             request.UseDefaultCredentials = true;
