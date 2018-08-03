@@ -78,7 +78,7 @@ namespace BotConsensus.Dialogs
                     PromptDialog.Text(
                             context: context,
                             resume: ResumeGetFirstName,
-                            prompt: "Sure. May I have your name, number or email ID? ?",
+                            prompt: "Sure. May I have your contact number or email ID? ?",
                             retry: "Sorry, I didn't understand that. Please try again."
                         );
                 }
@@ -136,11 +136,41 @@ namespace BotConsensus.Dialogs
             {
                 PriceList.AppendLine("\nPack: " + price.ListName + "\nPrice: £ " + Math.Round(price.UnitPrice, 2));
             }
-
-
             await context.PostAsync("Here are the details of the course for you: \nStart Date: " + (!String.IsNullOrEmpty(startDate) ? startDate : "Not specified") + " \nCourse Duration(days) :" + CourseLength + PriceList.ToString());
 
-            context.Done(this);
+            PromptDialog.Choice(
+             context: context,
+             resume: CourseLastStep,
+             options: (IEnumerable<BooleanChoice>)Enum.GetValues(typeof(BooleanChoice)),
+             prompt: "\n\nWould you like to go ahead and get further assistance on enrolling into this course? ",
+             retry: "Please try again.",
+             promptStyle: PromptStyle.Auto
+         );
+            
+
+         
+        }
+
+        public async Task CourseLastStep(IDialogContext context, IAwaitable<BooleanChoice> activity)
+        {
+            try
+            {
+                var response = await activity;
+                if (response.Equals(BooleanChoice.Yes))
+                {
+                    context.Done(this);
+                }
+                else
+                {
+                    await context.PostAsync("Thanks for your valuable time. I would be glad to help you if you might be interested for enrollment in future !!!");
+                    context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
+                }
+            }
+            catch
+            {
+                await context.PostAsync("Thanks for your valuable time !!!");
+                context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
+            }
         }
 
         #endregion
