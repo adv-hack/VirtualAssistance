@@ -11,23 +11,37 @@ using Newtonsoft.Json.Linq;
 using System.Web.Script.Serialization;
 using BotConsensus.Model;
 using System.Text;
+using BotConsensus.Util;
 
 namespace BotConsensus.Dialogs
 {
-    [Serializable]    
+    [Serializable]
     public class CourseFirstDialog : IDialog<object>
     {
-        string plandetails;
-        private readonly string serverUrl = "http://a5e42f25.ngrok.io/V7ChatBot";
-        string courseType;
+        #region Properties
+
+        private RestApiUtil _restApiUtil;
+
+        public string plandetails;
+
+        public string courseType;
 
         public enum BooleanChoice { Yes, No }
+
+        #endregion
+
+        #region Constructor
 
         public CourseFirstDialog(string plan)
         {
             plandetails = plan;
+            _restApiUtil = new RestApiUtil();
         }
 
+        #endregion
+
+        #region Public Methods
+        
         public async Task StartAsync(IDialogContext context)
         {
             await context.PostAsync("Thank you for selecting " + plandetails + " option");
@@ -47,9 +61,8 @@ namespace BotConsensus.Dialogs
             var response = await activity;
             if (response.Equals(BooleanChoice.Yes))
             {
-
-                string api = serverUrl + "/rest/learning/product/FetchCourseProduct";
-                var responseFromServer = await GetResponseFromServer(api);
+                string api = "/rest/learning/product/FetchCourseProduct";
+                var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
 
                 var serializer = new JavaScriptSerializer();
                 var courseProductList = serializer.Deserialize<List<CourseProduct>>(responseFromServer);
@@ -63,31 +76,13 @@ namespace BotConsensus.Dialogs
             }
         }
 
-        public async Task<string> GetResponseFromServer(string api)
-        {
-            WebRequest request = WebRequest.Create(api);
-            request.Method = "GET";
-
-            // If required by the server, set the credentials.
-
-            // Get the response.
-            var response2 = await request.GetResponseAsync();
-            // Get the stream containing content returned by the server.
-            Stream dataStream = response2.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
-            return responseFromServer;
-        }
-
         public async Task ChildDialogComplete(IDialogContext context, IAwaitable<String> response)
         {
             string complete = await response;
             courseType = complete;
             StringBuilder PriceList = new StringBuilder();
-            string api = serverUrl + "/rest/learning/product/FetchCourseProduct";
-            var responseFromServer = await GetResponseFromServer(api);
+            string api = "/rest/learning/product/FetchCourseProduct";
+            var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
 
             var serializer = new JavaScriptSerializer();
             var courseProductList = serializer.Deserialize<List<CourseProduct>>(responseFromServer);
@@ -108,6 +103,6 @@ namespace BotConsensus.Dialogs
             context.Done(this);
         }
 
-
+        #endregion
     }
 }
