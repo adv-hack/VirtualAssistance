@@ -150,7 +150,7 @@ namespace BotConsensus.Dialogs
             
             foreach (CourseProductPrice price in pricelist)
             {
-                PriceList.AppendLine(", Pack: " + price.ListName + " and Price: £ " + Math.Round(price.UnitPrice, 2));
+                PriceList.AppendLine("\nPack: " + price.ListName + " and Price: £ " + Math.Round(price.UnitPrice, 2));
                 break;
             }            
 
@@ -161,8 +161,7 @@ namespace BotConsensus.Dialogs
                 Text = "Start Date: " + (!String.IsNullOrEmpty(startDate) ? startDate : "Not specified") + ", Course Duration (days): " + CourseLength + PriceList.ToString()                                
             };
 
-            var message = context.MakeMessage();
-            message.TextFormat = "xml";                  
+            var message = context.MakeMessage();                             
             message.Attachments.Add(heroCard.ToAttachment());            
             await context.PostAsync(message);
 
