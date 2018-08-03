@@ -92,23 +92,7 @@ namespace BotConsensus.Dialogs
             {
                 await context.PostAsync("Thanks for your valuable time !!!");
                 context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
-            }
-            //var response = await activity;
-            //if (response.Equals(BooleanChoice.Yes))
-            //{
-            //    string api = "/rest/learning/product/FetchCourseProduct";
-            //    var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
-
-            //    var serializer = new JavaScriptSerializer();
-            //    var courseProductList = serializer.Deserialize<List<CourseProduct>>(responseFromServer);
-            //    var courseList = courseProductList.Select(x => x.Name).ToList();
-
-            //    PromptDialog.Choice(context, ChildDialogComplete, courseProductList.Select(x => x.Name), "What course are you interested to inquire for?", "Selected course not available. Please try again.", 3, PromptStyle.Auto, courseProductList.Select(x => x.Name));
-            //}
-            //else
-            //{
-            //    context.Done(this);
-            //}
+            }           
         }
         public virtual async Task ResumeGetFirstName(IDialogContext context, IAwaitable<string> Username)
         {
