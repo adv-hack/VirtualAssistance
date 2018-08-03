@@ -43,7 +43,7 @@ namespace BotConsensus.Dialogs
         #endregion
 
         #region Public Methods
-        
+
         /// <summary>
         /// Starts flow of fetching course details
         /// </summary>
@@ -93,7 +93,7 @@ namespace BotConsensus.Dialogs
             {
                 await context.PostAsync("Thanks for your valuable time !!!");
                 context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
-            }           
+            }
         }
         public virtual async Task ResumeGetFirstName(IDialogContext context, IAwaitable<string> Username)
         {
@@ -147,12 +147,24 @@ namespace BotConsensus.Dialogs
             var CourseLength = courseProductList.FirstOrDefault(x => x.Name == courseType).CourseLength;
 
             var pricelist = courseProductList.FirstOrDefault(x => x.Name == courseType).PriceList;
-            PriceList.AppendLine("\nBelow are the different price packs for your course:");
+            
             foreach (CourseProductPrice price in pricelist)
             {
-                PriceList.AppendLine("\nPack: " + price.ListName + "\nPrice: £ " + Math.Round(price.UnitPrice, 2));
-            }
-            await context.PostAsync("Here are the details of the course for you: \nStart Date: " + (!String.IsNullOrEmpty(startDate) ? startDate : "Not specified") + " \nCourse Duration(days) :" + CourseLength + PriceList.ToString());
+                PriceList.AppendLine("<br/> <b>Pack:</b> " + price.ListName + " <b>Price:</b> £ " + Math.Round(price.UnitPrice, 2));
+            }            
+
+            var heroCard = new HeroCard
+            {
+                Title = courseType +" details.",
+                Subtitle = "Below are the different price packs and other details for this course:",
+                Text = "<br/> <b>Start Date:</b> " + (!String.IsNullOrEmpty(startDate) ? startDate : "Not specified") + " <br/> <b>Course Duration (days): </b>" + CourseLength + PriceList.ToString()                                
+            };
+
+            var message = context.MakeMessage();
+            message.TextFormat = "xml";                  
+            message.Attachments.Add(heroCard.ToAttachment());            
+            await context.PostAsync(message);
+
 
             PromptDialog.Choice(
              context: context,

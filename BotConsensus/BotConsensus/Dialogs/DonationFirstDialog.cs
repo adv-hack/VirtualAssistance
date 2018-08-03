@@ -242,13 +242,13 @@ namespace BotConsensus.Dialogs
             }
             else
             { 
-            List<string> amountList = new List<string>() { "£ 10", "£ 50", "£ 100", "£ 1000" };
+            List<string> amountList = new List<string>() { "10", "50", "100", "1000" };
 
             PromptDialog.Choice(
              context: context,
              resume: ResumeGetDonationAmount,
               options: amountList,
-             prompt: "How much amount would you like to donate?",
+             prompt: "How much amount would you like to donate in £?",
              retry: "Selected amount not available. Please try again.",
              promptStyle: PromptStyle.Auto
              );
