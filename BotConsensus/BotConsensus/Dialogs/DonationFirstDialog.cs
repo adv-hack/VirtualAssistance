@@ -1,4 +1,5 @@
 ﻿using BotConsensus.Model;
+using BotConsensus.Util;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System;
@@ -15,14 +16,17 @@ namespace BotConsensus.Dialogs
     [Serializable]
     public class DonationFirstDialog : IDialog<object>
     {
+
+        #region Properties
+        
+        private RestApiUtil _restApiUtil;
         string firstName;
         string lastName;
         string email;
         string phone;
         private string plandetails;
         string donationType;
-        string donationAmount;
-        private readonly string serverUrl = "http://a5e42f25.ngrok.io/V7ChatBot";
+        string donationAmount;        
         string donationUrl = "";
 
         public enum DonationType
@@ -35,10 +39,18 @@ namespace BotConsensus.Dialogs
 
         public enum BooleanChoice { Yes, No }
 
+        #endregion
+
+        #region Constructor
+
         public DonationFirstDialog(string plan)
         {
             plandetails = plan;
         }
+
+        #endregion
+
+        #region Public Methods        
 
         public async Task StartAsync(IDialogContext context)
         {
@@ -54,7 +66,6 @@ namespace BotConsensus.Dialogs
            );
         }
         
-
         public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<BooleanChoice> activity)
         {
             try
@@ -126,8 +137,8 @@ namespace BotConsensus.Dialogs
             string response = await mobile;
             phone = response;
 
-            string api = serverUrl + "/rest/learning/product/FetchDonationProduct";
-            var responseFromServer = await GetResponseFromServer(api);
+            string api = "/rest/learning/product/FetchDonationProduct";
+            var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
 
             var serializer = new JavaScriptSerializer();
             var donationProductList = serializer.Deserialize<List<DonationProduct>>(responseFromServer);
@@ -153,15 +164,14 @@ namespace BotConsensus.Dialogs
              );
         }
         
-
         private async Task ResumeGetDonationAmount(IDialogContext context, IAwaitable<object> result)
         {
             var response = await result;
             donationAmount = response.ToString();
 
-            string api = serverUrl + "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=" + donationType + "&productId=" + donationType;
+            string api = "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=" + donationType + "&productId=" + donationType;
 
-            var responseFromServer = await GetResponseFromServer(api);
+            var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
 
             var serializer = new JavaScriptSerializer();
             donationUrl = serializer.Deserialize<string>(responseFromServer);
@@ -179,29 +189,11 @@ namespace BotConsensus.Dialogs
 
         public async Task CashType(IDialogContext context, IAwaitable<String> response)
         {
-
-            await context.PostAsync("Thank you so much for your kindness. Donation added successfully. Please click following " + serverUrl + "" + donationUrl + " link to check the details. Cheers !!!");
-
+            await context.PostAsync("Thank you so much for your kindness. Donation added successfully. Please click following " + _restApiUtil.ServerUrl + "" + donationUrl + " link to check the details. Cheers !!!");
             context.Done(this);
         }
 
-        public async Task<string> GetResponseFromServer(string api)
-        {
-            WebRequest request = WebRequest.Create(api);
-            request.Method = "GET";
-
-            // If required by the server, set the credentials.
-
-            // Get the response.
-            var response2 = await request.GetResponseAsync();
-            // Get the stream containing content returned by the server.
-            Stream dataStream = response2.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
-            return responseFromServer;
-        }
+        #endregion
 
     }
 }

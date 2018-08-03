@@ -13,14 +13,14 @@ namespace BotConsensus.Util
     {
         #region Properties
 
-        private readonly string _serverUrl;
+        public readonly string ServerUrl;
 
         #endregion
 
         #region Constructor
         public RestApiUtil()
         {
-            _serverUrl = "http://a5e42f25.ngrok.io/V7ChatBot";
+            ServerUrl = "http://a5e42f25.ngrok.io/V7ChatBot";
         }
 
         #endregion
@@ -34,7 +34,7 @@ namespace BotConsensus.Util
         /// <returns></returns>
         public async Task<string> GetResponseFromServer(string api)
         {
-            var url = _serverUrl + "" + api;
+            var url = ServerUrl + "" + api;
             WebRequest request = WebRequest.Create(url);
             request.Method = "GET";
 
