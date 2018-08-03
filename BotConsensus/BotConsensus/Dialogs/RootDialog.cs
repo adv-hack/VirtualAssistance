@@ -9,6 +9,14 @@ namespace BotConsensus.Dialogs
     [Serializable]
     public class RootDialog : IDialog<object>
     {
+
+        #region Public methods
+        
+        /// <summary>
+        /// Starts conversation with Welcome card
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task StartAsync(IDialogContext context)
         {
             var message = context.MakeMessage();
@@ -20,6 +28,12 @@ namespace BotConsensus.Dialogs
             context.Wait(this.ShowOptions);
         }
 
+        /// <summary>
+        /// Shows the option of functionality Bot offers
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="activity"></param>
+        /// <returns></returns>
         public virtual async Task ShowOptions(IDialogContext context, IAwaitable<IMessageActivity> activity)
         {
             var message = await activity;
@@ -32,7 +46,70 @@ namespace BotConsensus.Dialogs
                retry: "Selected option not available. Please try again.",
                promptStyle: PromptStyle.Auto
                );
+        }       
+
+        /// <summary>
+        /// Processes depending on Option selected
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="activity"></param>
+        /// <returns></returns>
+        public virtual async Task ChoiceReceivedAsync(IDialogContext context, IAwaitable<AdvanceOptions> activity)
+        {
+            AdvanceOptions response = await activity;
+            if (response == AdvanceOptions.Donation)
+                context.Call<object>(new DonationFirstDialog(response.ToString()), ChildDialogComplete);
+            else
+                context.Call<object>(new CourseFirstDialog(response.ToString()), CourseCompleteDialog);
         }
+
+        #endregion
+
+        #region Completion Dialogs
+
+        /// <summary>
+        /// Completion dialog for Donation
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
+        public virtual async Task ChildDialogComplete(IDialogContext context, IAwaitable<object> response)
+        {            
+            var message = context.MakeMessage();
+            var attachment = ThankYouCard();
+            message.Attachments.Add(attachment);
+            await context.PostAsync(message);
+            context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
+        }
+
+        /// <summary>
+        /// Completion dialog for Course
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
+        public virtual async Task CourseCompleteDialog(IDialogContext context, IAwaitable<object> response)
+        {
+            await context.PostAsync("Thanks for your interest. Our team will be get back to you soon!!!");
+            context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);            
+        }
+
+        #endregion
+
+        #region Enums for Options
+
+        /// <summary>
+        /// Options Bot offers
+        /// </summary>
+        public enum AdvanceOptions
+        {
+            Donation,
+            Courses,
+        }
+
+        #endregion
+
+        #region Hero cards
 
         /// <summary>
         /// Design Title with Image and About US link
@@ -52,6 +129,10 @@ namespace BotConsensus.Dialogs
             return heroCard.ToAttachment();
         }
 
+        /// <summary>
+        /// Thank you messgage for Donation received
+        /// </summary>
+        /// <returns></returns>
         private static Attachment ThankYouCard()
         {
             var heroCard = new HeroCard
@@ -66,37 +147,7 @@ namespace BotConsensus.Dialogs
             return heroCard.ToAttachment();
         }
 
-        public virtual async Task ChoiceReceivedAsync(IDialogContext context, IAwaitable<AdvanceOptions> activity)
-        {
-            AdvanceOptions response = await activity;
-            if (response == AdvanceOptions.Donation)
-                context.Call<object>(new DonationFirstDialog(response.ToString()), ChildDialogComplete);
-            else
-                context.Call<object>(new CourseFirstDialog(response.ToString()), CourseCompleteDialog);
-        }
-        public virtual async Task ChildDialogComplete(IDialogContext context, IAwaitable<object> response)
-        {
-            //await context.PostAsync("Thanks !!!");
-            //context.Done(this);
-            var message = context.MakeMessage();
-            var attachment = ThankYouCard();
-            message.Attachments.Add(attachment);
-            await context.PostAsync(message);
-            context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
-        }
-
-        public virtual async Task CourseCompleteDialog(IDialogContext context, IAwaitable<object> response)
-        {
-            await context.PostAsync("Thanks for your interest. Our team will be get back to you soon!!!");
-            context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
-            //context.Done(this);
-        }
-
-        public enum AdvanceOptions
-        {
-            Donation,
-            Courses,
-        }
+        #endregion
 
     }
 }
