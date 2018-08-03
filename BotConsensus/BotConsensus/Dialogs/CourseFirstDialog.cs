@@ -15,16 +15,12 @@ using System.Text;
 namespace BotConsensus.Dialogs
 {
     [Serializable]
+    [Serializable]
     public class CourseFirstDialog : IDialog<object>
     {
-        string firstName;
-        string lastName;
-        string email;
-        string phone;
         string plandetails;
-        string serverUrl = "http://brd-conse-vm1/v7chatbot";
+        private readonly string serverUrl = "http://a5e42f25.ngrok.io/V7ChatBot";
         string courseType;
-        string donationAmount;
 
         public enum BooleanChoice { Yes, No }
 
@@ -51,8 +47,8 @@ namespace BotConsensus.Dialogs
         {
             var response = await activity;
             if (response.Equals(BooleanChoice.Yes))
-            {                
-                
+            {
+
                 string api = serverUrl + "/rest/learning/product/FetchCourseProduct";
                 var responseFromServer = await GetResponseFromServer(api);
 
@@ -67,7 +63,7 @@ namespace BotConsensus.Dialogs
                 context.Done(this);
             }
         }
-                
+
         public async Task<string> GetResponseFromServer(string api)
         {
             WebRequest request = WebRequest.Create(api);
@@ -85,6 +81,7 @@ namespace BotConsensus.Dialogs
             string responseFromServer = reader.ReadToEnd();
             return responseFromServer;
         }
+
         public async Task ChildDialogComplete(IDialogContext context, IAwaitable<String> response)
         {
             string complete = await response;
@@ -103,7 +100,7 @@ namespace BotConsensus.Dialogs
             PriceList.AppendLine("\nBelow are the different price packs for your course:");
             foreach (CourseProductPrice price in pricelist)
             {
-                PriceList.AppendLine("\nPack: " + price.ListName + "\nPrice($): " +  Math.Round(price.UnitPrice,2));
+                PriceList.AppendLine("\nPack: " + price.ListName + "\nPrice($): " + Math.Round(price.UnitPrice, 2));
             }
 
 

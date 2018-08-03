@@ -19,10 +19,10 @@ namespace BotConsensus.Dialogs
         string lastName;
         string email;
         string phone;
-        string plandetails;
+        private string plandetails;
         string donationType;
         string donationAmount;
-        string serverUrl = "http://brd-conse-vm1/v7chatbot";
+        private readonly string serverUrl = "http://a5e42f25.ngrok.io/V7ChatBot";
         string donationUrl = "";
 
         public enum DonationType
@@ -48,39 +48,12 @@ namespace BotConsensus.Dialogs
                context: context,
                resume: MessageReceivedAsync,
                options: (IEnumerable<BooleanChoice>)Enum.GetValues(typeof(BooleanChoice)),
-               prompt: "Can I help you for registration? ",
+               prompt: "Amazing! Your contribution will help a lot of people. We need some basic information to process your donation. Shall we get started?",
                retry: "Please try again.",
                promptStyle: PromptStyle.Auto
            );
         }
-
-        /*
-         * Thank you. Your donation will be 100% Tax deductible
-         * 
-            What's your name?  -- input
-
-            How much would you like to donate?
-            10
-            30
-            50
-            100
-            More than 100 
-
-
-            $10 will help us buy food for a 2-3 people for one day
-            button- Happy to help  -- no input
-
-            Can you share your email address? We don't spam -- input validate email
-
-            Would you like to subscribe to our email updates on how your donations are helping the people?
-            button Yes,NO  -- no input
-
-            Are you interested in being a volunteer for fund raising?
-            button Yes,NO  -- no input
-
-            Okay. Thank you for your valuable time
-
-         * */
+        
 
         public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<BooleanChoice> activity)
         {
@@ -90,27 +63,26 @@ namespace BotConsensus.Dialogs
                 if (response.Equals(BooleanChoice.Yes))
                 {
                     PromptDialog.Text(
-                        context: context,
-                        resume: ResumeGetName,
-                        prompt: "Please share your first name",
-                        retry: "Sorry, I didn't understand that. Please try again."
-                    );
+                            context: context,
+                            resume: ResumeGetFirstName,
+                            prompt: "What's your first name?",
+                            retry: "Sorry, I didn't understand that. Please try again."
+                        );
                 }
                 else
                 {
-                    await context.PostAsync("Thanks for your valuable time!!!");
-
+                    await context.PostAsync("Thanks for your valuable time !!!");
                     context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
                 }
             }
             catch
             {
-                await context.PostAsync("Thanks for your valuable time!!!");
+                await context.PostAsync("Thanks for your valuable time !!!");
                 context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
             }
         }
 
-        public virtual async Task ResumeGetName(IDialogContext context, IAwaitable<string> Username)
+        public virtual async Task ResumeGetFirstName(IDialogContext context, IAwaitable<string> Username)
         {
             string response = await Username;
             firstName = response; ;
@@ -118,7 +90,7 @@ namespace BotConsensus.Dialogs
             PromptDialog.Text(
                 context: context,
                 resume: ResumeGetLastName,
-                prompt: "Please share your last name",
+                prompt: "What's your last name?",
                 retry: "Sorry, I didn't understand that. Please try again."
             );
         }
@@ -131,7 +103,7 @@ namespace BotConsensus.Dialogs
             PromptDialog.Text(
                 context: context,
                 resume: ResumeGetEmail,
-                prompt: "Please share your email id",
+                prompt: "Can you share your email address? We don't spam",
                 retry: "Sorry, I didn't understand that. Please try again."
             );
         }
@@ -144,10 +116,11 @@ namespace BotConsensus.Dialogs
             PromptDialog.Text(
                 context: context,
                 resume: ResumeGetPhone,
-                prompt: "Please share your mobile number",
+                prompt: "Please share your contact number",
                 retry: "Sorry, I didn't understand that. Please try again."
             );
         }
+
         public async Task ResumeGetPhone(IDialogContext context, IAwaitable<string> mobile)
         {
             string response = await mobile;
@@ -160,7 +133,7 @@ namespace BotConsensus.Dialogs
             var donationProductList = serializer.Deserialize<List<DonationProduct>>(responseFromServer);
             var donationList = donationProductList.Select(x => x.Name).ToList();
 
-            PromptDialog.Choice(context, ChildDialogComplete, donationProductList.Select(x => x.Id), "What type of donation you want to do?", "Selected plan not available. Please try again.", 3, PromptStyle.Auto, donationProductList.Select(x => x.Name));
+            PromptDialog.Choice(context, ChildDialogComplete, donationProductList.Select(x => x.Id), "We have number of donation options where you can make real difference. Please Select.", "Selected donation not available. Please try again.", 3, PromptStyle.Auto, donationProductList.Select(x => x.Name));
 
         }
 
@@ -175,10 +148,11 @@ namespace BotConsensus.Dialogs
              resume: ResumeGetDonationAmount,
               options: amountList,
              prompt: "How much amount would you like to donate?",
-             retry: "Selected plan not available. Please try again.",
+             retry: "Selected amount not available. Please try again.",
              promptStyle: PromptStyle.Auto
              );
         }
+        
 
         private async Task ResumeGetDonationAmount(IDialogContext context, IAwaitable<object> result)
         {
@@ -206,7 +180,7 @@ namespace BotConsensus.Dialogs
         public async Task CashType(IDialogContext context, IAwaitable<String> response)
         {
 
-            await context.PostAsync("Thank you so much for your kindness. Donation added successfully. Please click following " + serverUrl + "" + donationUrl + " link to check the details. Cheers!!!!!");
+            await context.PostAsync("Thank you so much for your kindness. Donation added successfully. Please click following " + serverUrl + "" + donationUrl + " link to check the details. Cheers !!!");
 
             context.Done(this);
         }
