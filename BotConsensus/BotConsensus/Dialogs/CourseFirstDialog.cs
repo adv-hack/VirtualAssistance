@@ -12,6 +12,7 @@ using System.Web.Script.Serialization;
 using BotConsensus.Model;
 using System.Text;
 using BotConsensus.Util;
+using System.Text.RegularExpressions;
 
 namespace BotConsensus.Dialogs
 {
@@ -78,7 +79,7 @@ namespace BotConsensus.Dialogs
                     PromptDialog.Text(
                             context: context,
                             resume: ResumeGetFirstName,
-                            prompt: "Sure. May I have your name, number or email ID? ?",
+                            prompt: "Sure. May I have your contact number or email address ?",
                             retry: "Sorry, I didn't understand that. Please try again."
                         );
                 }
@@ -98,15 +99,30 @@ namespace BotConsensus.Dialogs
         {
             string response = await Username;
             firstName = response;
+            if (firstName.Equals("reset", StringComparison.InvariantCultureIgnoreCase))
+            {
+                context.EndConversation("End");
+            }
+            else if ((Regex.IsMatch(firstName, @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")) || (Regex.IsMatch(firstName, @"^+\d[0-9]")))
+            {
+                string api = "/rest/learning/product/FetchCourseProduct";
+                var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
 
-            string api = "/rest/learning/product/FetchCourseProduct";
-            var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
+                var serializer = new JavaScriptSerializer();
+                var courseProductList = serializer.Deserialize<List<CourseProduct>>(responseFromServer);
+                var courseList = courseProductList.Select(x => x.Name).ToList();
 
-            var serializer = new JavaScriptSerializer();
-            var courseProductList = serializer.Deserialize<List<CourseProduct>>(responseFromServer);
-            var courseList = courseProductList.Select(x => x.Name).ToList();
-
-            PromptDialog.Choice(context, ChildDialogComplete, courseProductList.Select(x => x.Name), "What course are you interested to inquire for?", "Selected course not available. Please try again.", 3, PromptStyle.Auto, courseProductList.Select(x => x.Name));
+                PromptDialog.Choice(context, ChildDialogComplete, courseProductList.Select(x => x.Name), "What course are you interested to inquire for?", "Selected course not available. Please try again.", 3, PromptStyle.Auto, courseProductList.Select(x => x.Name));
+            }
+            else
+            {
+                PromptDialog.Text(
+                            context: context,
+                            resume: ResumeGetFirstName,
+                            prompt: "Kindly share valid email address or contact number",
+                            retry: "Sorry, I didn't understand that. Please try again."
+                        );
+            }
         }
 
         /// <summary>
@@ -136,11 +152,38 @@ namespace BotConsensus.Dialogs
             {
                 PriceList.AppendLine("\nPack: " + price.ListName + "\nPrice: £ " + Math.Round(price.UnitPrice, 2));
             }
-
-
             await context.PostAsync("Here are the details of the course for you: \nStart Date: " + (!String.IsNullOrEmpty(startDate) ? startDate : "Not specified") + " \nCourse Duration(days) :" + CourseLength + PriceList.ToString());
 
-            context.Done(this);
+            PromptDialog.Choice(
+             context: context,
+             resume: CourseLastStep,
+             options: (IEnumerable<BooleanChoice>)Enum.GetValues(typeof(BooleanChoice)),
+             prompt: "\n\nWould you like to go ahead and get further assistance on enrolling into this course? ",
+             retry: "Please try again.",
+             promptStyle: PromptStyle.Auto
+         );
+        }
+
+        public async Task CourseLastStep(IDialogContext context, IAwaitable<BooleanChoice> activity)
+        {
+            try
+            {
+                var response = await activity;
+                if (response.Equals(BooleanChoice.Yes))
+                {
+                    context.Done(this);
+                }
+                else
+                {
+                    await context.PostAsync("Thanks for your valuable time. I would be glad to help you if you might be interested for enrollment in future !!!");
+                    context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
+                }
+            }
+            catch
+            {
+                await context.PostAsync("Thanks for your valuable time !!!");
+                context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
+            }
         }
 
         #endregion
