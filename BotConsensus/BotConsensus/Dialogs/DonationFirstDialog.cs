@@ -178,9 +178,8 @@ namespace BotConsensus.Dialogs
 
             var serializer = new JavaScriptSerializer();
             var donationProductList = serializer.Deserialize<List<DonationProduct>>(responseFromServer);
-            var donationList = donationProductList.Select(x => x.Name).ToList();
 
-            PromptDialog.Choice(context, ChildDialogComplete, donationProductList.Select(x => x.Id), "We have number of donation options where you can make real difference. Please Select.", "Selected donation not available. Please try again.", 3, PromptStyle.Auto, donationProductList.Select(x => x.Name));
+            PromptDialog.Choice(context, ChildDialogComplete, donationProductList.Select(x => x.Name), "We have number of donation options where you can make real difference. Please Select.", "Selected donation not available. Please try again.", 3, PromptStyle.Auto, donationProductList.Select(x => x.Name));
 
         }
 
@@ -214,14 +213,24 @@ namespace BotConsensus.Dialogs
         /// <returns></returns>
         private async Task ResumeGetDonationAmount(IDialogContext context, IAwaitable<object> result)
         {
-            var response = await result;
-            donationAmount = response.ToString().Remove(0, 2);
-
-            string api = "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=" + donationAmount + "&productId=" + donationType;
-
+            //Gets product list
+            string api = "/rest/learning/product/FetchDonationProduct";
             var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
 
             var serializer = new JavaScriptSerializer();
+            var donationProductList = serializer.Deserialize<List<DonationProduct>>(responseFromServer);
+
+            var productId = donationProductList.Find(x => x.Name == donationType).Id;
+
+            var response = await result;
+            donationAmount = response.ToString().Remove(0, 2);
+
+            //Creates donation product
+            api = "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=" + donationAmount + "&productId=" + productId;
+
+            responseFromServer = await _restApiUtil.GetResponseFromServer(api);
+
+            serializer = new JavaScriptSerializer();
             donationUrl = serializer.Deserialize<string>(responseFromServer);
 
             List<string> cashOptions = new List<string>() { "Cash", "Cheque", "Credit card", "Debit card", "Net banking", "Wallets" };
