@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -111,17 +112,23 @@ namespace BotConsensus.Dialogs
         /// <param name="context"></param>
         /// <param name="Username"></param>
         /// <returns></returns>
-        public virtual async Task ResumeGetFirstName(IDialogContext context, IAwaitable<string> Username)
+        public virtual async Task ResumeGetFirstName(IDialogContext context, IAwaitable<string> username)
         {
-            string response = await Username;
+            string response = await username;
             firstName = response; ;
-
-            PromptDialog.Text(
+            if (firstName.Equals("reset", StringComparison.InvariantCultureIgnoreCase))
+            {
+                context.EndConversation("End");
+            }
+            else
+            {
+                PromptDialog.Text(
                 context: context,
                 resume: ResumeGetLastName,
                 prompt: "What's your last name?",
                 retry: "Sorry, I didn't understand that. Please try again."
             );
+            }
         }
 
         /// <summary>
@@ -130,17 +137,23 @@ namespace BotConsensus.Dialogs
         /// <param name="context"></param>
         /// <param name="surname"></param>
         /// <returns></returns>
-        public virtual async Task ResumeGetLastName(IDialogContext context, IAwaitable<string> surname)
+       	public virtual async Task ResumeGetLastName(IDialogContext context, IAwaitable<string> surname)
         {
             string response = await surname;
             lastName = response;
-
-            PromptDialog.Text(
+            if (lastName.Equals("reset", StringComparison.InvariantCultureIgnoreCase))
+            {
+                context.EndConversation("End");
+            }
+            else
+            {
+                PromptDialog.Text(
                 context: context,
                 resume: ResumeGetEmail,
                 prompt: "Can you share your email address? We don't spam",
                 retry: "Sorry, I didn't understand that. Please try again."
             );
+            }
         }
 
         /// <summary>
@@ -154,12 +167,27 @@ namespace BotConsensus.Dialogs
             string response = await UserEmail;
             email = response;
 
-            PromptDialog.Text(
-                context: context,
-                resume: ResumeGetPhone,
-                prompt: "Please share your contact number",
-                retry: "Sorry, I didn't understand that. Please try again."
-            );
+            if (email.Equals("reset", StringComparison.InvariantCultureIgnoreCase))
+            {
+                context.EndConversation("End");
+            }
+            else if (Regex.IsMatch(email, @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))
+            {
+                PromptDialog.Text(
+               context: context,
+               resume: ResumeGetPhone,
+               prompt: "Please share your contact number",
+               retry: "Sorry, I didn't understand that. Please try again.");
+            }
+            else
+            {
+                PromptDialog.Text(
+               context: context,
+               resume: ResumeGetEmail,
+               prompt: "Kindly provide valid email address? We don't spam",
+               retry: "Sorry, I didn't understand that. Please try again."
+           );
+            }
         }
 
         /// <summary>
@@ -172,15 +200,30 @@ namespace BotConsensus.Dialogs
         {
             string response = await mobile;
             phone = response;
+            if (phone.Equals("reset", StringComparison.InvariantCultureIgnoreCase))
+            {
+                context.EndConversation("End");
+            }
+            else if (Regex.IsMatch(phone, @"^+\d[0-9]"))
+            {
+                string api = "/rest/learning/product/FetchDonationProduct";
+                var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
 
-            string api = "/rest/learning/product/FetchDonationProduct";
-            var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
+                var serializer = new JavaScriptSerializer();
+                var donationProductList = serializer.Deserialize<List<DonationProduct>>(responseFromServer);
+                var donationList = donationProductList.Select(x => x.Name).ToList();
 
-            var serializer = new JavaScriptSerializer();
-            var donationProductList = serializer.Deserialize<List<DonationProduct>>(responseFromServer);
-            var donationList = donationProductList.Select(x => x.Name).ToList();
-
-            PromptDialog.Choice(context, ChildDialogComplete, donationProductList.Select(x => x.Id), "We have number of donation options where you can make real difference. Please Select.", "Selected donation not available. Please try again.", 3, PromptStyle.Auto, donationProductList.Select(x => x.Name));
+                PromptDialog.Choice(context, ChildDialogComplete, donationProductList.Select(x => x.Id), "We have number of donation options where you can make real difference. Please Select.", "Selected donation not available. Please try again.", 3, PromptStyle.Auto, donationProductList.Select(x => x.Name));
+            }
+            else
+            {
+                PromptDialog.Text(
+                context: context,
+                resume: ResumeGetPhone,
+                prompt: "Kindly share valid contact number",
+                retry: "Sorry, I didn't understand that. Please try again."
+            );
+            }
 
         }
 
@@ -194,16 +237,23 @@ namespace BotConsensus.Dialogs
         {
             var message = await response;
             donationType = message.ToString();
-            List<string> amountList = new List<string>() { "£ 10", "£ 50", "£ 100", "£ 1000" };
+            if (donationType.Equals("reset", StringComparison.InvariantCultureIgnoreCase))
+            {
+                context.EndConversation("End");
+            }
+            else
+            { 
+                List<string> amountList = new List<string>() { "£ 10", "£ 50", "£ 100", "£ 1000" };
 
-            PromptDialog.Choice(
-             context: context,
-             resume: ResumeGetDonationAmount,
-              options: amountList,
-             prompt: "How much amount would you like to donate?",
-             retry: "Selected amount not available. Please try again.",
-             promptStyle: PromptStyle.Auto
-             );
+                PromptDialog.Choice(
+                 context: context,
+                 resume: ResumeGetDonationAmount,
+                  options: amountList,
+                 prompt: "How much amount would you like to donate?",
+                 retry: "Selected amount not available. Please try again.",
+                 promptStyle: PromptStyle.Auto
+                 );
+            }
         }
 
         /// <summary>
@@ -216,23 +266,29 @@ namespace BotConsensus.Dialogs
         {
             var response = await result;
             donationAmount = response.ToString().Remove(0, 2);
+            if (donationAmount.Equals("reset", StringComparison.InvariantCultureIgnoreCase))
+            {
+                context.EndConversation("End");
+            }
+            else
+            {
+                string api = "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=" + donationAmount + "&productId=" + donationType;
 
-            string api = "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=" + donationAmount + "&productId=" + donationType;
+                var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
 
-            var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
+                var serializer = new JavaScriptSerializer();
+                donationUrl = serializer.Deserialize<string>(responseFromServer);
 
-            var serializer = new JavaScriptSerializer();
-            donationUrl = serializer.Deserialize<string>(responseFromServer);
-
-            List<string> cashOptions = new List<string>() { "Cash", "Cheque", "Credit card", "Debit card", "Net banking", "Wallets" };
-            PromptDialog.Choice(
-             context: context,
-             resume: CashType,
-              options: cashOptions,
-             prompt: "How would you like to donate?",
-             retry: "Selected plan not available . Please try again.",
-             promptStyle: PromptStyle.Auto
-             );
+                List<string> cashOptions = new List<string>() { "Cash", "Cheque", "Credit card", "Debit card", "Net banking", "Wallets" };
+                PromptDialog.Choice(
+                 context: context,
+                 resume: CashType,
+                  options: cashOptions,
+                 prompt: "How would you like to donate?",
+                 retry: "Selected plan not available . Please try again.",
+                 promptStyle: PromptStyle.Auto
+                 );
+            }
         }
 
         /// <summary>
