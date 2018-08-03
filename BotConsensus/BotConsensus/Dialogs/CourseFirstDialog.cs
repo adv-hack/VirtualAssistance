@@ -42,6 +42,11 @@ namespace BotConsensus.Dialogs
 
         #region Public Methods
         
+        /// <summary>
+        /// Starts flow of fetching course details
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task StartAsync(IDialogContext context)
         {
             await context.PostAsync("Thank you for selecting " + plandetails + " option");
@@ -56,6 +61,12 @@ namespace BotConsensus.Dialogs
            );
         }
 
+        /// <summary>
+        /// Fetches course details
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="activity"></param>
+        /// <returns></returns>
         public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<BooleanChoice> activity)
         {
             var response = await activity;
@@ -76,6 +87,12 @@ namespace BotConsensus.Dialogs
             }
         }
 
+        /// <summary>
+        /// Displays selected course detail
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
         public async Task ChildDialogComplete(IDialogContext context, IAwaitable<String> response)
         {
             string complete = await response;
