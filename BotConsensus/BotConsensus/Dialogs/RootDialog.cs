@@ -113,7 +113,7 @@ namespace BotConsensus.Dialogs
         /// <returns></returns>
         public virtual async Task CourseCompleteDialog(IDialogContext context, IAwaitable<object> response)
         {
-            await context.PostAsync("Thanks for your interest. Our team will be get back to you soon!!!");
+            await context.PostAsync("Thanks for your interest. Our team will get back to you soon!!!");
             context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
         }
 
@@ -163,9 +163,9 @@ namespace BotConsensus.Dialogs
             {
                 Title = "Thank you so much for your kindness.",
                 Subtitle = "",
-                Text = "Please click on the following link to get the details of your donation. <br /> <a href='" + donationUrl + "'>Donation - " + donationId + "</a>  <br />Cheers !!!",
+                Text = "Please click on the following link to get the details of your donation. Cheers!!!",
                 Images = new List<CardImage> { new CardImage("https://a5e42f25.ngrok.io/V7ChatBot/thankyou.png") },
-                //Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "About US", value: "https://www.oneadvanced.com/") }
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Donation - "+ donationId, value: donationUrl) }
             };
 
             return heroCard.ToAttachment();
