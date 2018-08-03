@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System.Collections.Generic;
+using BotConsensus.Util;
 
 namespace BotConsensus.Dialogs
 {
@@ -10,8 +11,24 @@ namespace BotConsensus.Dialogs
     public class RootDialog : IDialog<object>
     {
 
+        #region Properties
+
+        private RestApiUtil _restApiUtil;
+        DonationFirstDialog donationFirstDialog;
+
+        #endregion
+
+        #region Constructor
+
+        public RootDialog()
+        {
+            _restApiUtil = new RestApiUtil();
+        }
+
+        #endregion
+
         #region Public methods
-        
+
         /// <summary>
         /// Starts conversation with Welcome card
         /// </summary>
@@ -46,7 +63,7 @@ namespace BotConsensus.Dialogs
                retry: "Selected option not available. Please try again.",
                promptStyle: PromptStyle.Auto
                );
-        }       
+        }
 
         /// <summary>
         /// Processes depending on Option selected
@@ -58,7 +75,10 @@ namespace BotConsensus.Dialogs
         {
             AdvanceOptions response = await activity;
             if (response == AdvanceOptions.Donation)
-                context.Call<object>(new DonationFirstDialog(response.ToString()), ChildDialogComplete);
+            {
+                donationFirstDialog = new DonationFirstDialog(response.ToString());
+                context.Call<object>(donationFirstDialog, ChildDialogComplete);
+            }
             else
                 context.Call<object>(new CourseFirstDialog(response.ToString()), CourseCompleteDialog);
         }
@@ -74,9 +94,12 @@ namespace BotConsensus.Dialogs
         /// <param name="response"></param>
         /// <returns></returns>
         public virtual async Task ChildDialogComplete(IDialogContext context, IAwaitable<object> response)
-        {            
+        {
             var message = context.MakeMessage();
-            var attachment = ThankYouCard();
+            var count = donationFirstDialog.donationUrl.Length - 29;
+            var donationId = donationFirstDialog.donationUrl.Substring(29, count);
+            var donationUrl = _restApiUtil.ServerUrl + "" + donationFirstDialog.donationUrl;
+            var attachment = ThankYouCard(donationUrl, donationId);
             message.Attachments.Add(attachment);
             await context.PostAsync(message);
             context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
@@ -91,7 +114,7 @@ namespace BotConsensus.Dialogs
         public virtual async Task CourseCompleteDialog(IDialogContext context, IAwaitable<object> response)
         {
             await context.PostAsync("Thanks for your interest. Our team will be get back to you soon!!!");
-            context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);            
+            context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
         }
 
         #endregion
@@ -133,13 +156,14 @@ namespace BotConsensus.Dialogs
         /// Thank you messgage for Donation received
         /// </summary>
         /// <returns></returns>
-        private static Attachment ThankYouCard()
+        private static Attachment ThankYouCard(string donationUrl, string donationId)
         {
+
             var heroCard = new HeroCard
             {
-                Title = "Thank you",
+                Title = "Thank you so much for your kindness.",
                 Subtitle = "",
-                Text = "Thank you for the donation",
+                Text = "Please click on the following link to get the details of your donation. <br /> <a href='" + donationUrl + "'>Donation - " + donationId + "</a>  <br />Cheers !!!",
                 Images = new List<CardImage> { new CardImage("https://a5e42f25.ngrok.io/V7ChatBot/thankyou.png") },
                 //Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "About US", value: "https://www.oneadvanced.com/") }
             };

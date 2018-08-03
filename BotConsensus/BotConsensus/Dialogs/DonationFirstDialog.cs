@@ -27,7 +27,7 @@ namespace BotConsensus.Dialogs
         private string plandetails;
         string donationType;
         string donationAmount;
-        string donationUrl = "";
+        public string donationUrl { get; set; }
 
         public enum DonationType
         {
@@ -251,8 +251,8 @@ namespace BotConsensus.Dialogs
         /// <param name="response"></param>
         /// <returns></returns>
         public async Task CashType(IDialogContext context, IAwaitable<String> response)
-        {
-            await context.PostAsync("Thank you so much for your kindness. Donation added successfully. Please click following " + _restApiUtil.ServerUrl + "" + donationUrl + " link to check the details. Cheers !!!");
+        {            
+            await context.PostAsync("Donation added successfully.");
             context.Done(this);
         }
 
