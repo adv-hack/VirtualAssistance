@@ -18,7 +18,7 @@ namespace BotConsensus.Dialogs
     {
 
         #region Properties
-        
+
         private RestApiUtil _restApiUtil;
         string firstName;
         string lastName;
@@ -26,7 +26,7 @@ namespace BotConsensus.Dialogs
         string phone;
         private string plandetails;
         string donationType;
-        string donationAmount;        
+        string donationAmount;
         string donationUrl = "";
 
         public enum DonationType
@@ -53,6 +53,11 @@ namespace BotConsensus.Dialogs
 
         #region Public Methods        
 
+        /// <summary>
+        /// Starts Donation process 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task StartAsync(IDialogContext context)
         {
             await context.PostAsync("Thank you for selecting " + plandetails + " option");
@@ -66,7 +71,13 @@ namespace BotConsensus.Dialogs
                promptStyle: PromptStyle.Auto
            );
         }
-        
+
+        /// <summary>
+        /// If Donation is selected then will continue with the flow
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="activity"></param>
+        /// <returns></returns>
         public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<BooleanChoice> activity)
         {
             try
@@ -94,6 +105,12 @@ namespace BotConsensus.Dialogs
             }
         }
 
+        /// <summary>
+        /// Gets first name
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="Username"></param>
+        /// <returns></returns>
         public virtual async Task ResumeGetFirstName(IDialogContext context, IAwaitable<string> Username)
         {
             string response = await Username;
@@ -107,6 +124,12 @@ namespace BotConsensus.Dialogs
             );
         }
 
+        /// <summary>
+        /// Gets last name
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="surname"></param>
+        /// <returns></returns>
         public virtual async Task ResumeGetLastName(IDialogContext context, IAwaitable<string> surname)
         {
             string response = await surname;
@@ -120,6 +143,12 @@ namespace BotConsensus.Dialogs
             );
         }
 
+        /// <summary>
+        /// Gets email
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="UserEmail"></param>
+        /// <returns></returns>
         public virtual async Task ResumeGetEmail(IDialogContext context, IAwaitable<string> UserEmail)
         {
             string response = await UserEmail;
@@ -133,6 +162,12 @@ namespace BotConsensus.Dialogs
             );
         }
 
+        /// <summary>
+        /// Gets phone
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="mobile"></param>
+        /// <returns></returns>
         public async Task ResumeGetPhone(IDialogContext context, IAwaitable<string> mobile)
         {
             string response = await mobile;
@@ -149,11 +184,17 @@ namespace BotConsensus.Dialogs
 
         }
 
+        /// <summary>
+        /// Gets donation amount
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
         public async Task ChildDialogComplete(IDialogContext context, IAwaitable<String> response)
         {
             var message = await response;
             donationType = message.ToString();
-            List<string> amountList = new List<string>() { "10", "50", "100", "1000" };
+            List<string> amountList = new List<string>() { "£ 10", "£ 50", "£ 100", "£ 1000" };
 
             PromptDialog.Choice(
              context: context,
@@ -164,13 +205,19 @@ namespace BotConsensus.Dialogs
              promptStyle: PromptStyle.Auto
              );
         }
-        
+
+        /// <summary>
+        /// Creates new donation for that user
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
         private async Task ResumeGetDonationAmount(IDialogContext context, IAwaitable<object> result)
         {
             var response = await result;
-            donationAmount = response.ToString();
+            donationAmount = response.ToString().Remove(0, 2);
 
-            string api = "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=" + donationType + "&productId=" + donationType;
+            string api = "/rest/learning/product/CreateDonationProduct?personName=" + firstName + "&surname=" + lastName + "&email=" + email + "&phone=" + phone + "&price=" + donationAmount + "&productId=" + donationType;
 
             var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
 
@@ -188,6 +235,12 @@ namespace BotConsensus.Dialogs
              );
         }
 
+        /// <summary>
+        /// Determins how would person like to donate
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
         public async Task CashType(IDialogContext context, IAwaitable<String> response)
         {
             await context.PostAsync("Thank you so much for your kindness. Donation added successfully. Please click following " + _restApiUtil.ServerUrl + "" + donationUrl + " link to check the details. Cheers !!!");

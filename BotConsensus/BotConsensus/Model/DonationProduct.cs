@@ -7,6 +7,8 @@ namespace BotConsensus.Model
 {
     public class DonationProduct
     {
+        #region Properties
+        
         public String Name { get; set; }
 
         public Double? Price { get; set; }
@@ -20,5 +22,7 @@ namespace BotConsensus.Model
         public string Email { get; set; }
 
         public string Phone { get; set; }
+
+        #endregion
     }
 }

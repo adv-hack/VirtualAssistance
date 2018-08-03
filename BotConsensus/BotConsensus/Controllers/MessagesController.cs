@@ -10,6 +10,8 @@ namespace BotConsensus
     [BotAuthentication]
     public class MessagesController : ApiController
     {
+        #region Public methods        
+
         /// <summary>
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
@@ -28,6 +30,11 @@ namespace BotConsensus
             return response;
         }
 
+        /// <summary>
+        /// Handles message
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private Activity HandleSystemMessage(Activity message)
         {
             string messageType = message.GetActivityType();
@@ -57,5 +64,7 @@ namespace BotConsensus
 
             return null;
         }
+
+        #endregion
     }
 }

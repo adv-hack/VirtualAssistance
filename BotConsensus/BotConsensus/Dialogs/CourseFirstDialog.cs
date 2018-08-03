@@ -94,7 +94,7 @@ namespace BotConsensus.Dialogs
             PriceList.AppendLine("\nBelow are the different price packs for your course:");
             foreach (CourseProductPrice price in pricelist)
             {
-                PriceList.AppendLine("\nPack: " + price.ListName + "\nPrice($): " + Math.Round(price.UnitPrice, 2));
+                PriceList.AppendLine("\nPack: " + price.ListName + "\nPrice: £ " + Math.Round(price.UnitPrice, 2));
             }
 
 
