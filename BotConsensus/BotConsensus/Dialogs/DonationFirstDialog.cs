@@ -204,7 +204,7 @@ namespace BotConsensus.Dialogs
             {
                 context.EndConversation("End");
             }
-            else if (Regex.IsMatch(phone, @"^+\d[0-9]"))
+            else if (Regex.IsMatch(phone, @"^[0][1-9]\d{9}$|^[1-9]\d{9}$"))
             {
             string api = "/rest/learning/product/FetchDonationProduct";
             var responseFromServer = await _restApiUtil.GetResponseFromServer(api);

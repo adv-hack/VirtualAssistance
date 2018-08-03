@@ -165,7 +165,7 @@ namespace BotConsensus.Dialogs
                 Subtitle = "",
                 Text = "Please click on the following link to get the details of your donation. Cheers!!!",
                 Images = new List<CardImage> { new CardImage("https://a5e42f25.ngrok.io/V7ChatBot/thankyou.png") },
-                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Donation - "+ donationId, value: donationUrl) }
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Your Donation!", value: donationUrl) }
             };
 
             return heroCard.ToAttachment();

@@ -103,7 +103,7 @@ namespace BotConsensus.Dialogs
             {
                 context.EndConversation("End");
             }
-            else if ((Regex.IsMatch(firstName, @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")) || (Regex.IsMatch(firstName, @"^+\d[0-9]")))
+            else if ((Regex.IsMatch(firstName, @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")) || (Regex.IsMatch(firstName, @"^[0][1-9]\d{9}$|^[1-9]\d{9}$")))
             {
                 string api = "/rest/learning/product/FetchCourseProduct";
                 var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
