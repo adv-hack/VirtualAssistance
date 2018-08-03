@@ -14,8 +14,7 @@ using System.Text;
 
 namespace BotConsensus.Dialogs
 {
-    [Serializable]
-    [Serializable]
+    [Serializable]    
     public class CourseFirstDialog : IDialog<object>
     {
         string plandetails;
