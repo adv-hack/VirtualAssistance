@@ -43,6 +43,11 @@ namespace BotConsensus.Dialogs
 
         #region Public Methods
         
+        /// <summary>
+        /// Starts flow of fetching course details
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task StartAsync(IDialogContext context)
         {
             await context.PostAsync("Thank you for selecting " + plandetails + " option");
@@ -57,6 +62,12 @@ namespace BotConsensus.Dialogs
            );
         }
 
+        /// <summary>
+        /// Fetches course details
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="activity"></param>
+        /// <returns></returns>
         public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<BooleanChoice> activity)
         {
             try
@@ -114,6 +125,12 @@ namespace BotConsensus.Dialogs
             PromptDialog.Choice(context, ChildDialogComplete, courseProductList.Select(x => x.Name), "What course are you interested to inquire for?", "Selected course not available. Please try again.", 3, PromptStyle.Auto, courseProductList.Select(x => x.Name));
         }
 
+        /// <summary>
+        /// Displays selected course detail
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
 
         public async Task ChildDialogComplete(IDialogContext context, IAwaitable<String> response)
         {
