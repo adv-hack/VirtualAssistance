@@ -26,6 +26,7 @@ namespace BotConsensus.Dialogs
 
         public string courseType;
 
+        public string firstName;
         public enum BooleanChoice { Yes, No }
 
         #endregion
@@ -58,23 +59,61 @@ namespace BotConsensus.Dialogs
 
         public virtual async Task MessageReceivedAsync(IDialogContext context, IAwaitable<BooleanChoice> activity)
         {
-            var response = await activity;
-            if (response.Equals(BooleanChoice.Yes))
+            try
             {
-                string api = "/rest/learning/product/FetchCourseProduct";
-                var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
-
-                var serializer = new JavaScriptSerializer();
-                var courseProductList = serializer.Deserialize<List<CourseProduct>>(responseFromServer);
-                var courseList = courseProductList.Select(x => x.Name).ToList();
-
-                PromptDialog.Choice(context, ChildDialogComplete, courseProductList.Select(x => x.Name), "What course are you interested to inquire for?", "Selected course not available. Please try again.", 3, PromptStyle.Auto, courseProductList.Select(x => x.Name));
+                var response = await activity;
+                if (response.Equals(BooleanChoice.Yes))
+                {
+                    PromptDialog.Text(
+                            context: context,
+                            resume: ResumeGetFirstName,
+                            prompt: "Sure. May I have your name, number or email ID? ?",
+                            retry: "Sorry, I didn't understand that. Please try again."
+                        );
+                }
+                else
+                {
+                    await context.PostAsync("Thanks for your valuable time !!!");
+                    context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
+                }
             }
-            else
+            catch
             {
-                context.Done(this);
+                await context.PostAsync("Thanks for your valuable time !!!");
+                context.EndConversation(EndOfConversationCodes.CompletedSuccessfully);
             }
+            //var response = await activity;
+            //if (response.Equals(BooleanChoice.Yes))
+            //{
+            //    string api = "/rest/learning/product/FetchCourseProduct";
+            //    var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
+
+            //    var serializer = new JavaScriptSerializer();
+            //    var courseProductList = serializer.Deserialize<List<CourseProduct>>(responseFromServer);
+            //    var courseList = courseProductList.Select(x => x.Name).ToList();
+
+            //    PromptDialog.Choice(context, ChildDialogComplete, courseProductList.Select(x => x.Name), "What course are you interested to inquire for?", "Selected course not available. Please try again.", 3, PromptStyle.Auto, courseProductList.Select(x => x.Name));
+            //}
+            //else
+            //{
+            //    context.Done(this);
+            //}
         }
+        public virtual async Task ResumeGetFirstName(IDialogContext context, IAwaitable<string> Username)
+        {
+            string response = await Username;
+            firstName = response;
+
+            string api = "/rest/learning/product/FetchCourseProduct";
+            var responseFromServer = await _restApiUtil.GetResponseFromServer(api);
+
+            var serializer = new JavaScriptSerializer();
+            var courseProductList = serializer.Deserialize<List<CourseProduct>>(responseFromServer);
+            var courseList = courseProductList.Select(x => x.Name).ToList();
+
+            PromptDialog.Choice(context, ChildDialogComplete, courseProductList.Select(x => x.Name), "What course are you interested to inquire for?", "Selected course not available. Please try again.", 3, PromptStyle.Auto, courseProductList.Select(x => x.Name));
+        }
+
 
         public async Task ChildDialogComplete(IDialogContext context, IAwaitable<String> response)
         {
