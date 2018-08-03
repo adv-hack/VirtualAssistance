@@ -273,7 +273,7 @@ namespace BotConsensus.Dialogs
             var productId = donationProductList.Find(x => x.Name == donationType).Id;
 
             var response = await result;
-            donationAmount = response.ToString().Remove(0, 2);
+            donationAmount = response.ToString();//.Remove(0, 2);
             if (donationAmount.Equals("reset", StringComparison.InvariantCultureIgnoreCase))
             {
                 context.EndConversation("End");

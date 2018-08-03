@@ -150,14 +150,15 @@ namespace BotConsensus.Dialogs
             
             foreach (CourseProductPrice price in pricelist)
             {
-                PriceList.AppendLine("<br/> <b>Pack:</b> " + price.ListName + " <b>Price:</b> £ " + Math.Round(price.UnitPrice, 2));
+                PriceList.AppendLine(", Pack: " + price.ListName + " and Price: £ " + Math.Round(price.UnitPrice, 2));
+                break;
             }            
 
             var heroCard = new HeroCard
             {
                 Title = courseType +" details.",
                 Subtitle = "Below are the different price packs and other details for this course:",
-                Text = "<br/> <b>Start Date:</b> " + (!String.IsNullOrEmpty(startDate) ? startDate : "Not specified") + " <br/> <b>Course Duration (days): </b>" + CourseLength + PriceList.ToString()                                
+                Text = "Start Date: " + (!String.IsNullOrEmpty(startDate) ? startDate : "Not specified") + ", Course Duration (days): " + CourseLength + PriceList.ToString()                                
             };
 
             var message = context.MakeMessage();
