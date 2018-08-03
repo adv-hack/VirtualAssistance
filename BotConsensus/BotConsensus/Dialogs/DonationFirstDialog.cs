@@ -46,6 +46,7 @@ namespace BotConsensus.Dialogs
         public DonationFirstDialog(string plan)
         {
             plandetails = plan;
+            _restApiUtil = new RestApiUtil();
         }
 
         #endregion
